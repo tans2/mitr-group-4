@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 23, 2018 at 10:27 PM
+-- Generation Time: Oct 23, 2018 at 10:37 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -53,15 +53,17 @@ CREATE TABLE `cadet` (
   `bio` text COLLATE ascii_bin,
   `flight` varchar(20) COLLATE ascii_bin NOT NULL,
   `position` varchar(100) COLLATE ascii_bin DEFAULT NULL,
-  `groupMe` varchar(50) COLLATE ascii_bin NOT NULL
+  `groupMe` varchar(50) COLLATE ascii_bin NOT NULL,
+  `goals` text COLLATE ascii_bin,
+  `awards` text COLLATE ascii_bin
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
 
 --
 -- Dumping data for table `cadet`
 --
 
-INSERT INTO `cadet` (`name`, `rank`, `rin`, `primaryEmail`, `secondaryEmail`, `primaryPhone`, `secondaryPhone`, `password`, `bio`, `flight`, `position`, `groupMe`) VALUES
-('testName', 'AS100', 123456789, 'testemail@rpi.edu', NULL, 0, NULL, '123456', 'This is a demo bio for a fake cadet.', '', NULL, '');
+INSERT INTO `cadet` (`name`, `rank`, `rin`, `primaryEmail`, `secondaryEmail`, `primaryPhone`, `secondaryPhone`, `password`, `bio`, `flight`, `position`, `groupMe`, `goals`, `awards`) VALUES
+('testName', 'AS100', 123456789, 'testemail@rpi.edu', NULL, 0, NULL, '123456', 'This is a demo bio for a fake cadet.', '', NULL, '', NULL, NULL);
 
 -- --------------------------------------------------------
 
