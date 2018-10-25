@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 25, 2018 at 03:47 AM
+-- Generation Time: Oct 25, 2018 at 04:13 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -42,28 +42,31 @@ CREATE TABLE `announcement` (
 --
 
 CREATE TABLE `cadet` (
-  `name` varchar(255) COLLATE ascii_bin DEFAULT NULL,
+  `firstName` varchar(255) COLLATE ascii_bin DEFAULT NULL,
   `rank` varchar(10) COLLATE ascii_bin DEFAULT NULL,
   `rin` int(11) NOT NULL,
   `primaryEmail` varchar(100) COLLATE ascii_bin DEFAULT NULL,
   `secondaryEmail` varchar(255) COLLATE ascii_bin DEFAULT NULL,
-  `primaryPhone` int(15) NOT NULL,
-  `secondaryPhone` int(15) DEFAULT NULL,
-  `password` varchar(100) COLLATE ascii_bin DEFAULT NULL,
+  `primaryPhone` bigint(15) NOT NULL,
+  `secondaryPhone` bigint(15) DEFAULT NULL,
+  `password` varchar(255) COLLATE ascii_bin DEFAULT NULL,
   `bio` text COLLATE ascii_bin,
   `flight` varchar(20) COLLATE ascii_bin NOT NULL,
   `position` varchar(100) COLLATE ascii_bin DEFAULT NULL,
   `groupMe` varchar(50) COLLATE ascii_bin NOT NULL,
   `goals` text COLLATE ascii_bin,
-  `awards` text COLLATE ascii_bin
+  `awards` text COLLATE ascii_bin,
+  `middleName` varchar(255) COLLATE ascii_bin DEFAULT NULL,
+  `lastName` varchar(255) COLLATE ascii_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
 
 --
 -- Dumping data for table `cadet`
 --
 
-INSERT INTO `cadet` (`name`, `rank`, `rin`, `primaryEmail`, `secondaryEmail`, `primaryPhone`, `secondaryPhone`, `password`, `bio`, `flight`, `position`, `groupMe`, `goals`, `awards`) VALUES
-('testName', 'AS100', 123456789, 'newEmailUpdate', 'secondaryEmail@fake.edu', 2147483647, NULL, '123456', 'This is the new bio to be updated to.\r', '', NULL, '', NULL, NULL);
+INSERT INTO `cadet` (`firstName`, `rank`, `rin`, `primaryEmail`, `secondaryEmail`, `primaryPhone`, `secondaryPhone`, `password`, `bio`, `flight`, `position`, `groupMe`, `goals`, `awards`, `middleName`, `lastName`) VALUES
+('first', 'AS100', 123123123, 'fake@rpi.edu', NULL, 1231231234, NULL, '$2y$10$qUPFVe3qzomOrC7bMiHBBu2bkjb9KrVwoE14TA7zEAwdgt5Wqk6M6', NULL, '', NULL, '', NULL, NULL, NULL, 'last'),
+('testName', 'AS100', 123456789, 'newEmailUpdate', 'secondaryEmail@fake.edu', 5181231234, NULL, '123456', 'This is the new bio to be updated to.\r', '', NULL, '', NULL, NULL, '', '');
 
 -- --------------------------------------------------------
 
