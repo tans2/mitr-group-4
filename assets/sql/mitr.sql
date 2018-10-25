@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 23, 2018 at 10:37 PM
+-- Generation Time: Oct 25, 2018 at 03:47 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -47,8 +47,8 @@ CREATE TABLE `cadet` (
   `rin` int(11) NOT NULL,
   `primaryEmail` varchar(100) COLLATE ascii_bin DEFAULT NULL,
   `secondaryEmail` varchar(255) COLLATE ascii_bin DEFAULT NULL,
-  `primaryPhone` int(11) NOT NULL,
-  `secondaryPhone` int(11) DEFAULT NULL,
+  `primaryPhone` int(15) NOT NULL,
+  `secondaryPhone` int(15) DEFAULT NULL,
   `password` varchar(100) COLLATE ascii_bin DEFAULT NULL,
   `bio` text COLLATE ascii_bin,
   `flight` varchar(20) COLLATE ascii_bin NOT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE `cadet` (
 --
 
 INSERT INTO `cadet` (`name`, `rank`, `rin`, `primaryEmail`, `secondaryEmail`, `primaryPhone`, `secondaryPhone`, `password`, `bio`, `flight`, `position`, `groupMe`, `goals`, `awards`) VALUES
-('testName', 'AS100', 123456789, 'testemail@rpi.edu', NULL, 0, NULL, '123456', 'This is a demo bio for a fake cadet.', '', NULL, '', NULL, NULL);
+('testName', 'AS100', 123456789, 'newEmailUpdate', 'secondaryEmail@fake.edu', 2147483647, NULL, '123456', 'This is the new bio to be updated to.\r', '', NULL, '', NULL, NULL);
 
 -- --------------------------------------------------------
 
