@@ -1,4 +1,7 @@
 <?php
+
+require_once('cadet.php');
+
 $host = "192.168.64.2";
 $user = "username";
 $password = "password";
@@ -15,144 +18,28 @@ if ($mysqli->connect_error) {
 
 
 /*
- * Returns a cadet's bio based off of their RIN.
+ * This creates the bare minimum cadet profile with only necessary
+ * attributes filled out.
  *
- * @param $rin - cadet's rin whose bio your looking for
- * @param $mysqli - sql connection to query with
+ * @param rin - rensselaer id number to uniquely identify each cadet
+ * @param first - first name of cadet
+ * @param last - last name of cadet
+ * @param rank - rank of the cadet
+ * @param email - primary email of the cadet
+ * @prarm phone - primary phone number of the cadet
+ * @param pass - cadet profile's password
  */
-function getBio( $rin, $mysqli )
+function createCadet( $rin, $first, $last, $rank, $email, $phone, $pass, $mysqli )
 {
-    $sql = "SELECT bio FROM cadet WHERE rin = (?)";
-    $stmt = $mysqli->prepare($sql);
-    if(!($stmt->bind_param( "i", $rin )))
-    {
-        echo "Prepared statement bind failed!";
-    }
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-    echo $row['bio'];
-    $stmt->close();
-}
-
-/*
- * Changes a cadet's bio based off of their RIN.
- *
- * @param $rin - cadet's rin whose bio your looking for
- * @param $mysqli - sql connection to query with
- * @param $bioText - text to set as the new bio
- */
-function updateBio( $rin, $mysqli, $bioText )
-{
-    $sql = "UPDATE cadet SET bio = (?) WHERE rin = (?)";
-    $stmt = $mysqli->prepare($sql);
-    if(!($stmt->bind_param( 'si', $bioText, $rin )))
-    {
-        echo "Prepared statement bind failed!";
-    }
+    $stmt = $mysqli->prepare("INSERT INTO cadet (rin, firstName, lastName, rank, primaryEmail, primaryPhone, password) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $hash = password_hash($pass, PASSWORD_DEFAULT);
+    $stmt->bind_param( "issssis", $rin, $first, $last, $rank, $email, $phone, $hash );
     $stmt->execute();
     $stmt->close();
 }
 
-/*
- * Returns a cadet's primaryEmail based off of their RIN.
- *
- * @param $rin - cadet's rin whose email your looking for
- * @param $mysqli - sql connection to query with
- */
-function getPrimEmail( $rin, $mysqli )
-{
-    $sql = "SELECT primaryEmail FROM cadet WHERE rin = (?)";
-    $stmt = $mysqli->prepare($sql);
-    if(!($stmt->bind_param( "i", $rin )))
-    {
-        echo "Prepared statement bind failed!";
-    }
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-    echo $row['primaryEmail'];
-    $stmt->close();
-}
 
-/*
- * Changes a cadet's primary email based off of their RIN.
- *
- * @param $rin - cadet's rin whose email your looking for
- * @param $mysqli - sql connection to query with
- * @param $email - text to set as the new primaryEmail
- */
-function updatePrimEmail( $rin, $mysqli, $email )
-{
-    $sql = "UPDATE cadet SET primaryEmail = (?) WHERE rin = (?)";
-    $stmt = $mysqli->prepare($sql);
-    if(!($stmt->bind_param( 'si', $email, $rin )))
-    {
-        echo "Prepared statement bind failed!";
-    }
-    $stmt->execute();
-    $stmt->close();
-}
+$obj = new cadet( 123456789, $mysqli );
+echo $obj->getPrimEmail();
 
-/*
- * Returns a cadet's secondary email based off of their RIN.
- *
- * @param $rin - cadet's rin whose email your looking for
- * @param $mysqli - sql connection to query with
- */
-function getSecEmail( $rin, $mysqli )
-{
-    $sql = "SELECT secondaryEmail FROM cadet WHERE rin = (?)";
-    $stmt = $mysqli->prepare($sql);
-    if(!($stmt->bind_param( "i", $rin )))
-    {
-        echo "Prepared statement bind failed!";
-    }
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-    echo $row['secondaryEmail'];
-    $stmt->close();
-}
-
-/*
- * Changes a cadet's secondary email based off of their RIN.
- *
- * @param $rin - cadet's rin whose email your looking for
- * @param $mysqli - sql connection to query with
- * @param $email - text to set as the new secondary email
- */
-function updateSecEmail( $rin, $mysqli, $email )
-{
-    $sql = "UPDATE cadet SET secondaryEmail = (?) WHERE rin = (?)";
-    $stmt = $mysqli->prepare($sql);
-    if(!($stmt->bind_param( 'si', $email, $rin )))
-    {
-        echo "Prepared statement bind failed!";
-    }
-    $stmt->execute();
-    $stmt->close();
-}
-
-/*
- * Removes a cadet's secondary email based off of their RIN.
- *
- * @param $rin - cadet's rin whose email your looking for
- * @param $mysqli - sql connection to query with
- */
-function deleteSecEmail( $rin, $mysqli )
-{
-    $sql = "UPDATE cadet SET secondaryEmail = null WHERE rin = (?)";
-    $stmt = $mysqli->prepare($sql);
-    if(!($stmt->bind_param( 'i', $rin )))
-    {
-        echo "Prepared statement bind failed!";
-    }
-    $stmt->execute();
-    $stmt->close();
-}
-
-//updatePrimEmail( 123456789, $mysqli, "newEmailUpdate" );
-getBio( 123456789, $mysqli );
-//getSecEmail( 123456789, $mysqli );
 ?>
