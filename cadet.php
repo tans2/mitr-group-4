@@ -63,7 +63,6 @@ class cadet {
     function updateCadet()
     {
         $stmt = $mysqli->prepare("UPDATE cadet SET firstName = ?, lastName = ?, middleName = ?, rank = ?, primaryEmail = ?, secondaryEmail = ?, primaryPhone = ?, secondaryPhone = ?, password = ?, bio = ?, flight = ?, position = ?, groupMe = ?, goals = ?, awards = ? WHERE rin = ?");
-        $hash = password_hash($pass, PASSWORD_DEFAULT);
         $stmt->bind_param( "ssssssiisssssssi", $this->first, $this->last, $this->middle, $this->rank, $this->primEmail, $this->secEmail, $this->primPhone, $this->secPhone, $this->pass, $this->bio, $this->flight, $this->position, $this->groupMe, $this->goals, $this->awards, $this->rin );
         $stmt->execute();
         $stmt->close();
