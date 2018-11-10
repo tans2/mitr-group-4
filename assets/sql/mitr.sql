@@ -103,6 +103,17 @@ CREATE TABLE `groupMember` (
   `rin` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
 
+
+CREATE TABLE `attendance` (
+  `rin` int(10) UNSIGNED NOT NULL,
+  `eventid` int(11) UNSIGNED NOT NULL,
+  `attended` tinyint(1) NOT NULL,
+  `excused_absence` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (rin, eventid)
+) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
+
+
+
 --
 -- Indexes for dumped tables
 --
