@@ -1,3 +1,19 @@
+<?php
+$host = "192.168.64.2";
+$user = "username";
+$password = "password";
+$database = "mitr";
+
+// Create connection
+$mysqli = mysqli_connect($host, $user, $password, $database);
+
+// Check connection
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+// echo "Connected successfully";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,10 +36,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="home.html">Home
+            <a class="nav-link" href="home.php">Home
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="profile.html">Profile</a><span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="profile.php">Profile</a><span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
