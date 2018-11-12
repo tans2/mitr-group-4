@@ -1,5 +1,5 @@
 <?php
-require_once('../assets/cadet.php');
+require_once('./assets/cadet.php');
 session_start();
 
 // Temporory just for texting
@@ -20,7 +20,7 @@ if ($mysqli->connect_error) {
 // echo "Connected successfully";
 $cadet = new cadet( $_SESSION["rin"], $mysqli );
 
-include('../assets/inc/header.php');
+include('./assets/inc/header.php');
 ?>
 
     <form>
@@ -34,8 +34,6 @@ include('../assets/inc/header.php');
     <br><br>
     <button type="Reset">Reset</button>
     <button type="Submit">Save Changes</button>
-</body>
-</html>
 
 
 <?php
@@ -46,4 +44,6 @@ include('../assets/inc/header.php');
         $cadet->setGoals($goals);
         $cadet->updateCadet();
     }
+        
+    include('./assets/inc/footer.php');   
 ?>

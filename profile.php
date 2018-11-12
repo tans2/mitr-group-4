@@ -1,19 +1,19 @@
 <?php
-require_once('../assets/cadet.php');
+require_once('./assets/cadet.php');
 session_start();
 $_SESSION["rin"] = "123123123";
 
-include('../assets/inc/header.php');
+include('./assets/inc/header.php');
 
 $cadet = new cadet( $_SESSION["rin"], $mysqli );
 ?>
 
 
 <div class="jumbotron">
-    <img src="<?php foreach (new DirectoryIterator('../assets/images') as $fileInfo) {
+    <img src="<?php foreach (new DirectoryIterator('./assets/images') as $fileInfo) {
             if($fileInfo->getBasename(".jpg") === $_SESSION["rin"]) 
             {
-                echo "../assets/images/" . $fileInfo->getBasename();
+                echo "./assets/images/" . $fileInfo->getBasename();
                 break;
             }
         }?>" alt="Cadet Profile Picture" width="300" height="400"><br><br>    	<h1 class="display-4"><?php echo "Cadet " . $cadet->getLast() ?></h1>
@@ -33,4 +33,4 @@ $cadet = new cadet( $_SESSION["rin"], $mysqli );
  <a class="btn btn-primary btn-lg" role="button" href="editprofile.php">Edit Page</a>
 </div>
     
-<?php include('../assets/inc/footer.php') ?>
+<?php include('./assets/inc/footer.php') ?>

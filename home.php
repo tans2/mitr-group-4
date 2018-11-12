@@ -1,9 +1,9 @@
 <?php
-require_once('../assets/cadet.php');
+require_once('./assets/cadet.php');
 session_start();
 $_SESSION["rin"] = "123123123";
 
-include('../assets/inc/header.php');
+include('./assets/inc/header.php');
 
 $cadet = new cadet( $_SESSION["rin"], $mysqli );
 ?>
@@ -30,4 +30,4 @@ $cadet = new cadet( $_SESSION["rin"], $mysqli );
   		</div>
 	</div>
 
-<?php include('../assets/inc/footer.php') ?>
+<?php include('./assets/inc/footer.php') ?>
