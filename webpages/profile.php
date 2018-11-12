@@ -38,7 +38,7 @@ include('../assets/inc/header.php');
         <p><strong>Awards and Achievements: </strong><?php echo $cadet->getAwards() ?></p>
         <p><strong>Air Force Goals: </strong><?php echo $cadet->getGoals() ?></p>
         <p><strong>Personal Goals: </strong>Hike Mount Everest </p>
-   	 <a class="btn btn-primary btn-lg" role="button" href="editprofile.html">Edit Page</a>
+   	 <a class="btn btn-primary btn-lg" role="button" href="editprofile.php">Edit Page</a>
   	</div>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
