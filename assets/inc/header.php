@@ -1,16 +1,30 @@
+<?php
+$host = "192.168.64.2";
+$user = "username";
+$password = "password";
+$database = "mitr";
+
+// Create connection
+$mysqli = mysqli_connect($host, $user, $password, $database);
+
+// Check connection
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+// echo "Connected successfully";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Edit Cadet Bio</title>
-    <!-- <link type="text/css" rel="stylesheet" href="editBioStylesheet.css"> -->
-    <!-- <link type="text/css" rel="stylesheet" href="indexStylesheet.css"> --> 
+    <title>Profile</title>
+    <link type="text/css" rel="stylesheet" href="indexStylesheet.css">
     <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="home.html">
             <img src="airforcelogo.png" width="60" height="50" class="d-inline-block align-center" alt=""> Air Force
@@ -22,10 +36,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="home.html">Home
+            <a class="nav-link" href="home.php">Home
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="profile.html">Profile</a><span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="profile.php">Profile</a><span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,17 +58,3 @@
         </form>
       </div>
     </nav>
-
-    <form>
-        <p><strong>Profile Picture: </strong></p><input type="file" placeholder="Enter name here">
-        <p><strong>Bio: </strong></p><textarea rows="10" cols="100" placeholder="Cadet's bio will be auto populated here to be modified"></textarea><br>
-        <p><strong>Awards and Achievements: </strong></p><textarea rows="10" cols="100" placeholder="Cadet's bio will be auto populated here to be modified"></textarea><br>
-        <p><strong>Air Force Goals: </strong></p><textarea rows="10" cols="100" placeholder="Cadet's bio will be auto populated here to be modified"></textarea><br>
-        <p><strong>Personal Goals: </strong></p><textarea rows="10" cols="100" placeholder="Cadet's bio will be auto populated here to be modified"></textarea><br>
-
-    </form>
-    <br><br>
-    <button type="Reset">Reset</button>
-    <button type="Submit">Save Changes</button>
-</body>
-</html>
