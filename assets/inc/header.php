@@ -1,7 +1,7 @@
 <?php
-$host = "localhost";
-$user = "root";
-$password = "";
+$host = "192.168.64.2";
+$user = "username";
+$password = "password";
 $database = "mitr";
 
 // Create connection
@@ -26,7 +26,7 @@ if ($mysqli->connect_error) {
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="home.php">
+        <a class="navbar-brand" href="home.html">
             <img src="airforcelogo.png" width="60" height="50" class="d-inline-block align-center" alt=""> Air Force
         </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,9 +46,10 @@ if ($mysqli->connect_error) {
               More
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="attendance.php">Attendance</a>
-              <a class="dropdown-item" href="announcements.php">Announcements</a>
+              <a class="dropdown-item" href="attendance.html">Attendance</a>
+              <a class="dropdown-item" href="announcements.html">Announcements</a>
               <a class="dropdown-item" href="#">Media/Documents</a>
+              <a class="dropdown-item" href="logout.php">Logout</a>
             </div>
           </li>
         </ul>
