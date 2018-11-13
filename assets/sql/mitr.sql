@@ -28,6 +28,9 @@ SET time_zone = "+00:00";
 -- Table structure for table `announcement`
 --
 
+CREATE DATABASE mitr;
+
+
 CREATE TABLE `announcement` (
   `title` varchar(255) COLLATE ascii_bin NOT NULL,
   `subject` varchar(255) COLLATE ascii_bin NOT NULL,

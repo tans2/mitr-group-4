@@ -49,6 +49,7 @@ if ($mysqli->connect_error) {
               <a class="dropdown-item" href="attendance.html">Attendance</a>
               <a class="dropdown-item" href="announcements.html">Announcements</a>
               <a class="dropdown-item" href="#">Media/Documents</a>
+              <a class="dropdown-item" href="logout.php">Logout</a>
             </div>
           </li>
         </ul>
