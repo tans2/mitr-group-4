@@ -21,7 +21,7 @@ $stmt->bind_result($res);
 $stmt->fetch();
 
 // Verify that the correct password is given
-if($pass == $res)
+if(password_verify($pass, $res))
 {
     $_SESSION['login'] = true;
     $_SESSION['rin'] = $rin;

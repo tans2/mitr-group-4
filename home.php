@@ -1,11 +1,18 @@
 <?php
 require_once('./assets/cadet.php');
 session_start();
-$_SESSION["rin"] = "123123123";
 
 include('./assets/inc/header.php');
 
-$cadet = new cadet( $_SESSION["rin"], $mysqli );
+// Checks to see if user is already logged in
+if ( isset($_SESSION['login']) && $_SESSION['login'] )
+{
+    $cadet = new cadet( $_SESSION["rin"], $mysqli );
+}
+else
+{
+    header('Location: index.php');
+}
 ?>
 
 	<div class="card">
@@ -24,7 +31,8 @@ $cadet = new cadet( $_SESSION["rin"], $mysqli );
     		Status
   		</div>
   		<div class="card-body">
-    		<p class="card-text">Attendance: 100%</p>
+    		<h5 class="card-title">Morning PT</h5>
+    		<p class="card-text">Posted November 5, 2018, 18:00</p>
     		<a href="announcements.html" class="btn btn-primary">View</a>
   		</div>
 	</div>
