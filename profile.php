@@ -1,22 +1,18 @@
 <?php
 require_once('./assets/cadet.php');
 session_start();
-$_SESSION["rin"] = "123123123";
+//$_SESSION["rin"] = "123123123";
 
 include('./assets/inc/header.php');
 
 $cadet = new cadet( $_SESSION["rin"], $mysqli );
+echo $_SESSION["rin"];
+echo var_dump($cadet);
 ?>
 
 
 <div class="jumbotron">
-    <img src="<?php foreach (new DirectoryIterator('./assets/images') as $fileInfo) {
-            if($fileInfo->getBasename(".jpg") === $_SESSION["rin"]) 
-            {
-                echo "./assets/images/" . $fileInfo->getBasename();
-                break;
-            }
-        }?>" alt="Cadet Profile Picture" width="300" height="400"><br><br>    	<h1 class="display-4"><?php echo "Cadet " . $cadet->getLast() ?></h1>
+    <h1 class="display-4"><?php echo "Cadet " . $cadet->getLast() ?></h1>
     <p class="lead">
     <strong>Contact Information: </strong><br>
     <strong>Email: </strong> <?php echo $cadet->getPrimEmail() ?><br>
