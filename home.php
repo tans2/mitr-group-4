@@ -24,8 +24,7 @@ $cadet = new cadet( $_SESSION["rin"], $mysqli );
     		Status
   		</div>
   		<div class="card-body">
-    		<h5 class="card-title">Morning PT</h5>
-    		<p class="card-text">Posted November 5, 2018, 18:00</p>
+    		<p class="card-text">Attendance: 100%</p>
     		<a href="announcements.html" class="btn btn-primary">View</a>
   		</div>
 	</div>
