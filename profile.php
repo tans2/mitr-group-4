@@ -6,8 +6,6 @@ session_start();
 include('./assets/inc/header.php');
 
 $cadet = new cadet( $_SESSION["rin"], $mysqli );
-echo $_SESSION["rin"];
-echo var_dump($cadet);
 ?>
 
 
