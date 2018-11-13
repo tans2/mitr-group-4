@@ -1,11 +1,18 @@
 <?php
 require_once('./assets/cadet.php');
 session_start();
-$_SESSION["rin"] = "123123123";
 
 include('./assets/inc/header.php');
 
-$cadet = new cadet( $_SESSION["rin"], $mysqli );
+// Checks to see if user is already logged in
+if ( isset($_SESSION['login']) && $_SESSION['login'] )
+{
+    $cadet = new cadet( $_SESSION["rin"], $mysqli );
+}
+else
+{
+    header('Location: index.php');
+}
 ?>
 
 	<div class="card">
