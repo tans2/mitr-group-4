@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 25, 2018 at 04:13 AM
+-- Generation Time: Nov 14, 2018 at 07:40 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -28,15 +28,40 @@ SET time_zone = "+00:00";
 -- Table structure for table `announcement`
 --
 
-CREATE DATABASE mitr;
-
-
 CREATE TABLE `announcement` (
   `title` varchar(255) COLLATE ascii_bin NOT NULL,
   `subject` varchar(255) COLLATE ascii_bin NOT NULL,
   `body` mediumtext COLLATE ascii_bin NOT NULL,
-  `createdBy` int(10) NOT NULL
+  `createdBy` int(10) NOT NULL,
+  `uid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
+
+--
+-- Dumping data for table `announcement`
+--
+
+INSERT INTO `announcement` (`title`, `subject`, `body`, `createdBy`, `uid`) VALUES
+('Fake Announcement', 'This is a test.', 'This is a fake announcement with random text in it about nothing very important.', 123123123, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `attendance`
+--
+
+CREATE TABLE `attendance` (
+  `rin` int(10) UNSIGNED NOT NULL,
+  `eventid` int(11) UNSIGNED NOT NULL,
+  `attended` tinyint(1) NOT NULL,
+  `excused_absence` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
+
+--
+-- Dumping data for table `attendance`
+--
+
+INSERT INTO `attendance` (`rin`, `eventid`, `attended`, `excused_absence`) VALUES
+(123123123, 4294967295, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -57,19 +82,19 @@ CREATE TABLE `cadet` (
   `flight` varchar(20) COLLATE ascii_bin NOT NULL,
   `position` varchar(100) COLLATE ascii_bin DEFAULT NULL,
   `groupMe` varchar(50) COLLATE ascii_bin NOT NULL,
-  `goals` text COLLATE ascii_bin,
+  `AFGoals` text COLLATE ascii_bin,
   `awards` text COLLATE ascii_bin,
   `middleName` varchar(255) COLLATE ascii_bin DEFAULT NULL,
-  `lastName` varchar(255) COLLATE ascii_bin NOT NULL
+  `lastName` varchar(255) COLLATE ascii_bin NOT NULL,
+  `PGoals` text COLLATE ascii_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
 
 --
 -- Dumping data for table `cadet`
 --
 
-INSERT INTO `cadet` (`firstName`, `rank`, `rin`, `primaryEmail`, `secondaryEmail`, `primaryPhone`, `secondaryPhone`, `password`, `bio`, `flight`, `position`, `groupMe`, `goals`, `awards`, `middleName`, `lastName`) VALUES
-('first', 'AS100', 123123123, 'fake@rpi.edu', NULL, 1231231234, NULL, '$2y$10$qUPFVe3qzomOrC7bMiHBBu2bkjb9KrVwoE14TA7zEAwdgt5Wqk6M6', NULL, '', NULL, '', NULL, NULL, NULL, 'last'),
-('testName', 'AS100', 123456789, 'newEmailUpdate', 'secondaryEmail@fake.edu', 5181231234, NULL, '123456', 'This is the new bio to be updated to.\r', '', NULL, '', NULL, NULL, '', '');
+INSERT INTO `cadet` (`firstName`, `rank`, `rin`, `primaryEmail`, `secondaryEmail`, `primaryPhone`, `secondaryPhone`, `password`, `bio`, `flight`, `position`, `groupMe`, `AFGoals`, `awards`, `middleName`, `lastName`, `PGoals`) VALUES
+('John', 'AS100', 123123123, 'fake@rpi.edu', 'secondfake@google.com', 1234567891, 3333333333, '$2y$10$AV4V6x2BjZaHkxaZ2XmINujQkKdp2IUazneDca81QUM1eVReL136y', 'This is my fake bio.', 'Alpha', 'Flight Commander', 'test@groupme.com', 'I\'m going to do amazing in the Air Force', '- Best Cadet Ever', 'Smith', 'Doe', 'Lose a bunch of weight.');
 
 -- --------------------------------------------------------
 
@@ -84,6 +109,13 @@ CREATE TABLE `cadetEvent` (
   `eventID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
 
+--
+-- Dumping data for table `cadetEvent`
+--
+
+INSERT INTO `cadetEvent` (`name`, `mandatory`, `date`, `eventID`) VALUES
+('Test Event', 1, '2018-11-22 00:00:00', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -94,6 +126,13 @@ CREATE TABLE `cadetGroup` (
   `label` varchar(255) COLLATE ascii_bin NOT NULL,
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
+
+--
+-- Dumping data for table `cadetGroup`
+--
+
+INSERT INTO `cadetGroup` (`label`, `id`) VALUES
+('Operations Group', 1);
 
 -- --------------------------------------------------------
 
@@ -106,20 +145,28 @@ CREATE TABLE `groupMember` (
   `rin` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
 
+--
+-- Dumping data for table `groupMember`
+--
 
-CREATE TABLE `attendance` (
-  `rin` int(10) UNSIGNED NOT NULL,
-  `eventid` int(11) UNSIGNED NOT NULL,
-  `attended` tinyint(1) NOT NULL,
-  `excused_absence` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (rin, eventid)
-) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
-
-
+INSERT INTO `groupMember` (`groupID`, `rin`) VALUES
+(1, 123123123);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `announcement`
+--
+ALTER TABLE `announcement`
+  ADD PRIMARY KEY (`uid`);
+
+--
+-- Indexes for table `attendance`
+--
+ALTER TABLE `attendance`
+  ADD PRIMARY KEY (`rin`,`eventid`);
 
 --
 -- Indexes for table `cadet`
@@ -144,16 +191,22 @@ ALTER TABLE `cadetGroup`
 --
 
 --
+-- AUTO_INCREMENT for table `announcement`
+--
+ALTER TABLE `announcement`
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `cadetEvent`
 --
 ALTER TABLE `cadetEvent`
-  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cadetGroup`
 --
 ALTER TABLE `cadetGroup`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
