@@ -2,25 +2,17 @@
 require_once('./assets/cadet.php');
 session_start();
 
-// Temporory just for texting
-$_SESSION["rin"] = "123123123";
-
-$host = "192.168.64.2";
-$user = "username";
-$password = "password";
-$database = "mitr";
-
-// Create connection
-$mysqli = mysqli_connect($host, $user, $password, $database);
-
-// Check connection
-if ($mysqli->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-// echo "Connected successfully";
-$cadet = new cadet( $_SESSION["rin"], $mysqli );
-
 include('./assets/inc/header.php');
+
+// Checks to see if user is already logged in
+if ( isset($_SESSION['login']) && $_SESSION['login'] )
+{
+    $cadet = new cadet( $_SESSION["rin"], $mysqli );
+}
+else
+{
+    header('Location: index.php');
+}
 ?>
 
     <form>
