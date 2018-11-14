@@ -29,8 +29,8 @@ else
         <p><strong>Rank:</strong> <?php echo $cadet->getRank() ?></p>
     <p><strong>Bio: </strong><?php echo $cadet->getBio() ?></p>
     <p><strong>Awards and Achievements: </strong><?php echo $cadet->getAwards() ?></p>
-    <p><strong>Air Force Goals: </strong><?php echo $cadet->getGoals() ?></p>
-    <p><strong>Personal Goals: </strong>Hike Mount Everest </p>
+    <p><strong>Air Force Goals: </strong><?php echo $cadet->getAirForceGoals() ?></p>
+    <p><strong>Personal Goals: </strong><?php echo $cadet->getPersonalGoals() ?></p>
  <a class="btn btn-primary btn-lg" role="button" href="editprofile.php">Edit Page</a>
 </div>
     
