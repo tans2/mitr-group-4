@@ -1,3 +1,5 @@
+<p>Boo</p>
+
 <?php
 
 /*  
@@ -7,37 +9,33 @@
  *  @author Andrew Sihoo Son
  */
 
-$to = "somebody@example.com";
-$subject = "Test HTML email";
+// Pear Mail Library
+require_once "vendor/pear/mail/Mail.php";
 
-$message = "
-<html>
-<head>
-<title>HTML email</title>
-</head>
-<body>
-<p>This email contains HTML Tags!</p>
-<table>
-<tr>
-<th>Firstname</th>
-<th>Lastname</th>
-</tr>
-<tr>
-<td>John</td>
-<td>Doe</td>
-</tr>
-</table>
-</body>
-</html>
-";
+$from = '<sona.351n@gmail.com>';
+$to = '<sona.351n@gmail.com>';
+$subject = 'Hi!';
+$body = "Hi,\n\nHow are you?";
 
-// Always set content-type when sending HTML email
-$headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+$headers = array(
+    'From' => $from,
+    'To' => $to,
+    'Subject' => $subject
+);
 
-// More headers
-$headers .= 'From: <webmaster@example.com>' . "\r\n";
-//$headers .= 'Cc: myboss@example.com' . "\r\n";
+$smtp = Mail::factory('smtp', array(
+        'host' => 'ssl://smtp.gmail.com',
+        'port' => '465',
+        'auth' => true,
+        'username' => 'sona.351n@gmail.com',
+        'password' => 'Maple351*'
+    ));
 
-mail($to,$subject,$message,$headers);
+$mail = $smtp->send($to, $headers, $body);
+
+if (PEAR::isError($mail)) {
+    echo('<p>' . $mail->getMessage() . '</p>');
+} else {
+    echo('<p>Message successfully sent!</p>');
+}
 ?> 

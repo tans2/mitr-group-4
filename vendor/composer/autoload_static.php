@@ -20,11 +20,41 @@ class ComposerStaticInitb6622e2bcce6057095d8310bd7b9ad70
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'PEAR' => 
+            array (
+                0 => __DIR__ . '/..' . '/pear/pear_exception',
+            ),
+        ),
+        'M' => 
+        array (
+            'Mail' => 
+            array (
+                0 => __DIR__ . '/..' . '/pear/mail',
+            ),
+        ),
+        'C' => 
+        array (
+            'Console' => 
+            array (
+                0 => __DIR__ . '/..' . '/pear/console_getopt',
+            ),
+        ),
+    );
+
+    public static $fallbackDirsPsr0 = array (
+        0 => __DIR__ . '/..' . '/pear/pear-core-minimal/src',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitb6622e2bcce6057095d8310bd7b9ad70::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitb6622e2bcce6057095d8310bd7b9ad70::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitb6622e2bcce6057095d8310bd7b9ad70::$prefixesPsr0;
+            $loader->fallbackDirsPsr0 = ComposerStaticInitb6622e2bcce6057095d8310bd7b9ad70::$fallbackDirsPsr0;
 
         }, null, ClassLoader::class);
     }
