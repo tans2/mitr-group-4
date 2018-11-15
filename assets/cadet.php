@@ -15,7 +15,8 @@ class cadet {
     var $flight;
     var $position;
     var $groupMe;
-    var $goals;
+    var $PGoals;
+    var $AGoals;
     var $awards;
     
     
@@ -51,7 +52,8 @@ class cadet {
         $this->flight = $row['flight'];
         $this->position = $row['position'];
         $this->groupMe = $row['groupMe'];
-        $this->goals = $row['goals'];
+        $this->AGoals = $row['AFGoals'];
+        $this->PGoals = $row['PGoals'];
         $this->awards = $row['awards'];
         
         $stmt->close();
@@ -62,8 +64,8 @@ class cadet {
      */
     function updateCadet()
     {
-        $stmt = $mysqli->prepare("UPDATE cadet SET firstName = ?, lastName = ?, middleName = ?, rank = ?, primaryEmail = ?, secondaryEmail = ?, primaryPhone = ?, secondaryPhone = ?, password = ?, bio = ?, flight = ?, position = ?, groupMe = ?, goals = ?, awards = ? WHERE rin = ?");
-        $stmt->bind_param( "ssssssiisssssssi", $this->first, $this->last, $this->middle, $this->rank, $this->primEmail, $this->secEmail, $this->primPhone, $this->secPhone, $this->pass, $this->bio, $this->flight, $this->position, $this->groupMe, $this->goals, $this->awards, $this->rin );
+        $stmt = $mysqli->prepare("UPDATE cadet SET firstName = ?, lastName = ?, middleName = ?, rank = ?, primaryEmail = ?, secondaryEmail = ?, primaryPhone = ?, secondaryPhone = ?, password = ?, bio = ?, flight = ?, position = ?, groupMe = ?, PGoals = ?, AFGoals = ?, awards = ? WHERE rin = ?");
+        $stmt->bind_param( "ssssssiisssssssi", $this->first, $this->last, $this->middle, $this->rank, $this->primEmail, $this->secEmail, $this->primPhone, $this->secPhone, $this->pass, $this->bio, $this->flight, $this->position, $this->groupMe, $this->PGoals, $this->AFGoals, $this->awards, $this->rin );
         $stmt->execute();
         $stmt->close();
     }
@@ -172,12 +174,20 @@ class cadet {
         return $this->groupMe; 
     }
 
-    function setGoals($goals) { 
-        $this->goals = $goals; 
+    function setPersonalGoals($PGoals) { 
+        $this->PGoals = $PGoals; 
     }
 
-    function getGoals() { 
-        return $this->goals; 
+    function getPersonalGoals() { 
+        return $this->PGoals; 
+    }
+    
+        function setAirForceGoals($AGoals) { 
+        $this->AGoals = $AGoals; 
+    }
+
+    function getAirForceGoals() { 
+        return $this->AGoals; 
     }
 
     function setAwards($awards) { 

@@ -1,3 +1,19 @@
+<?php 
+session_start();
+include('./assets/cadet.php');
+include('./assets/inc/header.php');
+
+// Checks to see if user is already logged in
+if ( isset($_SESSION['login']) && $_SESSION['login'] )
+{
+    $cadet = new cadet( $_SESSION["rin"], $mysqli );
+}
+else
+{
+    header('Location: index.php');
+}
+?>
+
 <!DOCTYPE html>
 
 
@@ -25,3 +41,5 @@
 	</p>
 </body>
 </html>
+
+<?php include('./assets/inc/footer.php'); ?>
