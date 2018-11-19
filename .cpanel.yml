@@ -1,5 +1,11 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/user/public_html/
+    - export DEPLOYPATH=/home/afrotc/public_html/
     - /bin/cp index.php $DEPLOYPATH
+    - /bin/cp admin.php $DEPLOYPATH
+    - /bin/cp editprofile.php $DEPLOYPATH
+    - /bin/cp loginAuth.php $DEPLOYPATH
+    - /bin/cp indexStylesheet.css $DEPLOYPATH
+    
+  
