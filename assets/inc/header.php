@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $user = "root";
-$password = "password";
+$password = "";
 $database = "mitr";
 
 // Create connection
@@ -19,7 +19,7 @@ if ($mysqli->connect_error) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Profile</title>
+    <title>Home</title>
     <link type="text/css" rel="stylesheet" href="indexStylesheet.css">
     <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -42,14 +42,12 @@ if ($mysqli->connect_error) {
             <a class="nav-link" href="profile.php">Profile</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              More
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> More
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="attendance.php">Attendance</a>
               <a class="dropdown-item" href="announcements.php">Announcements</a>
-              <a class="dropdown-item" href="#">Media/Documents</a>
-              <a class="dropdown-item" href="logout.php">Logout</a>
+              <a class="dropdown-item" href="https://rpi.account.box.com/login">Media/Documents</a>
             </div>
           </li>
           <li class="nav-item">
