@@ -1,11 +1,28 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/afrotc/public_html/
+    - export DEPLOYPATH=/home/afrotc/public_html/dev/
+    - export INC=/home/afrotc/public_html/assets/inc/
+    - export SQL=/home/afrotc/public_html/assets/sql/
     - /bin/cp index.php $DEPLOYPATH
     - /bin/cp admin.php $DEPLOYPATH
+    - /bin/cp announcements.php $DEPLOYPATH
+    - /bin/cp attend.php $DEPLOYPATH
+    - /bin/cp attendance.php $DEPLOYPATH
+    - /bin/cp directory.php $DEPLOYPATH
+    - /bin/cp editBioStylesheet.css $DEPLOYPATH
     - /bin/cp editprofile.php $DEPLOYPATH
+    - /bin/cp editprofileStylesheet.css $DEPLOYPATH
+    - /bin/cp events.php $DEPLOYPATH
+    - /bin/cp home.php $DEPLOYPATH
+    - /bin/cp homeStylesheet.css $DEPLOYPATH
+    - /bin/cp logout.php $DEPLOYPATH
+    - /bin/cp profile.php $DEPLOYPATH
     - /bin/cp loginAuth.php $DEPLOYPATH
     - /bin/cp indexStylesheet.css $DEPLOYPATH
+    - /bin/cp cadet.php $DEPLOYPATH
+    - /bin/cp footer.php $INC
+    - /bin/cp header.php $INC
+    - /bin/cp mitr.sql $SQL
     
   
