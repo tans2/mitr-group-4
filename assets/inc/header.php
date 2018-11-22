@@ -47,6 +47,7 @@ if ($mysqli->connect_error) {
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="attendance.php">Attendance</a>
               <a class="dropdown-item" href="announcements.php">Announcements</a>
+                <a class="dropdown-item" href="directory.php">Cadet Directory</a>
               <a class="dropdown-item" href="https://rpi.account.box.com/login">Media/Documents</a>
             </div>
           </li>
