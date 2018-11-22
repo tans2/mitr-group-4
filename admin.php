@@ -1,9 +1,5 @@
 <?php
-
-session_start();
-$path = './';
-$page = 'Admin Page';
-include $path . 'assets/inc/header.php';
+include('./assets/inc/header.php');
 
 // Check if the passwords are the same if there is uname, pass, pass2 and both pass and pass2 match
 if( isset($_POST['rin']) && isset($_POST['pass']) && isset($_POST['pass2']) && passMatch())
