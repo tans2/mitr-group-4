@@ -21,8 +21,8 @@ deployment:
     - /bin/cp loginAuth.php $DEPLOYPATH
     - /bin/cp indexStylesheet.css $DEPLOYPATH
     - /bin/cp cadet.php $DEPLOYPATH
-    - /bin/cp assets/inc/footer.php $INC
-    - /bin/cp assets/inc/header.php $INC
-    - /bin/cp assets/sql/mitr.sql $SQL
+    - /bin/cp ./assets/inc/footer.php $INC
+    - /bin/cp ./assets/inc/header.php $INC
+    - /bin/cp ./assets/sql/mitr.sql $SQL
     
   
