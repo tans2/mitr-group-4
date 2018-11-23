@@ -9,6 +9,25 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 
 <div class="jumbotron">
     <h1 class="display-4"><?php echo "Cadet " . $cadet->getLast() ?></h1>
+    <div style="display:block; height: 300px">
+        <img class="picture" src=<?php
+                $files = glob("./assets/images/*.{jpg,png,jpeg}", GLOB_BRACE);
+                $found = false;
+                foreach($files as $file)
+                {
+                    $info = pathinfo($file);
+                    if($info['filename'] === $_SESSION['rin'])
+                    {
+                        echo $file; 
+                        $found = true;
+                    }
+                }
+                if(!$found)
+                {
+                    echo "assets/images/default.jpeg";
+                }
+             ?> height="300px" width="300px" alt="Profile picture"/>
+    </div><br>
     <p class="lead">
     <strong>Contact Information: </strong><br>
     <strong>Email: </strong> <?php echo $cadet->getPrimEmail() ?><br>
