@@ -21,10 +21,6 @@ if ( isset($_SESSION['login']) && $_SESSION['login'] )
 {
     $cadet = new cadet( $_SESSION["rin"], $mysqli );
 }
-else
-{
-    header('Location: index.php');
-}
 ?>
 
 <!DOCTYPE html>

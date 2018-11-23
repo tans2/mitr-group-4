@@ -1,4 +1,10 @@
-<?php include('./assets/inc/header.php'); ?>
+<?php 
+include('./assets/inc/header.php'); 
+if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
+{
+    header('Location: index.php');
+}
+?>
 
     <form>
         <p><strong>Profile Picture: </strong></p><input type="file" placeholder="Enter name here">

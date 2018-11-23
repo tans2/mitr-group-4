@@ -1,5 +1,9 @@
 <?php
 include('./assets/inc/header.php');
+if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
+{
+    header('Location: index.php');
+}
 ?>
 
 

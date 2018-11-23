@@ -1,6 +1,11 @@
 <?php
 include('./assets/inc/header.php');
 
+if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
+{
+    header('Location: index.php');
+}
+
 // Check if the passwords are the same if there is uname, pass, pass2 and both pass and pass2 match
 if( isset($_POST['rin']) && isset($_POST['pass']) && isset($_POST['pass2']) && passMatch())
 {

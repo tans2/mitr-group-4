@@ -1,6 +1,11 @@
 <?php 
 include('./assets/inc/header.php');
 
+if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
+{
+    header('Location: index.php');
+}
+
 $stmt = $mysqli->prepare("SELECT * FROM cadet");
 $stmt->execute();
 $result = $stmt->get_result();

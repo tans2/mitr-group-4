@@ -1,14 +1,7 @@
 <?php 
-session_start();
-include('./assets/cadet.php');
 include('./assets/inc/header.php');
 
-// Checks to see if user is already logged in
-if ( isset($_SESSION['login']) && $_SESSION['login'] )
-{
-    $cadet = new cadet( $_SESSION["rin"], $mysqli );
-}
-else
+if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 {
     header('Location: index.php');
 }
