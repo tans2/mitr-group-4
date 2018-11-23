@@ -12,9 +12,9 @@ $result = $stmt->get_result();
 
 while ($row = $result->fetch_assoc())
 {
-    if(file_exists("./assets/images/". $_SESSION['rin'] . ".jpg"))
+    if(file_exists("./assets/images/". $row['rin'] . ".jpg"))
     {
-        $file = "assets/images/". $_SESSION['rin'] . ".jpg";
+        $file = "assets/images/". $row['rin'] . ".jpg";
     }
     else
     {
@@ -26,7 +26,7 @@ while ($row = $result->fetch_assoc())
     echo "<div class=\"card-body\">";
     echo "<h5 class=\"card-title\">Cadet " . $row['lastName'] . "</h5>";
     echo "<p class=\"card-text\"><strong>Rank: </strong>" . $row['rank'] . "<br><strong>Flight: </strong>" . $row['flight'] . "<br><strong>Position: </strong>" . $row['position'] . "</p>";
-    echo "<a href='' class=\"btn btn-primary\">View Profile</a></div></div>";
+    echo "<a href='viewprofile.php?rin=" . $row['rin'] . "' class=\"btn btn-primary\">View Profile</a></div></div>";
 }
 ?>
 

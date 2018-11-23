@@ -11,6 +11,7 @@ if( isset($_POST['submit']) )
     
     if(isset($_FILES['file']))
     {
+        echo "file";
         $target_dir = "./assets/images/";        
         $ext = ".jpg";
         $target_file = $target_dir . $_SESSION['rin'] . $ext;
