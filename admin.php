@@ -40,9 +40,7 @@ if(isset($_POST['submit']))
     </style>
 </head>
 <body>
-<div id="makeuser">
-    <a id="logout" href="logout.php">Logout</a>
-    
+<div id="makeuser">    
     <div id="memWrapper" class="column">
         <h2 id="memHeader">Add user to website</h2>
         <a href="addcadet.php" style="float:left;">Create User</a><br>
