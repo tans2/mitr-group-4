@@ -17,10 +17,13 @@ deployment:
     - /bin/cp home.php $DEPLOYPATH
     - /bin/cp homeStylesheet.css $DEPLOYPATH
     - /bin/cp logout.php $DEPLOYPATH
-    - /bin/cp profile.php $DEPLOYPATH
+    - /bin/cp myprofile.php $DEPLOYPATH
     - /bin/cp loginAuth.php $DEPLOYPATH
     - /bin/cp indexStylesheet.css $DEPLOYPATH
     - /bin/cp cadet.php $DEPLOYPATH
+    - /bin/cp addcadet.php $DEPLOYPATH
+    - /bin/cp viewprofile.php $DEPLOYPATH
+    - /bin/cp directory.php $DEPLOYPATH
     - /bin/cp ./assets/inc/footer.php $INC
     - /bin/cp ./assets/inc/header.php $INC
     - /bin/cp ./assets/sql/mitr.sql $SQL
