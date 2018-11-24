@@ -6,29 +6,12 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     header('Location: index.php');
 }
 
-// Check if the passwords are the same if there is uname, pass, pass2 and both pass and pass2 match
-if( isset($_POST['rin']) && isset($_POST['pass']) && isset($_POST['pass2']) && passMatch())
+if(isset($_POST['submit']))
 {
-    $smt = $mysqli->prepare("INSERT INTO cadet (rin, password) VALUES (?, ?)");
-    $hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
-    $smt->bind_param( "ss", $_POST['rin'], $hash );
+    $smt = $mysqli->prepare("DELETE FROM cadet WHERE rin = ?");
+    $smt->bind_param( "i", $_SESSION['remove'] );
     $smt->execute();
     $smt->close();
-}
-
-// Checks to make sure the confirmation password and actual password match
-function passMatch()
-{
-    if(strcmp($_POST['pass'], $_POST['pass2']) == 0)
-    {
-        // Passwords matched
-        return true;
-    }
-    else
-    {
-        // Passwords didn't match
-        return false;
-    }
 }
 
 ?>
@@ -61,25 +44,28 @@ function passMatch()
     <a id="logout" href="logout.php">Logout</a>
     
     <div id="memWrapper" class="column">
-        <h1 id="memHeader">Add a Cadet</h1>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" onsubmit="return validateNewUser();">
-            <div>
-                RIN:<br>
-                <input type="text" name="rin" size="30"/>
-            </div>
-            <div>
-                Password:<br>
-                <input type="password" name="pass" size="30"/>
-            </div>
-            <div>
-                Confirm Password:<br>
-                <input type="password" name="pass2" size="30"/>
-            </div>
-            <div class="clearfix">
-                <input class="button" type="submit" value="Add Cadet" />
-                <input class="button" type="reset" value="Reset" />
-            </div>
-        </form><br>
+        <h2 id="memHeader">Add user to website</h2>
+        <a href="addcadet.php" style="float:left;">Create User</a><br>
+        <h2 id="memHeader">Remove user to website</h2>
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+            <select size="10" style="width:50%;">
+                <?php 
+                    $stmt = $mysqli->prepare("SELECT * FROM cadet");
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+
+                    while ($row = $result->fetch_assoc())
+                    {
+                        if(!empty($row['firstName']))
+                        {
+                            echo "<option value=\"" . $row['rin'] . "\">" . $row['firstName'] . " " . $row['lastName'] . "</option>";
+                            $_SESSION['remove'] = $row['rin'];
+                        }
+                    }
+                ?>
+            </select><br>
+            <button name="submit" type="submit">Remove</button>
+        </form>
     </div>
 </div>
 </body>
