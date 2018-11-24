@@ -1,16 +1,4 @@
-<?php
-require_once('./assets/cadet.php');
-session_start();
-$path = './';
-$page = 'Login Page';
-include $path . 'assets/inc/header.php';
-
-// Checks to see if user is already logged in
-if ( isset($_SESSION['login']) && $_SESSION['login'] )
-{
-    header('Location: home.php');
-}
-?>
+<?php include('./assets/inc/header.php'); ?>
 
 
 <form id="login" method="POST" action="loginAuth.php">

@@ -62,10 +62,10 @@ class cadet {
     /*
      * This updates the cadet in sql to the objects current values.
      */
-    function updateCadet()
+    function updateCadet( $mysqli )
     {
         $stmt = $mysqli->prepare("UPDATE cadet SET firstName = ?, lastName = ?, middleName = ?, rank = ?, primaryEmail = ?, secondaryEmail = ?, primaryPhone = ?, secondaryPhone = ?, password = ?, bio = ?, flight = ?, position = ?, groupMe = ?, PGoals = ?, AFGoals = ?, awards = ? WHERE rin = ?");
-        $stmt->bind_param( "ssssssiisssssssi", $this->first, $this->last, $this->middle, $this->rank, $this->primEmail, $this->secEmail, $this->primPhone, $this->secPhone, $this->pass, $this->bio, $this->flight, $this->position, $this->groupMe, $this->PGoals, $this->AFGoals, $this->awards, $this->rin );
+        $stmt->bind_param( "ssssssiissssssssi", $this->first, $this->last, $this->middle, $this->rank, $this->primEmail, $this->secEmail, $this->primPhone, $this->secPhone, $this->pass, $this->bio, $this->flight, $this->position, $this->groupMe, $this->PGoals, $this->AFGoals, $this->awards, $this->rin );
         $stmt->execute();
         $stmt->close();
     }

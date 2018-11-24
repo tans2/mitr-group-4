@@ -12,6 +12,15 @@ if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 // echo "Connected successfully";
+
+session_start();
+require_once('./assets/cadet.php');
+
+// Checks to see if user is already logged in
+if ( isset($_SESSION['login']) && $_SESSION['login'] )
+{
+    $cadet = new cadet( $_SESSION["rin"], $mysqli );
+}
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +48,7 @@ if ($mysqli->connect_error) {
             <a class="nav-link" href="home.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="profile.php">Profile</a>
+            <a class="nav-link" href="myprofile.php">Profile</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> More
@@ -47,11 +56,27 @@ if ($mysqli->connect_error) {
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="attendance.php">Attendance</a>
               <a class="dropdown-item" href="announcements.php">Announcements</a>
+                <a class="dropdown-item" href="directory.php">Cadet Directory</a>
               <a class="dropdown-item" href="https://rpi.account.box.com/login">Media/Documents</a>
+                <?php 
+                    $sql = "SELECT admin FROM cadet WHERE rin = (?)";
+                    $stmt = $mysqli->prepare($sql);
+                    if(!($stmt->bind_param( "i", $_SESSION["rin"] )))
+                    {
+                        echo "Prepared statement bind failed!";
+                    }
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    $row = $result->fetch_assoc();
+              
+              if($row['admin'] === 1) {
+                  echo "<a class=\"dropdown-item\" href=\"admin.php\">Admin Page</a>";
+              }
+                ?>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="home.php">Log Out</a>
+            <a class="nav-link" href="logout.php">Log Out</a>
           </li>
         </ul>
       </div>

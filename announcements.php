@@ -1,12 +1,4 @@
-<?php
-require_once('./assets/cadet.php');
-session_start();
-$_SESSION["rin"] = "123123123";
-
-include('./assets/inc/header.php');
-
-$cadet = new cadet( $_SESSION["rin"], $mysqli );
-?>
+<?php include('./assets/inc/header.php'); ?>
 
 <body>
 
@@ -19,3 +11,5 @@ $cadet = new cadet( $_SESSION["rin"], $mysqli );
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 </body>
+
+<?php include('./assets/inc/footer.php');

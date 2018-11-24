@@ -1,9 +1,10 @@
 <?php
-
-require_once('./assets/cadet.php');
-session_start();
-
 include('./assets/inc/header.php');
+
+if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
+{
+    header('Location: index.php');
+}
 
 // Records user name and password submissions
 $rin = $_POST['rin'];
