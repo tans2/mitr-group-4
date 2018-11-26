@@ -23,9 +23,13 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 		echo $row['title'];
 		echo $row['subject'];
 		echo $row['body'];
-		$poster = $mysqli->query('SELECT firstName, lastName FROM cadet WHERE rin="' $row['rin'] . '"');
+		$poster = $mysqli->query('SELECT firstName, lastName FROM cadet WHERE rin="' . $row['rin'] . '"');
 		$names = $poster->fetch_assoc();
 		echo $names['firstName'] . ' ' . $names['lastName'];
+		echo '<form class="acknowledge" action="announcements.php" method="post">';
+		echo '<button type="submit" name="' . $row['uid'] . '">Read and Understood</button>';
+
+
 	}
 	?>
 
