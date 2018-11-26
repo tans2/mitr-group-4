@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 26, 2018 at 05:52 PM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.11
+-- Host: 127.0.0.1
+-- Generation Time: Nov 26, 2018 at 07:57 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,17 @@ SET time_zone = "+00:00";
 --
 -- Database: `mitr`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `acknowledge_posts`
+--
+
+CREATE TABLE `acknowledge_posts` (
+  `rin` int(10) NOT NULL,
+  `announcement_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -102,10 +113,10 @@ INSERT INTO `cadet` (`firstName`, `rank`, `rin`, `primaryEmail`, `secondaryEmail
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cadetEvent`
+-- Table structure for table `cadetevent`
 --
 
-CREATE TABLE `cadetEvent` (
+CREATE TABLE `cadetevent` (
   `name` varchar(255) COLLATE ascii_bin DEFAULT NULL,
   `mandatory` tinyint(1) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
@@ -113,51 +124,57 @@ CREATE TABLE `cadetEvent` (
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
 
 --
--- Dumping data for table `cadetEvent`
+-- Dumping data for table `cadetevent`
 --
 
-INSERT INTO `cadetEvent` (`name`, `mandatory`, `date`, `eventID`) VALUES
+INSERT INTO `cadetevent` (`name`, `mandatory`, `date`, `eventID`) VALUES
 ('Test Event', 1, '2018-11-22 00:00:00', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cadetGroup`
+-- Table structure for table `cadetgroup`
 --
 
-CREATE TABLE `cadetGroup` (
+CREATE TABLE `cadetgroup` (
   `label` varchar(255) COLLATE ascii_bin NOT NULL,
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
 
 --
--- Dumping data for table `cadetGroup`
+-- Dumping data for table `cadetgroup`
 --
 
-INSERT INTO `cadetGroup` (`label`, `id`) VALUES
+INSERT INTO `cadetgroup` (`label`, `id`) VALUES
 ('Operations Group', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `groupMember`
+-- Table structure for table `groupmember`
 --
 
-CREATE TABLE `groupMember` (
+CREATE TABLE `groupmember` (
   `groupID` int(11) NOT NULL,
   `rin` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
 
 --
--- Dumping data for table `groupMember`
+-- Dumping data for table `groupmember`
 --
 
-INSERT INTO `groupMember` (`groupID`, `rin`) VALUES
+INSERT INTO `groupmember` (`groupID`, `rin`) VALUES
 (1, 123123123);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `acknowledge_posts`
+--
+ALTER TABLE `acknowledge_posts`
+  ADD PRIMARY KEY (`rin`,`announcement_id`);
 
 --
 -- Indexes for table `announcement`
@@ -178,15 +195,15 @@ ALTER TABLE `cadet`
   ADD PRIMARY KEY (`rin`);
 
 --
--- Indexes for table `cadetEvent`
+-- Indexes for table `cadetevent`
 --
-ALTER TABLE `cadetEvent`
+ALTER TABLE `cadetevent`
   ADD PRIMARY KEY (`eventID`);
 
 --
--- Indexes for table `cadetGroup`
+-- Indexes for table `cadetgroup`
 --
-ALTER TABLE `cadetGroup`
+ALTER TABLE `cadetgroup`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -200,15 +217,15 @@ ALTER TABLE `announcement`
   MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `cadetEvent`
+-- AUTO_INCREMENT for table `cadetevent`
 --
-ALTER TABLE `cadetEvent`
+ALTER TABLE `cadetevent`
   MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `cadetGroup`
+-- AUTO_INCREMENT for table `cadetgroup`
 --
-ALTER TABLE `cadetGroup`
+ALTER TABLE `cadetgroup`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
