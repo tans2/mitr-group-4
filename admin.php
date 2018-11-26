@@ -39,14 +39,16 @@ if(isset($_POST['submit']))
         }
     </style>
 </head>
+
+
 <body>
-<div id="makeuser">    
-    <div id="memWrapper" class="column">
-        <h2 id="memHeader">Add user to website</h2>
-        <a href="addcadet.php" style="float:left;">Create User</a><br>
-        <h2 id="memHeader">Remove user to website</h2>
+<div id="makeuser" class="card" style="width: 18rem;margin: auto;width: 30%;padding: 10px;">  
+  <div id="memWrapper" class="card-body">
+    <h5 id="memHeader" class="card-title">Add User</h5> 
+    <a href="addcadet.php" class="card-title" style="float:left;">Create User</a><br></br>
+    <h5 id="memHeader" class="card-title">Remove User</h5>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <select size="10" style="width:50%;">
+            <select size="10" style="width:80%;">
                 <?php 
                     $stmt = $mysqli->prepare("SELECT * FROM cadet");
                     $stmt->execute();
@@ -61,8 +63,8 @@ if(isset($_POST['submit']))
                         }
                     }
                 ?>
-            </select><br>
-            <button name="submit" type="submit">Remove</button>
+            </select><br></br>
+            <button class="btn btn-primary" name="submit" type="submit">Remove</button>
         </form>
     </div>
 </div>
