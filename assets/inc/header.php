@@ -3,19 +3,15 @@ $host = "localhost";
 $user = "root";
 $password = "";
 $database = "mitr";
-
 // Create connection
 $mysqli = mysqli_connect($host, $user, $password, $database);
-
 // Check connection
 if ($mysqli->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 //echo "Connected successfully";
-
 session_start();
 require_once('./assets/cadet.php');
-
 // Checks to see if user is already logged in
 if ( isset($_SESSION['login']) && $_SESSION['login'] )
 {
@@ -37,6 +33,9 @@ if ( isset($_SESSION['login']) && $_SESSION['login'] )
     <style>
     .nav {background-color: #CBD3D2;}
     </style>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -62,8 +61,8 @@ if ( isset($_SESSION['login']) && $_SESSION['login'] )
               <a class="dropdown-item" href="announcements.php">Announcements</a>
                 <a class="dropdown-item" href="directory.php">Cadet Directory</a>
               <a class="dropdown-item" href="https://rpi.account.box.com/login">Media/Documents</a>
-				<?php 
-					if(isset($_SESSION["rin"])){
+        <?php 
+          if(isset($_SESSION["rin"])){
                     $sql = "SELECT admin FROM cadet WHERE rin = (?)";
                     $stmt = $mysqli->prepare($sql);
                     if(!($stmt->bind_param( "i", $_SESSION["rin"] )))
@@ -77,7 +76,7 @@ if ( isset($_SESSION['login']) && $_SESSION['login'] )
               if($row['admin'] === 1) {
                   echo "<a class=\"dropdown-item\" href=\"admin.php\">Admin Page</a>";
               }
-			  }
+        }
                 ?>
             </div>
           </li>

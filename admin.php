@@ -140,6 +140,10 @@ function passMatch()
   <div id="memWrapper" class="card-body">
     <!-- <h5 id="memHeader" class="card-title">Add User</h5> 
     <a href="addcadet.php" class="card-title" style="float:left;">Create User</a><br></br> --> 
+<div id="makeuser" class="card" style="width: 18rem;margin: auto;width: 30%;padding: 10px;">  
+  <div id="memWrapper" class="card-body">
+    <h5 id="memHeader" class="card-title">Add User</h5> 
+    <a href="addcadet.php" class="card-title" style="float:left;">Create User</a><br></br>
     <h5 id="memHeader" class="card-title">Remove User</h5>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
             <select size="10" style="width:80%;">

@@ -24,6 +24,8 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 		echo $names['firstName'] . ' ' . $names['lastName'];
 		echo '<form class="acknowledge" action="announcements.php" method="post">';
 		echo '<button type="submit" name="' . $row['uid'] . '">Read and Understood</button>';
+		echo '</form>';
+		
 
 
 	}
