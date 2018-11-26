@@ -17,6 +17,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 </head>
 
 <body>
+	<div class="card" style="width: 18rem;margin: auto;width: 30%;padding: 10px;">
 	<p>
 		Select Event
 		<form action="attend.php" method="post">
@@ -32,6 +33,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 			<input type="submit" id="selectevent" value="Submit"/>
 		</form>
 	</p>
+	</div>
 </body>
 </html>
 

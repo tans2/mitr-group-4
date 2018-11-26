@@ -30,6 +30,7 @@ if( isset($_POST['submit']) )
 }
 ?>
 
+<div class="card" style="width: 18rem;margin: auto;width: 30%;padding: 10px;">
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
         <p><strong>Profile Picture: </strong></p><input type="file" placeholder="Enter name here" name="file"><br><br>
         <div>
@@ -56,15 +57,15 @@ if( isset($_POST['submit']) )
             <strong>Position:</strong><br>
             <input type="text" name="position" size="30" value="<?php echo $cadet->getPosition() ?>"/>
         </div><br>
-        <p><strong>Bio: </strong></p><textarea rows="10" cols="100" name="bio" textarea><?php echo $cadet->getBio() ?></textarea><br>
-        <p><strong>Awards and Achievements: </strong></p><textarea rows="10" cols="100" name="award"><?php echo $cadet->getAwards() ?></textarea><br>
-        <p><strong>Air Force Goals: </strong></p><textarea rows="10" cols="100" name="afgoal"><?php echo $cadet->getAirForceGoals() ?></textarea><br>
-        <p><strong>Personal Goals: </strong></p><textarea rows="10" cols="100" name="pgoal"><?php echo $cadet->getPersonalGoals() ?></textarea><br>
-        <button type="reset">Reset</button>
-        <button type="submit" name="submit">Save Changes</button>
+        <p><strong>Bio: </strong></p><textarea rows="10" cols="30" name="bio" textarea><?php echo $cadet->getBio() ?></textarea><br>
+        <p><strong>Awards and Achievements: </strong></p><textarea rows="10" cols="30" name="award"><?php echo $cadet->getAwards() ?></textarea><br>
+        <p><strong>Air Force Goals: </strong></p><textarea rows="10" cols="30" name="afgoal"><?php echo $cadet->getAirForceGoals() ?></textarea><br>
+        <p><strong>Personal Goals: </strong></p><textarea rows="10" cols="30" name="pgoal"><?php echo $cadet->getPersonalGoals() ?></textarea><br>
+        <button class="btn btn-primary" type="reset">Reset</button>
+        <button class="btn btn-primary" type="submit" name="submit">Save Changes</button>
     </form>
     <br><br>
-  
+</div>
 
 
 <?php

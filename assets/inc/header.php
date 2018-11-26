@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $user = "root";
-$password = "maple351";
+$password = "";
 $database = "mitr";
 
 // Create connection
