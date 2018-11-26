@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 14, 2018 at 07:40 PM
+-- Generation Time: Nov 26, 2018 at 05:52 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -86,15 +86,18 @@ CREATE TABLE `cadet` (
   `awards` text COLLATE ascii_bin,
   `middleName` varchar(255) COLLATE ascii_bin DEFAULT NULL,
   `lastName` varchar(255) COLLATE ascii_bin NOT NULL,
-  `PGoals` text COLLATE ascii_bin NOT NULL
+  `PGoals` text COLLATE ascii_bin NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
 
 --
 -- Dumping data for table `cadet`
 --
 
-INSERT INTO `cadet` (`firstName`, `rank`, `rin`, `primaryEmail`, `secondaryEmail`, `primaryPhone`, `secondaryPhone`, `password`, `bio`, `flight`, `position`, `groupMe`, `AFGoals`, `awards`, `middleName`, `lastName`, `PGoals`) VALUES
-('John', 'AS100', 123123123, 'fake@rpi.edu', 'secondfake@google.com', 1234567891, 3333333333, '$2y$10$AV4V6x2BjZaHkxaZ2XmINujQkKdp2IUazneDca81QUM1eVReL136y', 'This is my fake bio.', 'Alpha', 'Flight Commander', 'test@groupme.com', 'I\'m going to do amazing in the Air Force', '- Best Cadet Ever', 'Smith', 'Doe', 'Lose a bunch of weight.');
+INSERT INTO `cadet` (`firstName`, `rank`, `rin`, `primaryEmail`, `secondaryEmail`, `primaryPhone`, `secondaryPhone`, `password`, `bio`, `flight`, `position`, `groupMe`, `AFGoals`, `awards`, `middleName`, `lastName`, `PGoals`, `admin`) VALUES
+('John', 'AS400', 123123123, 'email@rpi.edu', 'fake@google.com', 1231231233, 2223442344, '$2y$10$TtR88cduzJpc1/7IcHWTsOVG4kM3lkJx1QdTdPtRKkOUJBmzPy6iO', 'This is my bio', 'Alpha', 'something important', 'mygroupme.com', 'I wanna do big things', 'i have a bunch of awards', 'Steve', 'Doe', 'be amazing', 1),
+('Temp', 'AS350', 222222222, NULL, NULL, 0, NULL, '$2y$10$hDEQkfNQFNYrFO7Isbf9se3ywaYrTvKYt.fzqWfC89I9pLL5BjFCi', NULL, 'Charlie', NULL, '', NULL, NULL, 'middle', 'User', '', 0),
+('Another ', 'AS350', 234234234, NULL, NULL, 0, NULL, '$2y$10$f/7T2wZHDl1kuAEyz9ahKesh/tv0CkfDLHqtSv.LtX8zn5H1vqX06', NULL, 'Bravo', NULL, '', NULL, NULL, 'Temp', 'User', '', 0);
 
 -- --------------------------------------------------------
 
