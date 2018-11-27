@@ -6,24 +6,28 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 }
 ?>
 
-	<div class="card">
+	<div class="card" style="position: absolute;left: 0px;width: 50%;">
   		<div class="card-header">
     		Activity
   		</div>
   		<div class="card-body">
     		<h5 class="card-title">Morning PT</h5>
     		<p class="card-text">Posted November 5, 2018, 18:00</p>
-    		<a href="announcements.html" class="btn btn-primary">View</a>
+    		<a href="announcements.php" class="btn btn-primary">View</a>
   		</div>
 	</div>
 
-	<div class="card">
+	<div class="card" style="position: absolute;right: 0px;width: 50%;">
   		<div class="card-header">
     		Status
   		</div>
   		<div class="card-body">
+        <h5 class="card-title">Morning PT</h5>
     		<p class="card-text">Attendance: 100%</p>
-    		<a href="announcements.html" class="btn btn-primary">View</a>
+        <h5 class="card-title">Leadership Labs</h5>
+        <p class="card-text">Attendance: 100%</p>
+    		<a href="attendance.php" class="btn btn-primary">View</a>
+    		<a href="announcements.php" class="btn btn-primary">View</a>
   		</div>
 	</div>
 
