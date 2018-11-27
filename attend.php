@@ -18,29 +18,28 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 
 <body>
 	<?php
-		@ $db =  new mysqli('localhost', 'root', 'password', 'mitr');
 		if (isset($_POST["eventSelect"])) {
 			$query = 'SELECT name FROM cadetevent WHERE eventID = "' . $_POST["eventSelect"] . '"';
-			$result = $db->query($query);
+			$result = $mysqli->query($query);
 			$row = $result->fetch_assoc();
 			echo "<h1> Event: " . $row["name"] . "</h1>";
 			$_SESSION["eventID"] = $_POST["eventSelect"];
 		} else {
 			$query = 'SELECT name FROM cadetevent WHERE eventID = "' . $_SESSION["eventID"] . '"';
-			$result = $db->query($query);
+			$result = $mysqli->query($query);
 			$row = $result->fetch_assoc();
 			echo "<h1> Event: " . $row["name"] . "</h1>";
 		}
 		if (isset($_POST["rin"])) {
 			$query = 'SELECT firstName FROM cadet WHERE rin="' . $_POST["rin"] . '"';
-			$result = $db->query($query);
+			$result = $mysqli->query($query);
 			$row = $result->fetch_assoc();
 			if (!$row) {
 				echo "<p> RIN does not match any cadet.</p>";
 			} else {
 				echo "<p> " . $row["firstName"] . " has attended </p>";
 				$insertquery = 'INSERT INTO attendance (`rin`, `eventid`, `attended`) VALUES (?,?,?)';
-				$statement = $db->prepare($insertquery);
+				$statement = $mysqli->prepare($insertquery);
 				$t = 1;
 				$statement->bind_param("iii",$_POST["rin"], $_SESSION["eventID"], $t);
 				$statement->execute();
@@ -60,10 +59,10 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 	<?php
 		if (isset($_POST["show_attendance"])) {
 			$query = 'SELECT rin FROM attendance WHERE eventid="' . $_SESSION["eventID"] .'"';
-			$result = $db->query($query);
+			$result = $mysqli->query($query);
 			while ($row = $result->fetch_assoc()) {
 				$namequery = 'SELECT firstName FROM cadet WHERE rin="'.$row["rin"] . '"';
-				$res2 = $db->query($namequery);
+				$res2 = $mysqli->query($namequery);
 				$row2 = $res2->fetch_assoc();
 				echo "<p>". $row2["firstName"] . "</p>";
 			}
