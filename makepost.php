@@ -4,6 +4,21 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 {
     header('Location: index.php');
 }
+
+if (isset($_POST['postMade'])) {
+	$title = $_POST['postTitle'];
+	$subject = $_POST['postSubject'];
+	$body = $_POST['postBody'];
+	$author = $_SESSION['rin'];
+
+	$insquery = 'INSERT INTO announcement (`title`, `subject`, `body`, `createdBy`) VALUES (?,?,?,?)';
+	$stmt = $mysqli->prepare($insquery);
+	$stmt->bind_param("sssi", $title, $subject, $body, $author);
+	$stmt->execute();
+	$stmt->close();
+
+	header('Location: announcements.php');
+}
 ?>
 
 <body>
@@ -17,6 +32,10 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 	<form class="makepost" action="makepost.php" method="post">
+		Title: <input type="text" name="postTitle"/>
+		Subject: <input type="text" name="postSubject"/>
+		Description: <textarea rows="10" cols="30" name="postBody"></textarea>
+		<input type="submit" name="postMade" value="Submit"/>
 	</form>
 
 </body>
