@@ -27,7 +27,6 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         <h5 class="card-title">Leadership Labs</h5>
         <p class="card-text">Attendance: 100%</p>
     		<a href="attendance.php" class="btn btn-primary">View</a>
-    		<a href="announcements.php" class="btn btn-primary">View</a>
   		</div>
 	</div>
 
