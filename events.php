@@ -23,8 +23,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 		<form action="attend.php" method="post">
 			<select name="eventSelect">
 				<?php
-				@ $db =  new mysqli('localhost', 'root', 'password', 'mitr');
-				$result = $db->query("SELECT name, eventID FROM cadetevent");
+				$result = $mysqli->query("SELECT name, eventID FROM cadetevent");
 				while($row = $result->fetch_assoc()) {
 					echo '<option value="' . $row['eventID'] . '">'.$row['name'] . '</option>';
 				}

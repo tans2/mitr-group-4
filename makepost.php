@@ -6,10 +6,10 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 }
 
 if (isset($_POST['postMade'])) {
-	$title = $_POST['postTitle'];
-	$subject = $_POST['postSubject'];
-	$body = $_POST['postBody'];
-	$author = $_SESSION['rin'];
+	$title = htmlspecialchars(trim($_POST['postTitle']));
+	$subject = htmlspecialchars(trim($_POST['postSubject']));
+	$body = htmlspecialchars(trim($_POST['postBody']));
+	$author = htmlspecialchars(trim($_SESSION['rin']));
 
 	$insquery = 'INSERT INTO announcement (`title`, `subject`, `body`, `createdBy`) VALUES (?,?,?,?)';
 	$stmt = $mysqli->prepare($insquery);
