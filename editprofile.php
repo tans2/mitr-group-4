@@ -46,7 +46,6 @@ var saveAA = function() {
     window.location.href= "updateProfile.php?aa=" + markup;
   $('.awards').summernote('destroy');
 };
-    
 
 </script>
 
@@ -81,22 +80,22 @@ var saveAA = function() {
 </form><br>
 
 <strong>Bio: </strong>
-<div class="cadetBio"></div>
+<div class="cadetBio"><?php echo $cadet->getBio() ?></div>
 <button id="edit" class="btn btn-primary" onclick="editBio()" type="button">Edit</button>
 <button id="save" class="btn btn-primary" onclick="saveBio()" type="button">Save</button><br>
 
 <strong>Air Force Goals: </strong>
-<div class="afGoals"></div>
+<div class="afGoals"><?php echo $cadet->getAirForceGoals() ?></div>
 <button id="edit" class="btn btn-primary" onclick="editAFG()" type="button">Edit</button>
 <button id="save" class="btn btn-primary" onclick="saveAFG()" type="button">Save</button><br>
 
 <strong>Personal Goals: </strong>
-<div class="pGoals"></div>
+<div class="pGoals"><?php echo $cadet->getPersonalGoals() ?></div>
 <button id="edit" class="btn btn-primary" onclick="editPG()" type="button">Edit</button>
 <button id="save" class="btn btn-primary" onclick="savePG()" type="button">Save</button><br>
 
 <strong>Awards and Achievements: </strong>
-<div class="awards"></div>
+<div class="awards"><?php echo $cadet->getAwards() ?></div>
 <button id="edit" class="btn btn-primary" onclick="editAA()" type="button">Edit</button>
 <button id="save" class="btn btn-primary" onclick="saveAA()" type="button">Save</button><br>
 
