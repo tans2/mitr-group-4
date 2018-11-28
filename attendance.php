@@ -13,26 +13,43 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 <body>
 
 	<div class="jumbotron">
-		<h1 class="display-4"> Attendance </h1>
+		<h1 class="display-4"> Events </h1>
 	</div>
+
+	<a href="createevent.php">Create an Event</a>
+
 	<div class="card" style="width: 18rem;margin: auto;width: 30%;padding: 10px;">
 	<p>
-		Select Event
-		<form action="attend.php" method="post">
+		Select Event to View Attendees
+		<form action="attendance.php" method="post">
 			<select name="eventSelect">
 				<?php
-				@ $db =  new mysqli('localhost', 'root', 'password', 'mitr');
-				$result = $db->query("SELECT name, eventID FROM cadetevent");
+				$result = $mysqli->query("SELECT name, eventID FROM cadetevent");
 				while($row = $result->fetch_assoc()) {
-					echo '<option value="' . $row['eventID'] . '">'.$row['name'] . '</option>';
+					if (isset($_POST['selectevent']) && $_POST['eventSelect'] == $row['eventID']) {
+						echo '<option value="' . $row['eventID'] . '" selected>'.$row['name'] . '</option>';
+					} else {
+						echo '<option value="' . $row['eventID'] . '">'.$row['name'] . '</option>';
+					}
 				}
 				?>
 			</select>
-			<input type="submit" id="selectevent" value="Submit"/>
+			<input type="submit" name="selectevent" value="Submit"/>
 		</form>
 	</p>
 	</div>
-
+	<?php
+	if (isset($_POST["selectevent"])) {
+		$query = 'SELECT rin FROM attendance WHERE eventid="' . $_POST["eventSelect"] .'"';
+		$result = $mysqli->query($query);
+		while ($row = $result->fetch_assoc()) {
+			$namequery = 'SELECT firstName, lastName FROM cadet WHERE rin="'.$row["rin"] . '"';
+			$res2 = $mysqli->query($namequery);
+			$row2 = $res2->fetch_assoc();
+			echo "<p>". $row2["firstName"] . ' ' . $row2['lastName'] . "</p>";
+		}
+	}
+	?>
 </body>
 
 <?php include('./assets/inc/footer.php'); ?>
