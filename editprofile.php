@@ -6,54 +6,13 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 }
 
 ?>
-<script>
-var editBio = function() {
-  $('.cadetBio').summernote({focus: true});
-};
+<script src="assets/js/editProfile.js"></script>
 
-var saveBio = function() {
-  var markup = $('.cadetBio').summernote('code');
-    window.location.href= "updateProfile.php?bio=" + markup;
-  $('.cadetBio').summernote('destroy');
-};
-    
-var editAFG = function() {
-  $('.afGoals').summernote({focus: true});
-};
-
-var saveAFG = function() {
-  var markup = $('.afGoals').summernote('code');
-    window.location.href= "updateProfile.php?afg=" + markup;
-  $('.afGoals').summernote('destroy');
-};
-    
-var editPG = function() {
-  $('.pGoals').summernote({focus: true});
-};
-
-var savePG = function() {
-  var markup = $('.pGoals').summernote('code');
-    window.location.href= "updateProfile.php?pg=" + markup;
-  $('.pGoals').summernote('destroy');
-};
-    
-var editAA = function() {
-  $('.awards').summernote({focus: true});
-};
-
-var saveAA = function() {
-  var markup = $('.awards').summernote('code');
-    window.location.href= "updateProfile.php?aa=" + markup;
-  $('.awards').summernote('destroy');
-};
-
-</script>
-
-<form action="updateProfile.php" method="post" enctype="multipart/form-data">
+<form action="updateProfile.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" name="genInfo">
     <p><strong>Profile Picture: </strong></p><input type="file" placeholder="Enter name here" name="file"><br><br>
     <div>
         <strong>Primary Email:</strong><br>
-        <input type="text" name="pemail" size="30" value="<?php echo $cadet->getPrimEmail() ?>"/>
+        <input id="pemail" type="text" name="pemail" size="30" value="<?php echo $cadet->getPrimEmail() ?>"/>
     </div><br>
     <div>
         <strong>Secondary Email:</strong><br>
@@ -61,7 +20,7 @@ var saveAA = function() {
     </div><br>
     <div>
         <strong>Primary Phone:</strong><br>
-        <input type="text" name="pphone" size="30" value="<?php echo $cadet->getPrimPhone() ?>"/>
+        <input id="pphone" type="text" name="pphone" size="30" value="<?php echo $cadet->getPrimPhone() ?>"/>
     </div><br>
     <div>
         <strong>Secondary Phone:</strong><br>
