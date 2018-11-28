@@ -1,4 +1,6 @@
 <?php
+require "vendor/phpmailer/phpmailer/src/PHPMailer.php";
+require "vendor/phpmailer/phpmailer/src/SMTP.php";
 use PHPMailer\PHPMailer\PHPmailer;
 require_once "vendor/autoload.php";
 
