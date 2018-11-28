@@ -7,43 +7,87 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 ?>
 
 
-<div class="jumbotron">
-    <h1 class="display-4" style="position:sticky"><?php echo "Cadet " . $cadet->getLast() ?></h1>
-    <div> <!-- style="display:block; height: 300px"> --> 
-      <img class="picture" style="display: block;position: relative;left: 0px;width: 25%;margin:auto" src=<?php
-        $files = glob("./assets/images/*.{jpg,png,jpeg}", GLOB_BRACE);
-        $found = false;
-        foreach($files as $file)
-          {
-            $info = pathinfo($file);
-            if($info['filename'] === $_SESSION['rin'])
-              {
-                echo $file; 
-                $found = true;
-              }
-          }
-            if(!$found)
-            {
-              echo "assets/images/default.jpeg";
-            }
-      ?> height="300px" width="300px" alt="Profile picture"/>
+<body>
+  <div class="jumbotron">
+      <h1 class="display-4"><?php echo "Cadet " . $cadet->getLast() ?></h1>
+        <div class="container">
+          <div class="row">
+          <div class="col-4">
+            <div class="card">
+            <img class="card-img-top" alt="Profile picture" src=
+            <?php
+              $files = glob("./assets/images/*.{jpg,png,jpeg}", GLOB_BRACE);
+              $found = false;
+              foreach($files as $file)
+                {
+                  $info = pathinfo($file);
+                  if($info['filename'] === $_SESSION['rin'])
+                    {
+                      echo $file; 
+                      $found = true;
+                    }
+                }
+                  if(!$found)
+                  {
+                    echo "assets/images/default.jpeg";
+                  }
+            ?> >
+
+        <div class="card-body">
+            <p class="card-text">
+            <strong>Contact Information: </strong><br>
+            <strong>Email: </strong> <?php echo $cadet->getPrimEmail() ?><br>
+            <strong>Phone Number: </strong> <?php echo $cadet->getPrimPhone() ?><br>
+            <strong>Flight: </strong> <?php echo $cadet->getFlight() ?><br>
+            <strong>Position: </strong> <?php echo $cadet->getPosition() ?><br>
+            </p>
+            <a class="btn btn-primary" role="button" href="editprofile.php">Edit Page</a>
+        </div>
+
+        </div>
+      </div>
+
+        <div class="col-8">
+
+          <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Rank:</h5>
+                <p class="card-text"><?php echo $cadet->getRank() ?></p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Bio:</h5>
+                <p class="card-text"><?php echo $cadet->getBio() ?></p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Awards and Achievements:</h5>
+                <p class="card-text"><?php echo $cadet->getAwards() ?></p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Air Force Goals:</h5>
+                <p class="card-text"><?php echo $cadet->getAirForceGoals() ?></p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Personal Goals:</h5>
+                <p class="card-text"><?php echo $cadet->getPersonalGoals() ?></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
-
-    <p class="lead" style="display: block;position: absolute;right: 50px;width: 50%;margin: auto;">
-      <strong>Contact Information: </strong><br>
-      <strong>Email: </strong> <?php echo $cadet->getPrimEmail() ?><br>
-      <strong>Phone Number: </strong> <?php echo $cadet->getPrimPhone() ?><br>
-      <strong>Flight: </strong> <?php echo $cadet->getFlight() ?><br>
-      <strong>Position: </strong> <?php echo $cadet->getPosition() ?><br>
-    </p>
-
-    <hr class="my-4" style="display: block;position: relative;margin: auto;">
-      <p><strong>Rank:</strong> <?php echo $cadet->getRank() ?></p>
-      <p><strong>Bio: </strong><?php echo $cadet->getBio() ?></p>
-      <p><strong>Awards and Achievements: </strong><?php echo $cadet->getAwards() ?></p>
-      <p><strong>Air Force Goals: </strong><?php echo $cadet->getAirForceGoals() ?></p>
-      <p><strong>Personal Goals: </strong><?php echo $cadet->getPersonalGoals() ?></p>
-      <a class="btn btn-primary btn-lg" role="button" href="editprofile.php">Edit Page</a>
-</div>
+  </div>
+</body>
     
 <?php include('./assets/inc/footer.php') ?>
