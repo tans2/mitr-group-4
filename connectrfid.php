@@ -5,7 +5,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 }
 
 if (isset($_POST['addcard'])) {
-	if (isset($_POST['newrin']) && isset($_POST['newrfid']})) {
+	if (isset($_POST['newrin']) && isset($_POST['newrfid'])) {
 		$cadetrin = trim($_POST['newrin']);
 		$cadetrfid = trim($_POST['newrfid']);
 

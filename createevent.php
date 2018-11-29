@@ -12,9 +12,8 @@ if (isset($_POST["eventMade"])) {
 	$title = htmlspecialchars(trim($_POST['eventTitle']));
 	$date = $_POST['eventDate'];
 
-	$insertquery = 'INSERT INTO cadetevent (`name`, `mandatory`, `date`) VALUES (?,?,?)';
+	$insertquery = 'INSERT INTO cadetEvent (`name`, `mandatory`, `date`) VALUES (?,?,?)';
 	$stmt = $mysqli->prepare($insertquery);
-	mysqli_report(MYSQLI_REPORT_ALL);
 	$stmt->bind_param("sis", $title, $mandatory, $date);
 	$stmt->execute();
 	$stmt->close();

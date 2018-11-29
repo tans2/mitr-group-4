@@ -162,6 +162,12 @@ function passMatch()
         </form>
     </div>
 </div>
+    
+<div id="makeuser" class="card" style="position: absolute;right: 0px;bottom: 0px;width: 50%;height: 50%;">  
+    <div id="memWrapper" class="card-body">
+        <a class="btn btn-primary" href="attend.php">Set Event Attendance</a>
+    </div>
+</div>
 </body>
 </html>
 

@@ -24,10 +24,10 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 		<form action="attendance.php" method="post">
 			<select name="eventSelect">
 				<?php
-				$result = $mysqli->query("SELECT name, eventID FROM cadetevent");
+				$result = $mysqli->query("SELECT name, eventID FROM cadetEvent");
 				while($row = $result->fetch_assoc()) {
 					if (isset($_POST['selectevent']) && $_POST['eventSelect'] == $row['eventID']) {
-						echo '<option value="' . $row['eventID'] . '" selected>'.$row['name'] . '</option>';
+						echo '<option value="' . $row['eventID'] . '"  selected>'.$row['name'] . '</option>';
 					} else {
 						echo '<option value="' . $row['eventID'] . '">'.$row['name'] . '</option>';
 					}
@@ -40,7 +40,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 	</div>
 	<?php
 	if (isset($_POST["selectevent"])) {
-		$eventquery = 'SELECT name, mandatory, date FROM cadetevent WHERE eventID = "' . $_POST["eventSelect"] . '"';
+		$eventquery = 'SELECT name, mandatory, date FROM cadetEvent WHERE eventID = "' . $_POST["eventSelect"] . '"';
 		$eventresult = $mysqli->query($eventquery);
 		$erow = $eventresult->fetch_assoc();
 		echo $erow['name'] . ' ' . $erow['date'];

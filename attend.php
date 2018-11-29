@@ -18,10 +18,15 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 		<form action="attend.php" method="post">
 			<select name="eventSelect">
 				<?php
-				$result = $mysqli->query("SELECT name, eventID FROM cadetevent");
+				$result = $mysqli->query("SELECT name, eventID FROM cadetEvent");
 				while($row = $result->fetch_assoc()) {
-					echo '<option value="' . $row['eventID'] . '">'.$row['name'] . '</option>';
+				    if (isset($_POST['eventSelect']) && $_POST['eventSelect'] == $row['eventID']) {
+						echo '<option value="' . $row['eventID'] . '"  selected>'.$row['name'] . '</option>';
+					} else {
+						echo '<option value="' . $row['eventID'] . '">'.$row['name'] . '</option>';
+					}
 				}
+                
 				?>
 			</select>
 			<input type="submit" id="selectevent" value="Submit"/>
@@ -31,13 +36,13 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 
 	<?php
 		if (isset($_POST["eventSelect"])) {
-			$query = 'SELECT name FROM cadetevent WHERE eventID = "' . $_POST["eventSelect"] . '"';
+			$query = 'SELECT name FROM cadetEvent WHERE eventID = "' . $_POST["eventSelect"] . '"';
 			$result = $mysqli->query($query);
 			$row = $result->fetch_assoc();
 			echo "<h1> Event: " . $row["name"] . "</h1>";
 			$_SESSION["eventID"] = $_POST["eventSelect"];
 		} else if (isset($_SESSION['eventID'])) {
-			$query = 'SELECT name FROM cadetevent WHERE eventID = "' . $_SESSION["eventID"] . '"';
+			$query = 'SELECT name FROM cadetEvent WHERE eventID = "' . $_SESSION["eventID"] . '"';
 			$result = $mysqli->query($query);
 			$row = $result->fetch_assoc();
 			echo "<h1> Event: " . $row["name"] . "</h1>";
