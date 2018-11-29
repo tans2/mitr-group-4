@@ -14,6 +14,7 @@ if (isset($_POST["eventMade"])) {
 
 	$insertquery = 'INSERT INTO cadetevent (`name`, `mandatory`, `date`) VALUES (?,?,?)';
 	$stmt = $mysqli->prepare($insertquery);
+	mysqli_report(MYSQLI_REPORT_ALL);
 	$stmt->bind_param("sis", $title, $mandatory, $date);
 	$stmt->execute();
 	$stmt->close();
