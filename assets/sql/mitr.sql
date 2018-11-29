@@ -1,11 +1,12 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 29, 2018 at 07:40 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+
+-- Host: localhost
+-- Generation Time: Nov 29, 2018 at 01:44 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,17 +22,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `mitr`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `acknowledge_posts`
---
-
-CREATE TABLE `acknowledge_posts` (
-  `rin` int(10) NOT NULL,
-  `announcement_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -52,7 +42,8 @@ CREATE TABLE `announcement` (
 --
 
 INSERT INTO `announcement` (`title`, `subject`, `body`, `createdBy`, `uid`) VALUES
-('Fake Announcement', 'This is a test.', 'This is a fake announcement with random text in it about nothing very important.', 123123123, 1);
+('Fake Announcement', 'This is a test.', 'This is a fake announcement with random text in it about nothing very important.', 123123123, 1),
+('Fake Announcement', 'Something', 'Something happened that\'s important', 123123123, 2);
 
 -- --------------------------------------------------------
 
@@ -105,18 +96,21 @@ CREATE TABLE `cadet` (
 -- Dumping data for table `cadet`
 --
 
+<<<<<<< HEAD
 INSERT INTO `cadet` (`firstName`, `rank`, `rin`, `primaryEmail`, `secondaryEmail`, `primaryPhone`, `secondaryPhone`, `password`, `bio`, `flight`, `position`, `groupMe`, `AFGoals`, `awards`, `middleName`, `lastName`, `PGoals`, `admin`, `rfid`) VALUES
 ('John', 'AS400', 123123123, 'email@rpi.edu', 'fake@google.com', 1231231233, 2223442344, '$2y$10$TtR88cduzJpc1/7IcHWTsOVG4kM3lkJx1QdTdPtRKkOUJBmzPy6iO', 'This is my bio', 'Alpha', 'something important', 'mygroupme.com', 'I wanna do big things', 'i have a bunch of awards', 'Steve', 'Doe', 'be amazing', 1, NULL),
 ('Temp', 'AS350', 222222222, NULL, NULL, 0, NULL, '$2y$10$hDEQkfNQFNYrFO7Isbf9se3ywaYrTvKYt.fzqWfC89I9pLL5BjFCi', NULL, 'Charlie', NULL, '', NULL, NULL, 'middle', 'User', '', 0, NULL),
 ('Another ', 'AS350', 234234234, NULL, NULL, 0, NULL, '$2y$10$f/7T2wZHDl1kuAEyz9ahKesh/tv0CkfDLHqtSv.LtX8zn5H1vqX06', NULL, 'Bravo', NULL, '', NULL, NULL, 'Temp', 'User', '', 0, NULL);
 
+
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cadetevent`
+-- Table structure for table `cadetEvent`
 --
 
-CREATE TABLE `cadetevent` (
+CREATE TABLE `cadetEvent` (
   `name` varchar(255) COLLATE ascii_bin DEFAULT NULL,
   `mandatory` tinyint(1) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
@@ -124,57 +118,79 @@ CREATE TABLE `cadetevent` (
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
 
 --
--- Dumping data for table `cadetevent`
+-- Dumping data for table `cadetEvent`
 --
 
-INSERT INTO `cadetevent` (`name`, `mandatory`, `date`, `eventID`) VALUES
+INSERT INTO `cadetEvent` (`name`, `mandatory`, `date`, `eventID`) VALUES
 ('Test Event', 1, '2018-11-22 00:00:00', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cadetgroup`
+-- Table structure for table `cadetGroup`
 --
 
-CREATE TABLE `cadetgroup` (
+CREATE TABLE `cadetGroup` (
   `label` varchar(255) COLLATE ascii_bin NOT NULL,
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
 
 --
--- Dumping data for table `cadetgroup`
+-- Dumping data for table `cadetGroup`
 --
 
-INSERT INTO `cadetgroup` (`label`, `id`) VALUES
+INSERT INTO `cadetGroup` (`label`, `id`) VALUES
 ('Operations Group', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `groupmember`
+-- Table structure for table `groupMember`
 --
 
-CREATE TABLE `groupmember` (
+CREATE TABLE `groupMember` (
   `groupID` int(11) NOT NULL,
   `rin` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
 
 --
--- Dumping data for table `groupmember`
+-- Dumping data for table `groupMember`
 --
 
-INSERT INTO `groupmember` (`groupID`, `rin`) VALUES
+INSERT INTO `groupMember` (`groupID`, `rin`) VALUES
 (1, 123123123);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wiki`
+--
+
+CREATE TABLE `wiki` (
+  `name` varchar(255) NOT NULL,
+  `body` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `wiki`
+--
+
+INSERT INTO `wiki` (`name`, `body`) VALUES
+('admin', ''),
+('announcements', '<p>Announcements Wiki Page</p>'),
+('attendance', ''),
+('directory', '<p>Directory Wiki Page</p>'),
+('editprofile', '<p>Edit Profile Wiki'),
+('email', '<p>Email Wiki Page</p>'),
+('events', '<p>Events Wiki Page</p>'),
+('faq', '<h1><b><u>FAQ</u></b></h1>'),
+('home', '<p><br></p><p><br></p><p>asdfasdf</p><p><br></p><p>asdfasdfasdf<p></p></p>'),
+('index', '<h3>This is a test</h3><p>Not sure</p><p>asdfas</p>'),
+('profile', '<h1><b><u>Profile Wiki Page</u></b></h1>');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `acknowledge_posts`
---
-ALTER TABLE `acknowledge_posts`
-  ADD PRIMARY KEY (`rin`,`announcement_id`);
 
 --
 -- Indexes for table `announcement`
@@ -195,16 +211,22 @@ ALTER TABLE `cadet`
   ADD PRIMARY KEY (`rin`);
 
 --
--- Indexes for table `cadetevent`
+-- Indexes for table `cadetEvent`
 --
-ALTER TABLE `cadetevent`
+ALTER TABLE `cadetEvent`
   ADD PRIMARY KEY (`eventID`);
 
 --
--- Indexes for table `cadetgroup`
+-- Indexes for table `cadetGroup`
 --
-ALTER TABLE `cadetgroup`
+ALTER TABLE `cadetGroup`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `wiki`
+--
+ALTER TABLE `wiki`
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -214,18 +236,18 @@ ALTER TABLE `cadetgroup`
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `cadetevent`
+-- AUTO_INCREMENT for table `cadetEvent`
 --
-ALTER TABLE `cadetevent`
+ALTER TABLE `cadetEvent`
   MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `cadetgroup`
+-- AUTO_INCREMENT for table `cadetGroup`
 --
-ALTER TABLE `cadetgroup`
+ALTER TABLE `cadetGroup`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
