@@ -47,7 +47,7 @@ $mail->Port = 587;
 $mail->From = "afrotcdet550@gmail.com";
 $mail->FromName = "Airforce ROTC Detatchment 550";
 
-$mail->addAddress("sona.351n@gmail.com", "Andrew Son");
+$mail->addAddress("jmessare46@gmail.com", "Joe Messare");
 
 $mail->isHTML(true);
 

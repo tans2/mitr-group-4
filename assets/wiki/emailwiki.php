@@ -1,13 +1,9 @@
 <?php
-require_once('./assets/inc/dbinfo.php');
-require_once('./assets/objects/cadet.php');
+require_once('../inc/dbinfo.php');
 session_start();
+require_once('../objects/wiki.php');
 
-// Checks to see if user is already logged in
-if ( isset($_SESSION['login']) && $_SESSION['login'] )
-{
-    $cadet = new cadet( $_SESSION["rin"], $mysqli );
-}
+$wiki = new wiki( "email", $mysqli );
 ?>
 
 <!DOCTYPE html>
@@ -35,20 +31,20 @@ if ( isset($_SESSION['login']) && $_SESSION['login'] )
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="home.php">Home</a>
+            <a class="nav-link" href="../../home.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="myprofile.php">Profile</a>
+            <a class="nav-link" href="../../myprofile.php">Profile</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> More
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="attendance.php">Attendance</a>
-              <a class="dropdown-item" href="announcements.php">Announcements</a>
-                <a class="dropdown-item" href="directory.php">Cadet Directory</a>
+              <a class="dropdown-item" href="../../attendance.php">Attendance</a>
+              <a class="dropdown-item" href="../../announcements.php">Announcements</a>
+                <a class="dropdown-item" href="../../directory.php">Cadet Directory</a>
               <a class="dropdown-item" href="https://rpi.account.box.com/login">Media/Documents</a>
-                <a class="dropdown-item" href="wikihome.php">Wiki</a>
+                <a class="dropdown-item" href="../../wikihome.php">Wiki</a>
         <?php 
           if(isset($_SESSION["rin"])){
                     $sql = "SELECT admin FROM cadet WHERE rin = (?)";
@@ -62,17 +58,23 @@ if ( isset($_SESSION['login']) && $_SESSION['login'] )
                     $row = $result->fetch_assoc();
               
               if($row['admin'] === 1) {
-                  echo "<a class=\"dropdown-item\" href=\"admin.php\">Admin Page</a>";
+                  echo "<a class=\"dropdown-item\" href=\"../../admin.php\">Admin Page</a>";
               }
         }
                 ?>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="logout.php">Log Out</a>
+            <a class="nav-link" href="../../logout.php">Log Out</a>
           </li>
         </ul>
       </div>
     </nav>
 </body>
 </html>
+
+<script src="../js/wiki.js"></script>
+
+<button id="edit" class="btn btn-primary" onclick="editEmail()" type="button">Edit</button>
+<button id="save" class="btn btn-primary" onclick="saveEmail()" type="button">Save</button><br>
+<div class="emailwiki"><?php echo $wiki->getBody() ?></div>
