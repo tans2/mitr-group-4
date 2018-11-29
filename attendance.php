@@ -40,6 +40,14 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 	</div>
 	<?php
 	if (isset($_POST["selectevent"])) {
+		$eventquery = 'SELECT name, mandatory, date FROM cadetevent WHERE eventID = "' . $_POST["eventSelect"] . '"';
+		$eventresult = $mysqli->query($eventquery);
+		$erow = $eventresult->fetch_assoc();
+		echo $erow['name'] . ' ' . $erow['date'];
+		if ($erow['mandatory']) {
+			echo ' - MANDATORY';
+		}
+		
 		$query = 'SELECT rin FROM attendance WHERE eventid="' . $_POST["eventSelect"] .'"';
 		$result = $mysqli->query($query);
 		while ($row = $result->fetch_assoc()) {
