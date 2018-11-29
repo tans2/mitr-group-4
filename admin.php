@@ -9,7 +9,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 if(isset($_POST['submit']))
 {
     $smt = $mysqli->prepare("DELETE FROM cadet WHERE rin = ?");
-    $smt->bind_param( "i", $_SESSION['remove'] );
+    $smt->bind_param( "i", $_POST['remove'] );
     $smt->execute();
     $smt->close();
 }
@@ -22,6 +22,19 @@ if( isset($_POST['rin']) && isset($_POST['pass']) && isset($_POST['pass2']) && p
     $smt->bind_param( "isssssis", $_POST['rin'], $hash, $_POST['rank'], $_POST['first'], $_POST['middle'], $_POST['last'], $_POST['admin'], $_POST['flight'] );
     $smt->execute();
     $smt->close();
+    
+    if (isset($_POST['rin']) && isset($_POST['newrfid'])) {
+		$cadetrin = trim($_POST['rin']);
+		$cadetrfid = trim($_POST['newrfid']);
+
+		$updatequery = 'UPDATE cadet SET rfid = ? WHERE rin = ?';
+		$stmt = $mysqli->prepare($updatequery);
+		$stmt->bind_param("ii", $cadetrfid, $cadetrin);
+		$stmt->execute();
+		$stmt->close();
+	} else {
+		echo '<script> alert(You must enter both a valid RIN and scan the ID card);</script>';
+	}
     
     header('Location: admin.php');
 }
@@ -43,8 +56,6 @@ function passMatch()
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="utf-8" />
     <title>Register</title>
@@ -65,6 +76,7 @@ function passMatch()
             clear: both;
         }
     </style>
+    <script src="assets/js/addCadet.js"></script>
 </head>
 
 
@@ -72,30 +84,30 @@ function passMatch()
 <div class="card" style="position: absolute;left: 0px;width: 50%">
   <div id="memWrapper" class="card-body">
     <h5 id="memHeader" class="card-title">Add User</h5> 
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" onsubmit="return validateNewUser();">
+  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" onsubmit="return validateNewUser();" name="createcadet">
     <div>
       First Name:<br>
-      <input type="text" name="first" size="30"/>
+      <input type="text" name="first" size="30" id="firstname"/>
     </div>
     <div>
       Middle Name:<br>
-      <input type="text" name="middle" size="30"/>
+      <input type="text" name="middle" size="30" id="middlename"/>
     </div>
     <div>
       Last Name:<br>
-      <input type="text" name="last" size="30"/>
+      <input type="text" name="last" size="30" id="lastname"/>
     </div>
     <div>
       RIN:<br>
-      <input type="text" name="rin" size="30"/>
+      <input type="text" name="rin" size="30" id="rin"/>
     </div>
     <div>
       Password:<br>
-      <input type="password" name="pass" size="30"/>
+      <input type="password" name="pass" size="30" id="password"/>
     </div>
     <div>
       Confirm Password:<br>
-      <input type="password" name="pass2" size="30"/>
+      <input type="password" name="pass2" size="30" id="confpassword"/>
     </div>
     <div>
       Administrative Privleges:<br>
@@ -127,6 +139,10 @@ function passMatch()
         <option value="Foxtrot">Foxtrot</option>
       </select>
     </div>
+    <div class="clearfix">
+        Card Input:<br>
+        <input type="text" name="newrfid"/><br>
+    </div>
     <br>
     <div class="clearfix">
       <input class="btn btn-primary" type="submit" value="Add Cadet" />
@@ -142,7 +158,7 @@ function passMatch()
     <a href="addcadet.php" class="card-title" style="float:left;">Create User</a><br></br> --> 
     <h5 id="memHeader" class="card-title">Remove User</h5>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <select size="10" style="width:80%;">
+            <select name="remove" size="10" style="width:80%;">
                 <?php 
                     $stmt = $mysqli->prepare("SELECT * FROM cadet");
                     $stmt->execute();
@@ -152,8 +168,7 @@ function passMatch()
                     {
                         if(!empty($row['firstName']))
                         {
-                            echo "<option value=\"" . $row['rin'] . "\">" . $row['firstName'] . " " . $row['lastName'] . "</option>";
-                            $_SESSION['remove'] = $row['rin'];
+                            echo "<option value='" . $row['rin'] . "'>" . $row['firstName'] . " " . $row['lastName'] . "</option>";
                         }
                     }
                 ?>
