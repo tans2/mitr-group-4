@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 30, 2018 at 04:54 AM
+-- Generation Time: Nov 30, 2018 at 05:51 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -87,7 +87,6 @@ CREATE TABLE `cadet` (
   `groupMe` varchar(50) COLLATE ascii_bin NOT NULL,
   `AFGoals` text COLLATE ascii_bin,
   `awards` text COLLATE ascii_bin,
-  `middleName` varchar(255) COLLATE ascii_bin DEFAULT NULL,
   `lastName` varchar(255) COLLATE ascii_bin NOT NULL,
   `PGoals` text COLLATE ascii_bin NOT NULL,
   `admin` tinyint(1) NOT NULL DEFAULT '0',
@@ -98,9 +97,10 @@ CREATE TABLE `cadet` (
 -- Dumping data for table `cadet`
 --
 
-INSERT INTO `cadet` (`firstName`, `rank`, `rin`, `primaryEmail`, `secondaryEmail`, `primaryPhone`, `secondaryPhone`, `password`, `bio`, `flight`, `position`, `groupMe`, `AFGoals`, `awards`, `middleName`, `lastName`, `PGoals`, `admin`, `rfid`) VALUES
-('', 'AS100', 0, NULL, NULL, 0, NULL, '$2y$10$ZD58kTG9d8A3XPwBqM2KKOKF6HtUsK9TTSvZscRh7p9L4ZcC4loAm', NULL, 'Alpha', NULL, '', NULL, NULL, '', '', '', 1, 0),
-('Joseph', 'AS300', 661550966, 'faek', '', 0, 0, '$2y$10$dDvXazh5p65sFCDC0vxRZuqdy9iXeQ1eux2dKrfDOrn7kP0K9taAW', NULL, 'Alpha', '', '', NULL, NULL, 'William', 'Messare', '', 1, 22983);
+INSERT INTO `cadet` (`firstName`, `rank`, `rin`, `primaryEmail`, `secondaryEmail`, `primaryPhone`, `secondaryPhone`, `password`, `bio`, `flight`, `position`, `groupMe`, `AFGoals`, `awards`, `lastName`, `PGoals`, `admin`, `rfid`) VALUES
+('', 'AS100', 0, NULL, NULL, 0, NULL, '$2y$10$ZD58kTG9d8A3XPwBqM2KKOKF6HtUsK9TTSvZscRh7p9L4ZcC4loAm', NULL, 'Alpha', NULL, '', NULL, NULL, '', '', 1, 0),
+('John', 'AS100', 123123123, NULL, NULL, 0, NULL, '$2y$10$67.c/sLiPKRPsJCebeCoM.pXokIK40WicOf4.YZh7BN9a1jS/gbvm', NULL, 'Alpha', NULL, '', NULL, NULL, 'Doe', '', 1, 0),
+('Joseph', 'AS300', 661550966, 'faek', '', 0, 0, '$2y$10$dDvXazh5p65sFCDC0vxRZuqdy9iXeQ1eux2dKrfDOrn7kP0K9taAW', NULL, 'Alpha', '', '', NULL, NULL, 'Messare', '', 1, 22983);
 
 -- --------------------------------------------------------
 
