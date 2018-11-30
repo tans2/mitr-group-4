@@ -60,7 +60,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
                         }
                         else
                         {
-                            $perc = 0;
+                            $perc = 100;
                         }
                         echo "<p class=\"card-text\">Attendance: " . $perc . "%</p>"
             
@@ -96,7 +96,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
                         }
                         else
                         {
-                            $perc = 0;
+                            $perc = 100;
                         }
                          ?>
         <p class="card-text">Attendance: <?php echo $perc; ?>%</p>
