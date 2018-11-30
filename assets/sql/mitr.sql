@@ -96,7 +96,6 @@ CREATE TABLE `cadet` (
 -- Dumping data for table `cadet`
 --
 
-<<<<<<< HEAD
 INSERT INTO `cadet` (`firstName`, `rank`, `rin`, `primaryEmail`, `secondaryEmail`, `primaryPhone`, `secondaryPhone`, `password`, `bio`, `flight`, `position`, `groupMe`, `AFGoals`, `awards`, `middleName`, `lastName`, `PGoals`, `admin`, `rfid`) VALUES
 ('John', 'AS400', 123123123, 'email@rpi.edu', 'fake@google.com', 1231231233, 2223442344, '$2y$10$TtR88cduzJpc1/7IcHWTsOVG4kM3lkJx1QdTdPtRKkOUJBmzPy6iO', 'This is my bio', 'Alpha', 'something important', 'mygroupme.com', 'I wanna do big things', 'i have a bunch of awards', 'Steve', 'Doe', 'be amazing', 1, NULL),
 ('Temp', 'AS350', 222222222, NULL, NULL, 0, NULL, '$2y$10$hDEQkfNQFNYrFO7Isbf9se3ywaYrTvKYt.fzqWfC89I9pLL5BjFCi', NULL, 'Charlie', NULL, '', NULL, NULL, 'middle', 'User', '', 0, NULL),
