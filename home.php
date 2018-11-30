@@ -61,11 +61,9 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
                         else
                         {
                             $perc = 100;
-                        }
-                        echo "<p class=\"card-text\">Attendance: " . $perc . "%</p>"
-            
+                        }            
             ?>
-    		
+    		<p class="card-text">Attendance: <?php echo $perc; ?>%</p>
         <h5 class="card-title">Leadership Labs</h5>
             <?php $sql = "SELECT * FROM `cadetEvent`";
                         $stmt = $mysqli->prepare($sql);

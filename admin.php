@@ -17,7 +17,7 @@ if(isset($_POST['submit']))
 // Check if the passwords are the same if there is uname, pass, pass2 and both pass and pass2 match
 if( isset($_POST['rin']) && isset($_POST['pass']) && isset($_POST['pass2']) && passMatch())
 {
-    $smt = $mysqli->prepare("INSERT INTO cadet (rin, password, rank, firstName, lastName, admin, flight) VALUES (?,?,?,?,?,?,?,?)");
+    $smt = $mysqli->prepare("INSERT INTO cadet (rin, password, rank, firstName, lastName, admin, flight) VALUES (?,?,?,?,?,?,?)");
     $hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
     $smt->bind_param( "isssssis", $_POST['rin'], $hash, $_POST['rank'], $_POST['first'], $_POST['last'], $_POST['admin'], $_POST['flight'] );
     $smt->execute();
