@@ -17,9 +17,9 @@ if(isset($_POST['submit']))
 // Check if the passwords are the same if there is uname, pass, pass2 and both pass and pass2 match
 if( isset($_POST['rin']) && isset($_POST['pass']) && isset($_POST['pass2']) && passMatch())
 {
-    $smt = $mysqli->prepare("INSERT INTO cadet (rin, password, rank, firstName, middleName, lastName, admin, flight) VALUES (?,?,?,?,?,?,?,?)");
+    $smt = $mysqli->prepare("INSERT INTO cadet (rin, password, rank, firstName, lastName, admin, flight) VALUES (?,?,?,?,?,?,?,?)");
     $hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
-    $smt->bind_param( "isssssis", $_POST['rin'], $hash, $_POST['rank'], $_POST['first'], $_POST['middle'], $_POST['last'], $_POST['admin'], $_POST['flight'] );
+    $smt->bind_param( "isssssis", $_POST['rin'], $hash, $_POST['rank'], $_POST['first'], $_POST['last'], $_POST['admin'], $_POST['flight'] );
     $smt->execute();
     $smt->close();
     
@@ -90,10 +90,6 @@ function passMatch()
       <input type="text" name="first" size="30" id="firstname"/>
     </div>
     <div>
-      Middle Name:<br>
-      <input type="text" name="middle" size="30" id="middlename"/>
-    </div>
-    <div>
       Last Name:<br>
       <input type="text" name="last" size="30" id="lastname"/>
     </div>
@@ -119,6 +115,7 @@ function passMatch()
     <div>
       Rank:<br>
       <select name="rank">
+        <option value="None">None</option>
         <option value="AS100">AS100</option>
         <option value="AS200">AS200</option>
         <option value="AS250">AS250</option>
@@ -131,6 +128,7 @@ function passMatch()
     <div>
       Flight:<br>
       <select name="flight">
+        <option value="None">None</option>
         <option value="Alpha">Alpha</option>
         <option value="Bravo">Bravo</option>
         <option value="Charlie">Charlie</option>
@@ -140,7 +138,7 @@ function passMatch()
       </select>
     </div>
     <div class="clearfix">
-        Card Input:<br>
+        RPI ID Card:<br>
         <input type="text" name="newrfid"/><br>
     </div>
     <br>

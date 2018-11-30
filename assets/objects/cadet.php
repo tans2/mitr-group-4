@@ -2,7 +2,6 @@
 class cadet {
     
     var $first;
-    var $middle;
     var $last;
     var $rank;
     var $rin;
@@ -40,7 +39,6 @@ class cadet {
         
         $this->rin = $rin;
         $this->first = $row['firstName'];
-        $this->middle = $row['middleName'];
         $this->last = $row['lastName'];
         $this->rank = $row['rank'];
         $this->primEmail = $row['primaryEmail'];
@@ -64,8 +62,8 @@ class cadet {
      */
     function updateCadet( $mysqli )
     {
-        $stmt = $mysqli->prepare("UPDATE cadet SET firstName = ?, lastName = ?, middleName = ?, rank = ?, primaryEmail = ?, secondaryEmail = ?, primaryPhone = ?, secondaryPhone = ?, password = ?, bio = ?, flight = ?, position = ?, groupMe = ?, PGoals = ?, AFGoals = ?, awards = ? WHERE rin = ?");
-        $stmt->bind_param( "ssssssiissssssssi", $this->first, $this->last, $this->middle, $this->rank, $this->primEmail, $this->secEmail, $this->primPhone, $this->secPhone, $this->pass, $this->bio, $this->flight, $this->position, $this->groupMe, $this->PGoals, $this->AGoals, $this->awards, $this->rin );
+        $stmt = $mysqli->prepare("UPDATE cadet SET firstName = ?, lastName = ?, rank = ?, primaryEmail = ?, secondaryEmail = ?, primaryPhone = ?, secondaryPhone = ?, password = ?, bio = ?, flight = ?, position = ?, groupMe = ?, PGoals = ?, AFGoals = ?, awards = ? WHERE rin = ?");
+        $stmt->bind_param( "sssssiissssssssi", $this->first, $this->last, $this->rank, $this->primEmail, $this->secEmail, $this->primPhone, $this->secPhone, $this->pass, $this->bio, $this->flight, $this->position, $this->groupMe, $this->PGoals, $this->AGoals, $this->awards, $this->rin );
         $stmt->execute();
         $stmt->close();
     }
@@ -76,14 +74,6 @@ class cadet {
 
     function getFirst() { 
         return $this->first; 
-    }
-
-    function setMiddle($middle) { 
-        $this->middle = $middle;
-    }
-
-    function getMiddle() { 
-        return $this->middle; 
     }
 
     function setLast($last) { 

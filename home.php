@@ -10,11 +10,19 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
   		<div class="card-header">
     		Activity
   		</div>
-  		<div class="card-body">
-    		<h5 class="card-title">Morning PT</h5>
-    		<p class="card-text">Posted November 5, 2018, 18:00</p>
-    		<a href="announcements.php" class="btn btn-primary">View</a>
-  		</div>
+  		<?php $sql = "SELECT * FROM `cadetEvent` ORDER BY date DESC LIMIT 4";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        while ($row = $result->fetch_assoc())
+        {
+            echo "<div class=\"card-body\">";
+    		echo "<h5 class=\"card-title\">" . $row['name'] . "</h5>";
+    		echo "<p class=\"card-text\">" . $row['date'] . "</p>";
+    		echo "<a href=\"announcements.php\" class=\"btn btn-primary\">View</a></div>";
+  		
+        } ?>
 	</div>
 
 	<div class="card" style="position: absolute;right: 0px;width: 50%;">
@@ -22,10 +30,76 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     		Status
   		</div>
   		<div class="card-body">
-        <h5 class="card-title">Morning PT</h5>
-    		<p class="card-text">Attendance: 100%</p>
+        <h5 class="card-title">PT</h5>
+            <?php $sql = "SELECT * FROM `cadetEvent`";
+                        $stmt = $mysqli->prepare($sql);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        $sum = 0;
+                        $attend = 0;
+                        while($row = $result->fetch_assoc()) 
+                        {
+                            if(strpos($row['name'], 'LLAB') !== false || strpos($row['name'], 'llab') !== false)
+                            {
+                                $sum = $sum + 1;
+                                $sql = "SELECT * FROM `attendance` WHERE eventid = ?";
+                                $stmt = $mysqli->prepare($sql);
+                                $stmt->bind_param("i", $row['eventID']);
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+                                $temp = $result->fetch_assoc();
+                                if($temp['rin'] == $_SESSION['rin'] && ( $temp['excused_absence'] == 1 || $temp['present'] == 1))
+                                {
+                                    $attend = $attend + 1;
+                                }
+                            }
+                        }
+                        if($sum != 0)
+                        {
+                           $perc = (($attend / $sum) * 100); 
+                        }
+                        else
+                        {
+                            $perc = 0;
+                        }
+                        echo "<p class=\"card-text\">Attendance: " . $perc . "%</p>"
+            
+            ?>
+    		
         <h5 class="card-title">Leadership Labs</h5>
-        <p class="card-text">Attendance: 100%</p>
+            <?php $sql = "SELECT * FROM `cadetEvent`";
+                        $stmt = $mysqli->prepare($sql);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        $sum = 0;
+                        $attend = 0;
+                        while($row = $result->fetch_assoc()) 
+                        {
+                            if(strpos($row['name'], 'PT') !== false || strpos($row['name'], 'pt') !== false)
+                            {
+                                $sum = $sum + 1;
+                                $sql = "SELECT * FROM `attendance` WHERE eventid = ?";
+                                $stmt = $mysqli->prepare($sql);
+                                $stmt->bind_param("i", $row['eventID']);
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+                                $temp = $result->fetch_assoc();
+                                if($temp['rin'] == $_SESSION['rin'] && ( $temp['excused_absence'] == 1 || $temp['present'] == 1))
+                                {
+                                    $attend = $attend + 1;
+                                }
+                            }
+                        }
+                        if($sum != 0)
+                        {
+                           $perc = (($attend / $sum) * 100); 
+                        }
+                        else
+                        {
+                            $perc = 0;
+                        }
+                         ?>
+        <p class="card-text">Attendance: <?php echo $perc; ?>%</p>
     		<a href="attendance.php" class="btn btn-primary">View</a>
   		</div>
 	</div>
