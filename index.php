@@ -15,14 +15,13 @@ if ( isset($_SESSION['login']) && $_SESSION['login'] )
 {
     header('Location: home.php');
 }
-    echo "hello";
 ?>
 
 <body class="text-center"> 
 <div class="card" style="width: 18rem;margin: auto;width: 30%;padding: 10px;">
   <div class="card-body">
   	<form id="login" method="POST" action="loginAuth.php">
-      <img class="mb-4" src="airforcelogo.png" alt width="95" height="80">
+      <img class="mb-4" src="assets/images/airforcelogo.png" alt width="95" height="80">
       <h5 class="card-title">Please Sign In</h5>
       <label for="uname"><b>Username</b></label><br>
       <input type="text" placeholder="Enter RIN" name="rin" required><br>
