@@ -67,17 +67,17 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 			}
 		}
 		else if (isset($_POST["rin"])) {
-			$query = 'SELECT firstName FROM cadet WHERE rin=?';
+			$query = 'SELECT lastName FROM cadet WHERE rin=?';
 			$result = $mysqli->prepare($query);
 			$result->bind_param("i", $_POST['rin']);
 			$result->execute();
-			$result->bind_result($fname);
+			$result->bind_result($lname);
 			if (!$result->fetch()) {
 				echo "<p> RIN does not match any cadet.</p>";
 				$result->close();
 			} else {
 				$result->close();
-				echo "<p> " . $fname . " has attended </p>";
+				echo "<p>Cadet " . $lname . " has attended </p>";
 				$insertquery = 'INSERT INTO attendance (`rin`, `eventid`) VALUES (?,?)';
 				$statement = $mysqli->prepare($insertquery);
 				$statement->bind_param("ii",$_POST["rin"], $_SESSION["eventID"]);
@@ -85,7 +85,6 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 				$statement->close();
 			}
 		}
-
 
 		if (isset($_SESSION['eventID'])) {
 			echo '<form class="attend" action="attend.php" method="post">';
@@ -106,12 +105,19 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 		if (isset($_POST["show_attendance"])) {
 			$query = 'SELECT rin FROM attendance WHERE eventid="' . $_SESSION["eventID"] .'"';
 			$result = $mysqli->query($query);
+            echo "<table style='width:100%'><tr><th>Name</th><th>Flight</th><th>Event</th><th>Date</th></tr>";
 			while ($row = $result->fetch_assoc()) {
-				$namequery = 'SELECT firstName FROM cadet WHERE rin="'.$row["rin"] . '"';
+				$namequery = "SELECT lastName, flight, name, date FROM cadet, cadetEvent WHERE rin=" . $row['rin'] . " AND cadetEvent.eventID = " . $_SESSION['eventID'];
 				$res2 = $mysqli->query($namequery);
 				$row2 = $res2->fetch_assoc();
-				echo "<p>". $row2["firstName"] . "</p>";
+                echo "<tr>";
+				echo "<td>Cadet ". $row2["lastName"] . "</td>";
+                echo "<td>". $row2["flight"] . "</td>";
+                echo "<td>". $row2["name"] . "</td>";
+                echo "<td>". $row2["date"] . "</td>";
+                echo "</tr>";
 			}
+            echo "</table>"; 
 		}
 	?>
 
