@@ -47,7 +47,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 		
 		<div class="col-6">
 	      <div class="card" style="margin: auto;width: 50%;padding: 10px;">
-			<h5 class="card-title"> Select Event to View Attendees</h5>
+			<h5 class="card-title"> Select Event</h5>
 			<form action="attendance.php" method="post">
 			<select name="eventSelect">
 				<?php
@@ -61,28 +61,22 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 				}
 				?>
 			</select>
-			<button class="btn btn-sm btn-primary" type="submit" value="Submit" name="selectevent">Submit</button>
+			<button class="btn btn-sm btn-primary" type="submit" value="Submit" name="selectevent">View Attendees</button>
+                                            <div class="col-md-4 col-md-offset-4">
+                                <input type="submit" name="Export" class="btn btn-success" value="export to excel"/>
+                            </div>
 			</form>
 		  </div>
   		</div>
+
+
+
+    		
   	  </div>
     </div>
   </div>
-	<?php
-			<input type="submit" name="selectevent" value="Submit"/>
- <div>
-            <form class="form-horizontal" action="attendance.php" method="post" name="upload_excel"   
-                      enctype="multipart/form-data">
-                  <div class="form-group">
-                            <div class="col-md-4 col-md-offset-4">
-                                <input type="submit" name="Export" class="btn btn-success" value="export to excel"/>
-                            </div>
-                   </div>                    
-            </form>           
- </div>
-		</form>
-	</p>
-	</div>
+ 
+    
 <?php
 	if (isset($_POST["selectevent"])) {
 		$eventquery = 'SELECT name, mandatory, date FROM cadetEvent WHERE eventID = "' . $_POST["eventSelect"] . '"';
