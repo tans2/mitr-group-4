@@ -126,7 +126,7 @@ class cadet {
 
     function setPass($pass) {
         $hash = password_hash($pass, PASSWORD_DEFAULT);
-        $this->pass = $pass; 
+        $this->pass = $hash; 
     }
 
     function getPass() { 
