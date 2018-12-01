@@ -102,6 +102,31 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         }
         echo "</table>"; 
     }
+    else if(isset($_GET["eventid"]))
+    {
+        $eventquery = 'SELECT name, mandatory, date FROM cadetEvent WHERE eventID = "' . $_GET["eventid"] . '"';
+		$eventresult = $mysqli->query($eventquery);
+		$erow = $eventresult->fetch_assoc();
+		echo $erow['name'] . ' ' . $erow['date'];
+		if ($erow['mandatory']) {
+			echo ' - MANDATORY';
+		}
+        $query = 'SELECT rin FROM attendance WHERE eventid="' . $_GET["eventid"] .'"';
+        $result = $mysqli->query($query);
+        echo "<table style='width:100%'><tr><th>Name</th><th>Flight</th><th>Event</th><th>Date</th></tr>";
+        while ($row = $result->fetch_assoc()) {
+            $namequery = "SELECT lastName, flight, name, date FROM cadet, cadetEvent WHERE rin=" . $row['rin'] . " AND cadetEvent.eventID = " . $_GET["eventid"];
+            $res2 = $mysqli->query($namequery);
+            $row2 = $res2->fetch_assoc();
+            echo "<tr>";
+            echo "<td>Cadet ". $row2["lastName"] . "</td>";
+            echo "<td>". $row2["flight"] . "</td>";
+            echo "<td>". $row2["name"] . "</td>";
+            echo "<td>". $row2["date"] . "</td>";
+            echo "</tr>";
+        }
+        echo "</table>"; 
+    }
     else
     {
          if(isset($_POST["Export"])){  

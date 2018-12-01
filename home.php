@@ -10,7 +10,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
   		<div class="card-header">
     		Activity
   		</div>
-  		<?php $sql = "SELECT * FROM `cadetEvent` ORDER BY date DESC LIMIT 4";
+  		<?php $sql = "SELECT * FROM `cadetEvent` ORDER BY date DESC LIMIT 5";
         $stmt = $mysqli->prepare($sql);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -20,7 +20,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
             echo "<div class=\"card-body\">";
     		echo "<h5 class=\"card-title\">" . $row['name'] . "</h5>";
     		echo "<p class=\"card-text\">" . $row['date'] . "</p>";
-    		echo "<a href=\"announcements.php\" class=\"btn btn-primary\">View</a></div>";
+    		echo "<a href='attendance.php?eventid=" . $row['eventID'] . "' class=\"btn btn-primary\">View</a></div>";
   		
         } ?>
 	</div>
