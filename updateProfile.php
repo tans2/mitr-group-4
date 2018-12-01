@@ -1,6 +1,7 @@
 <?php
     include('./assets/inc/header.php'); 
-    if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
+
+if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     {
         header('Location: index.php');
     }
@@ -55,6 +56,11 @@
         $cadet->setPersonalGoals($_GET['pg']);
     }
     
+    if(isset($_POST['updatepass']))
+    {
+        $cadet->setPass($_POST['newPass']);
+    }
+
     $cadet->updateCadet( $mysqli );
     header('Location: myprofile.php');
 ?>
