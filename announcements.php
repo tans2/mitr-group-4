@@ -9,15 +9,22 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 <body>
   <div class="jumbotron">
 	<h1 class="display-4"> Announcements </h1>
-	<button class="btn btn-primary" role="button" href="makepost.php">Make an Announcement</button>
+	<a class="btn btn-primary" role="button" href="makepost.php">Make an Announcement</a>
 	<?php
 	$query = 'SELECT * FROM announcement';
 	$result = $mysqli->query($query);
+      echo "<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style>";
+      echo "<table style='width:100%;'><tr><th>Title</th><th>Subject</th> <th>Announcement</th><th>Created By</th><th>Acknowledge</th></tr>";
 	while ($row = $result->fetch_assoc()) {
 		//print out the information for the post
-		echo $row['title'];
-		echo $row['subject'];
-		echo $row['body'];
+		echo "<tr><td>" . $row['title'] . "</td>";
+		echo "<td>" . $row['subject'] . "</td>";
+        echo "<td>" . $row['body'] . "</td>";
 		
 		if (isset($_POST[$row['uid']])) {
 			$insertquery = 'INSERT INTO acknowledge_posts (`rin`, `announcement_id`) VALUES (?,?)';
@@ -26,12 +33,13 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 			$statement->execute();
 			$statement->close();
 		}
-		$poster = $mysqli->query('SELECT firstName, lastName FROM cadet WHERE rin="' . $row['createdBy'] . '"');
+
+        $poster = $mysqli->query('SELECT firstName, lastName FROM cadet WHERE rin="' . $row['createdBy'] . '"');
 		$names = $poster->fetch_assoc();
 
 		//print out the author of the post
-		echo $names['firstName'] . ' ' . $names['lastName'];
-
+		echo "<td>" . $names['firstName'] . ' ' . $names['lastName'] . "</td><td>";
+        
 		//make a button to read and understand post
 		echo '<form class="acknowledge" action="announcements.php" method="post">';
 		echo '<button class="btn btn-sm btn-primary" type="submit" name="' . $row['uid'] . '">Read and Understood</button>';
@@ -54,10 +62,9 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 				echo $readrow['firstName'] . ' ' . $readrow['lastName'] . '<br>';
 			}
 		}
-
-		echo "<br>";
-
+		echo "</td></tr><br>";
 	}
+    echo "</table>";
 	?>
 </div>
 </body>
