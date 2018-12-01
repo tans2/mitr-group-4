@@ -31,7 +31,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
   		</div>
   		<div class="card-body">
         <h5 class="card-title">PT</h5>
-            <?php $sql = "SELECT * FROM `cadetEvent`";
+            <?php $sql = "SELECT * FROM cadetEvent";
                         $stmt = $mysqli->prepare($sql);
                         $stmt->execute();
                         $result = $stmt->get_result();
@@ -47,10 +47,12 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
                                 $stmt->bind_param("i", $row['eventID']);
                                 $stmt->execute();
                                 $result = $stmt->get_result();
-                                $temp = $result->fetch_assoc();
-                                if($temp['rin'] == $_SESSION['rin'] && ( $temp['excused_absence'] == 1 || $temp['present'] == 1))
+                                while($row = $result->fetch_assoc())
                                 {
-                                    $attend = $attend + 1;
+                                    if($row['rin'] == $_SESSION['rin'])
+                                    {
+                                        $attend = $attend + 1;
+                                    }
                                 }
                             }
                         }
@@ -81,10 +83,12 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
                                 $stmt->bind_param("i", $row['eventID']);
                                 $stmt->execute();
                                 $result = $stmt->get_result();
-                                $temp = $result->fetch_assoc();
-                                if($temp['rin'] == $_SESSION['rin'] && ( $temp['excused_absence'] == 1 || $temp['present'] == 1))
+                                while($row = $result->fetch_assoc())
                                 {
-                                    $attend = $attend + 1;
+                                    if($row['rin'] == $_SESSION['rin'])
+                                    {
+                                        $attend = $attend + 1;
+                                    }
                                 }
                             }
                         }
