@@ -8,7 +8,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 ?>
 
 <h1 style="text-align: center;"><span style="text-decoration: underline;"><strong>Detachment Wiki</strong></span></h1>
-<p><a title="Index Page" href="assets/wiki/indexwiki.php" target="_blank" rel="noopener">Index Page</a></p>
+<p><a title="Login Page" href="assets/wiki/indexwiki.php" target="_blank" rel="noopener">Index Page</a></p>
 <p><a title="Home Page" href="assets/wiki/homewiki.php" target="_blank" rel="noopener">Home Page</a></p>
 <p><a title="Profile Page" href="assets/wiki/profilewiki.php" target="_blank" rel="noopener">Profile Page</a></p>
 <p><a title="Edit Profile Page" href="assets/wiki/editprofilewiki.php" target="_blank" rel="noopener">Edit Profile Page</a></p>
