@@ -48,6 +48,27 @@ INSERT INTO `announcement` (`title`, `subject`, `body`, `createdBy`, `uid`) VALU
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `acknowledge_posts`
+--
+
+CREATE TABLE `acknowledge_posts` (
+  `rin` int(10) NOT NULL,
+  `announcement_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `acknowledge_posts`
+--
+ALTER TABLE `acknowledge_posts`
+  ADD PRIMARY KEY (`rin`,`announcement_id`);
+  
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `attendance`
 --
 
