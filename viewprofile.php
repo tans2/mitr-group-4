@@ -22,7 +22,7 @@ $cadet = new cadet( $_GET['rin'], $mysqli );
               foreach($files as $file)
                 {
                   $info = pathinfo($file);
-                  if($info['filename'] === $_SESSION['rin'])
+                  if($info['filename'] === $_GET['rin'])
                     {
                       echo $file; 
                       $found = true;

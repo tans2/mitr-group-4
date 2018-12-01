@@ -41,23 +41,40 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 <strong>Bio: </strong>
 <div class="cadetBio"><?php echo $cadet->getBio() ?></div>
 <button id="edit" class="btn btn-primary" onclick="editBio()" type="button">Edit</button>
-<button id="save" class="btn btn-primary" onclick="saveBio()" type="button">Save</button><br>
+<button id="save" class="btn btn-primary" onclick="saveBio()" type="button">Save</button><br><br>
 
 <strong>Air Force Goals: </strong>
 <div class="afGoals"><?php echo $cadet->getAirForceGoals() ?></div>
 <button id="edit" class="btn btn-primary" onclick="editAFG()" type="button">Edit</button>
-<button id="save" class="btn btn-primary" onclick="saveAFG()" type="button">Save</button><br>
+<button id="save" class="btn btn-primary" onclick="saveAFG()" type="button">Save</button><br><br>
 
 <strong>Personal Goals: </strong>
 <div class="pGoals"><?php echo $cadet->getPersonalGoals() ?></div>
 <button id="edit" class="btn btn-primary" onclick="editPG()" type="button">Edit</button>
-<button id="save" class="btn btn-primary" onclick="savePG()" type="button">Save</button><br>
+<button id="save" class="btn btn-primary" onclick="savePG()" type="button">Save</button><br><br>
 
 <strong>Awards and Achievements: </strong>
 <div class="awards"><?php echo $cadet->getAwards() ?></div>
 <button id="edit" class="btn btn-primary" onclick="editAA()" type="button">Edit</button>
-<button id="save" class="btn btn-primary" onclick="saveAA()" type="button">Save</button><br>
+<button id="save" class="btn btn-primary" onclick="saveAA()" type="button">Save</button><br><br>
 
+<form action="updateProfile.php" method="post" enctype="multipart/form-data" onsubmit="return validatePass()" name="passChange">
+    <h3>Change Password</h3>
+    <div>
+        <strong>Old Password:</strong><br>
+        <input type="password" name="oldPass" id="oldPass" size="30"/>
+    </div><br>
+    <div>
+        <strong>New Password:</strong><br>
+        <input type="text" name="newPass" id="newPass" size="30"/>
+    </div><br>
+    <div>
+        <strong>Verify Password:</strong><br>
+        <input id="verPass" type="text" name="verPass" size="30"/>
+    </div><br>
+    <button class="btn btn-primary" type="reset">Reset</button>
+    <button class="btn btn-primary" type="submit" name="updatepass">Change Password</button>
+</form><br>
 
 <?php        
     include('./assets/inc/footer.php');   

@@ -2,9 +2,8 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
-
 -- Host: localhost
--- Generation Time: Nov 29, 2018 at 01:44 PM
+-- Generation Time: Nov 30, 2018 at 05:51 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -75,15 +74,18 @@ ALTER TABLE `acknowledge_posts`
 CREATE TABLE `attendance` (
   `rin` int(10) UNSIGNED NOT NULL,
   `eventid` int(11) UNSIGNED NOT NULL,
-  `excused_absence` tinyint(1) DEFAULT NULL
+  `excused_absence` tinyint(1) DEFAULT NULL,
+  `present` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
 
 --
 -- Dumping data for table `attendance`
 --
 
-INSERT INTO `attendance` (`rin`, `eventid`, `excused_absence`) VALUES
-(123123123, 4294967295, 0);
+INSERT INTO `attendance` (`rin`, `eventid`, `excused_absence`, `present`) VALUES
+(123123123, 1, NULL, 0),
+(123123123, 4294967295, 0, 0),
+(661550966, 4, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -106,7 +108,6 @@ CREATE TABLE `cadet` (
   `groupMe` varchar(50) COLLATE ascii_bin NOT NULL,
   `AFGoals` text COLLATE ascii_bin,
   `awards` text COLLATE ascii_bin,
-  `middleName` varchar(255) COLLATE ascii_bin DEFAULT NULL,
   `lastName` varchar(255) COLLATE ascii_bin NOT NULL,
   `PGoals` text COLLATE ascii_bin NOT NULL,
   `admin` tinyint(1) NOT NULL DEFAULT '0',
@@ -117,12 +118,10 @@ CREATE TABLE `cadet` (
 -- Dumping data for table `cadet`
 --
 
-INSERT INTO `cadet` (`firstName`, `rank`, `rin`, `primaryEmail`, `secondaryEmail`, `primaryPhone`, `secondaryPhone`, `password`, `bio`, `flight`, `position`, `groupMe`, `AFGoals`, `awards`, `middleName`, `lastName`, `PGoals`, `admin`, `rfid`) VALUES
-('John', 'AS400', 123123123, 'email@rpi.edu', 'fake@google.com', 1231231233, 2223442344, '$2y$10$TtR88cduzJpc1/7IcHWTsOVG4kM3lkJx1QdTdPtRKkOUJBmzPy6iO', 'This is my bio', 'Alpha', 'something important', 'mygroupme.com', 'I wanna do big things', 'i have a bunch of awards', 'Steve', 'Doe', 'be amazing', 1, NULL),
-('Temp', 'AS350', 222222222, NULL, NULL, 0, NULL, '$2y$10$hDEQkfNQFNYrFO7Isbf9se3ywaYrTvKYt.fzqWfC89I9pLL5BjFCi', NULL, 'Charlie', NULL, '', NULL, NULL, 'middle', 'User', '', 0, NULL),
-('Another ', 'AS350', 234234234, NULL, NULL, 0, NULL, '$2y$10$f/7T2wZHDl1kuAEyz9ahKesh/tv0CkfDLHqtSv.LtX8zn5H1vqX06', NULL, 'Bravo', NULL, '', NULL, NULL, 'Temp', 'User', '', 0, NULL);
-
-
+INSERT INTO `cadet` (`firstName`, `rank`, `rin`, `primaryEmail`, `secondaryEmail`, `primaryPhone`, `secondaryPhone`, `password`, `bio`, `flight`, `position`, `groupMe`, `AFGoals`, `awards`, `lastName`, `PGoals`, `admin`, `rfid`) VALUES
+('', 'AS100', 0, NULL, NULL, 0, NULL, '$2y$10$ZD58kTG9d8A3XPwBqM2KKOKF6HtUsK9TTSvZscRh7p9L4ZcC4loAm', NULL, 'Alpha', NULL, '', NULL, NULL, '', '', 1, 0),
+('John', 'AS100', 123123123, NULL, NULL, 0, NULL, '$2y$10$67.c/sLiPKRPsJCebeCoM.pXokIK40WicOf4.YZh7BN9a1jS/gbvm', NULL, 'Alpha', NULL, '', NULL, NULL, 'Doe', '', 1, 0),
+('Joseph', 'AS300', 661550966, 'faek', '', 0, 0, '$2y$10$dDvXazh5p65sFCDC0vxRZuqdy9iXeQ1eux2dKrfDOrn7kP0K9taAW', NULL, 'Alpha', '', '', NULL, NULL, 'Messare', '', 1, 22983);
 
 -- --------------------------------------------------------
 
@@ -142,7 +141,10 @@ CREATE TABLE `cadetEvent` (
 --
 
 INSERT INTO `cadetEvent` (`name`, `mandatory`, `date`, `eventID`) VALUES
-('Test Event', 1, '2018-11-22 00:00:00', 1);
+('Test Event', 1, '2018-11-22 00:00:00', 1),
+('Fake Event', 1, '2018-11-29 00:00:00', 2),
+('askdjfaskd', 1, '2018-11-29 00:00:00', 3),
+('LLAB', 1, '2018-11-29 00:00:00', 4);
 
 -- --------------------------------------------------------
 
@@ -262,7 +264,7 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `cadetEvent`
 --
 ALTER TABLE `cadetEvent`
-  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `cadetGroup`

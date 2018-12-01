@@ -17,9 +17,9 @@ if(isset($_POST['submit']))
 // Check if the passwords are the same if there is uname, pass, pass2 and both pass and pass2 match
 if( isset($_POST['rin']) && isset($_POST['pass']) && isset($_POST['pass2']) && passMatch())
 {
-    $smt = $mysqli->prepare("INSERT INTO cadet (rin, password, rank, firstName, middleName, lastName, admin, flight) VALUES (?,?,?,?,?,?,?,?)");
+    $smt = $mysqli->prepare("INSERT INTO cadet (rin, password, rank, firstName, lastName, admin, flight) VALUES (?,?,?,?,?,?,?)");
     $hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
-    $smt->bind_param( "isssssis", $_POST['rin'], $hash, $_POST['rank'], $_POST['first'], $_POST['middle'], $_POST['last'], $_POST['admin'], $_POST['flight'] );
+    $smt->bind_param( "issssis", $_POST['rin'], $hash, $_POST['rank'], $_POST['first'], $_POST['last'], $_POST['admin'], $_POST['flight'] );
     $smt->execute();
     $smt->close();
     
@@ -90,10 +90,6 @@ function passMatch()
       <input type="text" name="first" size="30" id="firstname"/>
     </div>
     <div>
-      Middle Name:<br>
-      <input type="text" name="middle" size="30" id="middlename"/>
-    </div>
-    <div>
       Last Name:<br>
       <input type="text" name="last" size="30" id="lastname"/>
     </div>
@@ -112,25 +108,52 @@ function passMatch()
     <div>
       Administrative Privleges:<br>
       <select name="admin">
-        <option value="1">Yes</option>
         <option value="0">No</option>
+        <option value="1">Yes</option>
       </select>
     </div>
     <div>
       Rank:<br>
       <select name="rank">
-        <option value="AS100">AS100</option>
-        <option value="AS200">AS200</option>
-        <option value="AS250">AS250</option>
-        <option value="AS300">AS300</option>
-        <option value="AS350">AS350</option>
-        <option value="AS400">AS400</option>
-        <option value="AS500">AS500</option>
+        <option value="None">None</option>
+        <optgroup label="ROTC Ranks">
+            <option value="AS100">AS100</option>
+            <option value="AS200">AS200</option>
+            <option value="AS250">AS250</option>
+            <option value="AS300">AS300</option>
+            <option value="AS350">AS350</option>
+            <option value="AS400">AS400</option>
+            <option value="AS500">AS500</option>
+        </optgroup>
+        <optgroup label="Enlisted Ranks">
+            <option value="Airman Basic">Airman Basic</option>
+            <option value="Airman">Airman</option>
+            <option value="Airman First Class">Airman First Class</option>
+            <option value="Senior Airman">Senior Airman</option>
+            <option value="Staff Sergeant">Staff Sergeant</option>
+            <option value="Technical Sergeant">Technical Sergeant</option>
+            <option value="Master Sergeant">Master Sergeant</option>
+            <option value="Senior Master Sergeant">Senior Master Sergeant</option>
+            <option value="Chief Master Sergeant">Chief Master Sergeant</option>
+        </optgroup>
+        <optgroup label="Officer Ranks">
+            <option value="Second Lieutenant">Second Lieutenant</option>
+            <option value="First Lieutenant">First Lieutenant</option>
+            <option value="Captain">Captain</option>
+            <option value="Major">Major</option>
+            <option value="Lieutenant Colonel">Lieutenant Colonel</option>
+            <option value="Colonel">Colonel</option>
+            <option value="Brigadier General">Brigadier General</option>
+            <option value="Major General">Major General</option>
+            <option value="Lieutenant General">Lieutenant General</option>
+            <option value="General">General</option>
+        </optgroup>
       </select>
     </div>
     <div>
       Flight:<br>
       <select name="flight">
+        <option value="None">None</option>
         <option value="Alpha">Alpha</option>
         <option value="Bravo">Bravo</option>
         <option value="Charlie">Charlie</option>
