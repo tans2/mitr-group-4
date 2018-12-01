@@ -7,13 +7,9 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 ?>
 
 <body>
-
-	<div class="jumbotron">
-		<h1 class="display-4"> Announcements </h1>
-	</div>
-
-	<a href="makepost.php">Make an Announcement</a>
-
+  <div class="jumbotron">
+	<h1 class="display-4"> Announcements </h1>
+	<button class="btn btn-primary" role="button" href="makepost.php">Make an Announcement</button>
 	<?php
 	$query = 'SELECT * FROM announcement';
 	$result = $mysqli->query($query);
@@ -38,7 +34,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 
 		//make a button to read and understand post
 		echo '<form class="acknowledge" action="announcements.php" method="post">';
-		echo '<button type="submit" name="' . $row['uid'] . '">Read and Understood</button>';
+		echo '<button class="btn btn-sm btn-primary" type="submit" name="' . $row['uid'] . '">Read and Understood</button>';
 		$countquery = 'SELECT count(rin) as c FROM acknowledge_posts WHERE announcement_id="' . $row['uid'] . '"';
 
 		$count = $mysqli->query($countquery);
@@ -63,7 +59,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 
 	}
 	?>
-
+</div>
 </body>
 
 <?php include('./assets/inc/footer.php');

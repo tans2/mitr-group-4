@@ -11,17 +11,44 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 </head>
 
 <body>
+  <div class="jumbotron">
+  	<h1 class="display-4"> Events </h1>
+  	<div class="container">
+      <div class="row">
+        <div class="col-6">
+		  <div class="card" style="margin: auto;width: 50%;padding: 10px;">
+		  	<?php 
+			  if (isset($_POST["eventMade"])) {
+				$mandatory = 0;
+			  if (isset($_POST['mandatory'])) {
+				$mandatory = 1;
+			  }
+			  $title = htmlspecialchars(trim($_POST['eventTitle']));
+			  $date = $_POST['eventDate'];
 
-	<div class="jumbotron">
-		<h1 class="display-4"> Events </h1>
-	</div>
+			  $insertquery = 'INSERT INTO cadetEvent (`name`, `mandatory`, `date`) VALUES (?,?,?)';
+			  $stmt = $mysqli->prepare($insertquery);
+			  $stmt->bind_param("sis", $title, $mandatory, $date);
+			  $stmt->execute();
+			  $stmt->close();
 
-	<a href="createevent.php">Create an Event</a>
-
-	<div class="card" style="width: 18rem;margin: auto;width: 30%;padding: 10px;">
-	<p>
-		Select Event to View Attendees
-		<form action="attendance.php" method="post">
+			  header('Location: attendance.php');
+			  }
+			?>
+		    <h5 class="card-title">Create an Event</h5>
+		    <form action="createevent.php" method="post">
+			  <label for=title><b>Title: </b></label><br><input type="text" name="eventTitle" style="border-width:3px;"/><br>
+			  <label for=date><b>Date: </b></label><br><input type="date" name="eventDate" style="border-width:3px;"/><br>
+			  <label for=mandatory><b>Mandatory: </b></label><input type="checkbox" name="mandatory" value="mandatory"/><br>
+			  <button class="btn btn-sm btn-primary" type="submit" value="Submit" name="eventMade">Submit</button>
+			</form>
+		  </div>
+		</div>
+		
+		<div class="col-6">
+	      <div class="card" style="margin: auto;width: 50%;padding: 10px;">
+			<h5 class="card-title"> Select Event to View Attendees</h5>
+			<form action="attendance.php" method="post">
 			<select name="eventSelect">
 				<?php
 				$result = $mysqli->query("SELECT name, eventID FROM cadetEvent");
@@ -34,10 +61,13 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 				}
 				?>
 			</select>
-			<input type="submit" name="selectevent" value="Submit"/>
-		</form>
-	</p>
-	</div>
+			<button class="btn btn-sm btn-primary" type="submit" value="Submit" name="selectevent">Submit</button>
+			</form>
+		  </div>
+  		</div>
+  	  </div>
+    </div>
+  </div>
 	<?php
 	if (isset($_POST["selectevent"])) {
 		$eventquery = 'SELECT name, mandatory, date FROM cadetEvent WHERE eventID = "' . $_POST["eventSelect"] . '"';
