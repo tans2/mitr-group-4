@@ -6,6 +6,11 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     header('Location: index.php');
 }
 
+if( $cadet->getAdmin() != 1 )
+{
+    header('Location: home.php');
+}
+
 if(isset($_POST['submit']))
 {
     $smt = $mysqli->prepare("DELETE FROM cadet WHERE rin = ?");
