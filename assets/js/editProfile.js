@@ -33,6 +33,7 @@ var editAA = function() {
 };
 
 var saveAA = function() {
+    alert($('.awards').summernote('code'));
   var markup = $('.awards').summernote('code');
     window.location.href= "updateProfile.php?aa=" + markup;
   $('.awards').summernote('destroy');
