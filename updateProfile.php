@@ -6,6 +6,12 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         header('Location: index.php');
     }
     
+    if(isset($_POST['afg']))
+    {
+        $cadet->setBio($_POST['afg']);
+        $cadet->updateCadet();
+    }
+
     if(isset($_POST['submit']))
     {
         saveGenInfo( $cadet, $mysqli, $_POST['pphone'], $_POST['sphone'], $_POST['pemail'], $_POST['semail'], $_POST['groupme'], $_POST['position'] );

@@ -4,7 +4,12 @@ var editBio = function() {
 
 var saveBio = function() {
   var markup = $('.cadetBio').summernote('code');
-    window.location.href= "updateProfile.php?bio=" + markup;
+    var xhr = new XMLHttpRequest();
+    
+    xhr.open("POST", "./updateProfile.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    
+    xhr.send("bio=" + markup);
   $('.cadetBio').summernote('destroy');
 };
     
@@ -14,7 +19,12 @@ var editAFG = function() {
 
 var saveAFG = function() {
   var markup = $('.afGoals').summernote('code');
-    window.location.href= "updateProfile.php?afg=" + markup;
+       var xhr = new XMLHttpRequest();
+    
+    xhr.open("POST", "./updateProfile.php");
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    
+    xhr.send("afg=" + markup);
   $('.afGoals').summernote('destroy');
 };
     
@@ -24,7 +34,12 @@ var editPG = function() {
 
 var savePG = function() {
   var markup = $('.pGoals').summernote('code');
-    window.location.href= "updateProfile.php?pg=" + markup;
+           var xhr = new XMLHttpRequest();
+    
+    xhr.open("POST", "./updateProfile.php");
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    
+    xhr.send("pg=" + markup);
   $('.pGoals').summernote('destroy');
 };
     
@@ -33,9 +48,14 @@ var editAA = function() {
 };
 
 var saveAA = function() {
-    alert($('.awards').summernote('code'));
+    $('.awards').summernote('code');
   var markup = $('.awards').summernote('code');
-    window.location.href= "updateProfile.php?aa=" + markup;
+          var xhr = new XMLHttpRequest();
+    
+    xhr.open("POST", "./updateProfile.php");
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    
+    xhr.send("aa=" + markup);
   $('.awards').summernote('destroy');
 };
 

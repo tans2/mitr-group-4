@@ -1,5 +1,6 @@
 <?php
     include('./assets/inc/header.php');
+    session_start();
 
     if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     {
@@ -28,17 +29,26 @@
             $smt->close();
         }
     }
-    else if(isset($_POST['delgroup']))
+    else if(isset($_POST['rcadets']))
     {
-        foreach ($_POST['cadets'] as $member) 
+        foreach ($_POST['rcadets'] as $member) 
         {
             $smt = $mysqli->prepare("DELETE FROM `groupMember` WHERE `groupMember`.`groupID` = ? AND `groupMember`.`rin` = ?");
-            $smt->bind_param( "ii", $_POST['delgroup'], $member );
+            $smt->bind_param( "ii", $_SESSION['selectgroup'], $member );
             $smt->execute();
             $smt->close();
         }
     }
-
+    else if(isset($_POST['acadets']))
+    {
+        foreach ($_POST['acadets'] as $member) 
+        {
+            $smt = $mysqli->prepare("INSERT INTO groupMember (groupID, rin) VALUES (?,?)");
+            $smt->bind_param( "ii", $_SESSION['selectgroup'], $member );
+            $smt->execute();
+            $smt->close();
+        }
+    }
     header("Location: sendemail.php");
 
 ?>

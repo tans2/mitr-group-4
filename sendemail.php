@@ -32,9 +32,15 @@ include("assets/inc/dbinfo.php");
         <button type="submit" name="submit">Create Group</button>
     </form><br>
 
-    <h3>Add Members to Group</h3>
-    <form id="addgroup" method="POST" name="addgroup" action="group.php">
-        <strong>Select Group</strong><br> 
+<?php 
+    if(isset($_POST['selectgroup']))
+    {
+        $_SESSION['selectgroup'] = $_POST['selectgroup'];
+    } 
+?>
+
+    <h3>Select Group</h3>
+    <form id="selectgroup" method="POST" name="selectgroup" action="sendemail.php">
         <select id="selectgroup" name="selectgroup">
         <?php
             $query = 'SELECT * FROM cadetGroup';
@@ -42,20 +48,33 @@ include("assets/inc/dbinfo.php");
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
-                echo "<option value ='" . $row['label'] . "'>" . $row['label'] . "</option>";
+                if(isset($_SESSION['selectgroup']) && $_SESSION['selectgroup'] == $row['id'])
+                {
+                    echo "<option selected value ='" . $row['id'] . "'>" . $row['label'] . "</option>";
+                }
+                else
+                {
+                    echo "<option value ='" . $row['id'] . "'>" . $row['label'] . "</option>";
+                }
+                
             }
         ?>
         </select><br>
-        
-        <strong>Select Cadets</strong><br> 
-        <div class="selectcadets" style="height:200px; width:100px overflow-y: scroll;">
+        <button type="submit" name="submit">Select Group</button>
+</form><br>
+
+
+
+    <form id="addgroup" method="POST" name="addgroup" action="group.php">
+        <strong>Add Members</strong><br> 
+        <div class="selectcadets" style="height:100px; width:100px overflow-y: scroll;">
         <?php
             $query = 'SELECT * FROM cadet';
             $stmt = $mysqli->prepare($query);
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
-                echo "<input type='checkbox' name='cadets[]' value ='" . $row['rin'] . "'>Cadet " . $row['lastName'] . "</input><br>";
+                echo "<input type='checkbox' name='acadets[]' value ='" . $row['rin'] . "'>Cadet " . $row['lastName'] . "</input><br>";
             }
         ?>
         </div><br>
@@ -63,30 +82,17 @@ include("assets/inc/dbinfo.php");
         <button type="submit" name="submit">Add Members</button>
     </form><br>
     
-   <h3>Remove Members from Group</h3>
-    <form id="remgroup" method="POST" name="remgroup" action="group.php">
-        <strong>Select Group</strong><br> 
-        <select id="delgroup" name="delgroup">
+    <form id="addgroup" method="POST" name="addgroup" action="group.php">
+        <strong>Remove Members</strong><br> 
+        <div class="selectcadets" style="height:100px; width:100px overflow-y: scroll;">
         <?php
-            $query = 'SELECT * FROM cadetGroup';
+            $query = 'SELECT cadet.rin as rin, cadet.lastName as lastName FROM cadet, groupMember WHERE cadet.rin = groupMember.rin AND groupMember.groupID = ?';
             $stmt = $mysqli->prepare($query);
+            $stmt->bind_param( "i", $_SESSION['selectgroup'] );
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
-                echo "<option value ='" . $row['id'] . "'>" . $row['label'] . "</option>";
-            }
-        ?>
-        </select><br>
-        
-        <strong>Select Cadets</strong><br> 
-        <div class="selectcadets" style="height:200px; width:100px overflow-y: scroll;">
-        <?php
-            $query = 'SELECT * FROM cadet';
-            $stmt = $mysqli->prepare($query);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            while ($row = $result->fetch_assoc()) {
-                echo "<input type='checkbox' name='cadets[]' value ='" . $row['rin'] . "'>Cadet " . $row['lastName'] . "</input><br>";
+                echo "<input type='checkbox' name='rcadets[]' value ='" . $row['rin'] . "'>Cadet " . $row['lastName'] . "</input><br>";
             }
         ?>
         </div><br>
