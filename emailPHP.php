@@ -38,8 +38,6 @@ function send($addresses, $subject, $body){
         $mail->addAddress($addresses[$x]);
     }
 
-    $mail->addAddress("sonj2@rpi.edu");
-
     $mail->isHTML(true);
 
     $mail->Subject = $subject;

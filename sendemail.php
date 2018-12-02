@@ -23,7 +23,7 @@ include('./assets/inc/header.php');
     } 
     //echo "Connected successfully";
     ?>
-    <form id="batchemail" method="POST" action="emailPHP.php">
+    <form id="batchemail" method="POST" action="sendemail.php">
         <label for="address"><b>Mail Groups (Ctl/Command Click to multiselect)</b></label><br>
         <select id="grouplist" name="groups" multiple>
         <option value="null">No Groups</option>
@@ -53,7 +53,7 @@ include('./assets/inc/header.php');
         } else {
             if(isset($_POST["To"])){
                 $trimmed = str_replace(" ", "",$_POST["To"]);
-                $addresses = split(";", trimmed);
+                $addresses = explode(";", $trimmed);
             }
             if(isset($_POST["groups"]) && $_POST["groups"] != "null" && !in_array("null", $_POST["groups"])){
                 //grab email addresses from all the cadets in the selected groups
