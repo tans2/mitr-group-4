@@ -11,13 +11,34 @@ if (isset($_POST['postMade'])) {
 	$body = htmlspecialchars(trim($_POST['postBody']));
 	$author = htmlspecialchars(trim($_SESSION['rin']));
 
-	$insquery = 'INSERT INTO announcement (`title`, `subject`, `body`, `createdBy`) VALUES (?,?,?,?)';
-	$stmt = $mysqli->prepare($insquery);
-	$stmt->bind_param("sssi", $title, $subject, $body, $author);
-	$stmt->execute();
-	$stmt->close();
+	//$insquery = 'INSERT INTO announcement (`title`, `subject`, `body`, `createdBy`) VALUES (?,?,?,?)';
+	//$stmt = $mysqli->prepare($insquery);
+	//$stmt->bind_param("sssi", $title, $subject, $body, $author);
+	//$stmt->execute();
+	//$stmt->close();
 
-	header('Location: announcements.php');
+	include("emailPHP.php");
+
+	$sql = "SELECT primaryEmail, secondaryEmail FROM `cadet`";
+	$stmt = $mysqli->prepare($sql);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	while($row = $result->fetch_assoc()) {
+		if(!is_null($row["primaryEmail"])){
+			$targets[] = $row["primaryEmail"];
+		} else if (!is_null($row["secondaryEmail"])) {
+			$targets[] = $row["secondaryEmail"];
+		}
+	}
+	$emailSubject = $title . ": " . $subject;
+	$poster = $mysqli->query('SELECT firstName, lastName FROM cadet WHERE rin="' . $author . '"');
+	$postername = $poster->fetch_assoc();
+	$emailBody = $body . "<br>&nbsp;<br>" . "Created by:<br>" . $postername['firstName'] . " " . $postername['lastName'] . "<br>" . $author;
+	
+	send($targets, $emailSubject, $emailBody); 
+
+	echo "<script type='text/javascript'>location.href='announcements.php';</script>";
+	//header('Location: announcements.php');
 }
 ?>
 

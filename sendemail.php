@@ -57,9 +57,9 @@ include('./assets/inc/header.php');
             }
             if(isset($_POST["groups"]) && $_POST["groups"] != "null" && !in_array("null", $_POST["groups"])){
                 //grab email addresses from all the cadets in the selected groups
-                //$addresses[] = 
+                //$addresses[] = //This adds a value into an array (also creates array if there wasn't one yet)
             }
-            send($addresses, $_POST["subject"], $_POST["body"]);
+            echo(send($addresses, $_POST["subject"], $_POST["body"]));
         }
     }   
     ?>

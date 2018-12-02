@@ -47,12 +47,12 @@ function send($addresses, $subject, $body){
     if(!$mail->send()) 
     {
         $message = "Mailer Error: " . $mail->ErrorInfo;
-        echo "<script type='text/javascript'>alert('$message');</script>";
+        return("<script type='text/javascript'>alert('$message');</script>");
     } 
     else 
     {
         $message = "Message has been sent successfully";
-        echo "<script type='text/javascript'>alert('$message');</script>";
+        return("<script type='text/javascript'>alert('$message');</script>");
     }
 }
 ?>
