@@ -10,56 +10,51 @@ require_once "vendor/autoload.php";
  *  @version 11/27/2018
  *  @author Andrew Sihoo Son
  */
+function send($addresses, $subject, $body){
+    $mail = new PHPMailer;
 
-//$host = "192.168.64.2";
-//$user = "username";
-//$password = "password";
-//$database = "mitr";
+    //Enable SMTP debugging. 
+    //$mail->SMTPDebug = 3;                               
+    //Set PHPMailer to use SMTP.
+    $mail->isSMTP();            
+    //Set SMTP host name                          
+    $mail->Host = "smtp.gmail.com";
+    //Set this to true if SMTP host requires authentication to send email
+    $mail->SMTPAuth = true;                          
+    //Provide username and password     
+    $mail->Username = "afrotcdet550@gmail.com";                 
+    $mail->Password = "silverfalcons550";                           
+    //If SMTP requires TLS encryption then set it
+    $mail->SMTPSecure = "tls";                           
+    //Set TCP port to connect to 
+    $mail->Port = 587;                                   
 
-// Create connection
-//$mysqli = mysqli_connect($host, $user, $password, $database);
+    $mail->From = "afrotcdet550@gmail.com";
+    $mail->FromName = "Airforce ROTC Detatchment 550";
 
-// Check connection
-//if ($mysqli->connect_error) {
-//    die("Connection failed: " . $conn->connect_error);
-//}
+    $arrlength = count($addresses);
 
-//$email = mysql_query('query');
+    for($x = 0; $x < $arrlength; $x++) {
+        $mail->addAddress($addresses[$x]);
+    }
 
-$mail = new PHPMailer;
+    $mail->addAddress("sonj2@rpi.edu");
 
-//Enable SMTP debugging. 
-//$mail->SMTPDebug = 3;                               
-//Set PHPMailer to use SMTP.
-$mail->isSMTP();            
-//Set SMTP host name                          
-$mail->Host = "smtp.gmail.com";
-//Set this to true if SMTP host requires authentication to send email
-$mail->SMTPAuth = true;                          
-//Provide username and password     
-$mail->Username = "afrotcdet550@gmail.com";                 
-$mail->Password = "silverfalcons550";                           
-//If SMTP requires TLS encryption then set it
-$mail->SMTPSecure = "tls";                           
-//Set TCP port to connect to 
-$mail->Port = 587;                                   
+    $mail->isHTML(true);
 
-$mail->From = "afrotcdet550@gmail.com";
-$mail->FromName = "Airforce ROTC Detatchment 550";
+    $mail->Subject = $subject;
+    $mail->Body = $body;
+    $mail->AltBody = Html2Text\Html2Text::convert($body);
 
-$mail->addAddress("jmessare46@gmail.com", "Joe Messare");
-
-$mail->isHTML(true);
-
-$mail->Subject = "Subject Text";
-$mail->Body = "<i>Mail body in HTML</i>";
-$mail->AltBody = "This is the plain text version of the email content";
-
-if(!$mail->send()) 
-{
-    echo "Mailer Error: " . $mail->ErrorInfo;
-} 
-else 
-{
-    echo "Message has been sent successfully";
+    if(!$mail->send()) 
+    {
+        $message = "Mailer Error: " . $mail->ErrorInfo;
+        echo "<script type='text/javascript'>alert('$message');</script>";
+    } 
+    else 
+    {
+        $message = "Message has been sent successfully";
+        echo "<script type='text/javascript'>alert('$message');</script>";
+    }
 }
+?>
