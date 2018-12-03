@@ -75,7 +75,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
                         $attend = 0;
                         while($row = $result->fetch_assoc()) 
                         {
-                            if(strpos($row['name'], 'PT') !== false || strpos($row['name'], 'pt') !== false)
+                            if(strpos($row['name'], 'PT') !== false)
                             {
                                 $sum = $sum + 1;
                                 $sql = "SELECT * FROM `attendance` WHERE eventid = ?";
