@@ -5,12 +5,6 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     {
         header('Location: index.php');
     }
-    
-    if(isset($_POST['afg']))
-    {
-        $cadet->setBio($_POST['afg']);
-        $cadet->updateCadet();
-    }
 
     if(isset($_POST['submit']))
     {
@@ -42,24 +36,24 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         $cadet->setPosition($position);
     }
 
-    if(isset($_GET['bio']))
+    if(isset($_POST['bio']))
     {
-        $cadet->setBio($_GET['bio']);
+        $cadet->setBio($_POST['bio']);
     }
 
-    if(isset($_GET['aa']))
+    if(isset($_POST['aa']))
     {
-        $cadet->setAwards($_GET['aa']);
+        $cadet->setAwards($_POST['aa']);
     }
 
-    if(isset($_GET['afg']))
+    if(isset($_POST['afg']))
     {
-        $cadet->setAirForceGoals($_GET['afg']);
+        $cadet->setAirForceGoals($_POST['afg']);
     }
 
-    if(isset($_GET['pg']))
+    if(isset($_POST['pg']))
     {
-        $cadet->setPersonalGoals($_GET['pg']);
+        $cadet->setPersonalGoals($_POST['pg']);
     }
     
     if(isset($_POST['updatepass']))

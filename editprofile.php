@@ -38,7 +38,6 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     <button class="btn btn-primary" type="submit" name="submit">Save Changes</button>
 </form><br>
 
-<?php echo var_dump($_POST); ?>
 <strong>Bio: </strong>
 <div class="cadetBio"><?php echo $cadet->getBio() ?></div>
 <button id="edit" class="btn btn-primary" onclick="editBio()" type="button">Edit</button>
