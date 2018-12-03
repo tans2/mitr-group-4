@@ -5,7 +5,7 @@ include("assets/inc/dbinfo.php");
 
     <form id="batchemail" method="POST" action="sendemail.php">
         <label for="address"><b>Mail Groups (Ctl/Command Click to multiselect)</b></label><br>
-        <select id="grouplist" name="groups" multiple>
+        <select id="grouplist" name="groups[]" multiple>
         <option value="null">No Groups</option>
         <?php
             $query = 'SELECT label FROM cadetGroup';
@@ -13,7 +13,7 @@ include("assets/inc/dbinfo.php");
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
-                echo "<option value = " . $row['label'] . ">" . $row['label'] . "</option>";
+                echo "<option value = '" . $row['label'] . "'>" . $row['label'] . "</option>";
             }
         ?>
         </select><br>
@@ -111,8 +111,19 @@ include("assets/inc/dbinfo.php");
                 $addresses = explode(";", $trimmed);
             }
             if(isset($_POST["groups"]) && $_POST["groups"] != "null" && !in_array("null", $_POST["groups"])){
-                //grab email addresses from all the cadets in the selected groups
-                //$addresses[] = //This adds a value into an array (also creates array if there wasn't one yet)
+
+                $query = 'SELECT primaryEmail AS email FROM (cadet LEFT JOIN groupmember ON cadet.rin = groupmember.rin) LEFT JOIN cadetgroup ON groupmember.groupID = cadetgroup.id WHERE cadetgroup.label = ?';
+                $stmt = $mysqli->prepare($query);
+                $size = count($_POST["groups"]);
+                for($x = 0; $x < $size; $x++) { 
+                    $stmt->bind_param("s", $_POST['groups'][$x]);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    while ($row = $result->fetch_assoc()){
+                        echo $row['email'];
+                        $addresses[] = $row['email'];
+                    }
+                }
             }
             echo(send($addresses, $_POST["subject"], $_POST["body"]));
         }

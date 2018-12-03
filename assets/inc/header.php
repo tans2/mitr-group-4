@@ -52,7 +52,7 @@ if ( isset($_SESSION['login']) && $_SESSION['login'] )
                 <a class="dropdown-item" href="directory.php">Cadet Directory</a>
               <a class="dropdown-item" href="https://rpi.account.box.com/login">Media/Documents</a>
                 <a class="dropdown-item" href="wikihome.php">Wiki</a>
-                <a class="dropdown-item" href="../../sendemail.php">Send Email</a>
+                <a class="dropdown-item" href="sendemail.php">Send Email</a>
         <?php 
           if(isset($_SESSION["rin"])){
                     $sql = "SELECT admin FROM cadet WHERE rin = (?)";
