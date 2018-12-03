@@ -4,12 +4,10 @@ var editBio = function() {
 
 var saveBio = function() {
   var markup = $('.cadetBio').summernote('code');
-    var xhr = new XMLHttpRequest();
-    
-    xhr.open("POST", "./updateProfile.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    
-    xhr.send("bio=" + markup);
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "updateProfile.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("bio=" + markup);
   $('.cadetBio').summernote('destroy');
 };
     
@@ -19,12 +17,10 @@ var editAFG = function() {
 
 var saveAFG = function() {
   var markup = $('.afGoals').summernote('code');
-       var xhr = new XMLHttpRequest();
-    
-    xhr.open("POST", "./updateProfile.php");
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    
-    xhr.send("afg=" + markup);
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "updateProfile.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("afg=" + markup);
   $('.afGoals').summernote('destroy');
 };
     
@@ -34,12 +30,10 @@ var editPG = function() {
 
 var savePG = function() {
   var markup = $('.pGoals').summernote('code');
-           var xhr = new XMLHttpRequest();
-    
-    xhr.open("POST", "./updateProfile.php");
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    
-    xhr.send("pg=" + markup);
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "updateProfile.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("pg=" + markup);
   $('.pGoals').summernote('destroy');
 };
     
@@ -50,12 +44,10 @@ var editAA = function() {
 var saveAA = function() {
     $('.awards').summernote('code');
   var markup = $('.awards').summernote('code');
-          var xhr = new XMLHttpRequest();
-    
-    xhr.open("POST", "./updateProfile.php");
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    
-    xhr.send("aa=" + markup);
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "updateProfile.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("aa=" + markup);
   $('.awards').summernote('destroy');
 };
 

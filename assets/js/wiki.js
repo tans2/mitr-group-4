@@ -4,7 +4,10 @@ var editIndex = function() {
 
 var saveIndex = function() {
   var markup = $('.indexwiki').summernote('code');
-    window.location.href= "savewiki.php?index=" + markup;
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "savewiki.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("index=" + markup);
   $('.indexwiki').summernote('destroy');
 };
 
@@ -15,7 +18,10 @@ var editProfile = function() {
 
 var saveProfile = function() {
   var markup = $('.profilewiki').summernote('code');
-    window.location.href= "savewiki.php?profile=" + markup;
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "savewiki.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("profile=" + markup);
   $('.profilewiki').summernote('destroy');
 };
 
@@ -25,7 +31,10 @@ var editHome = function() {
 
 var saveHome = function() {
   var markup = $('.homewiki').summernote('code');
-    window.location.href= "savewiki.php?home=" + markup;
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "savewiki.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("home=" + markup);
   $('.homewiki').summernote('destroy');
 };
 
@@ -35,7 +44,10 @@ var editEditProfile = function() {
 
 var saveEditProfile = function() {
   var markup = $('.editprofilewiki').summernote('code');
-    window.location.href= "savewiki.php?editprofile=" + markup;
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "savewiki.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("editprofile=" + markup);
   $('.editprofilewiki').summernote('destroy');
 };
 
@@ -45,7 +57,10 @@ var editAnnouncements = function() {
 
 var saveAnnouncements = function() {
   var markup = $('.announcementswiki').summernote('code');
-    window.location.href= "savewiki.php?announcements=" + markup;
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "savewiki.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("announcements=" + markup);
   $('.announcementswiki').summernote('destroy');
 };
 
@@ -55,7 +70,10 @@ var editEvents = function() {
 
 var saveEvents = function() {
   var markup = $('.eventswiki').summernote('code');
-    window.location.href= "savewiki.php?events=" + markup;
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "savewiki.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("events=" + markup);
   $('.eventswiki').summernote('destroy');
 };
 
@@ -65,7 +83,10 @@ var editEmail = function() {
 
 var saveEmail = function() {
   var markup = $('.emailwiki').summernote('code');
-    window.location.href= "savewiki.php?email=" + markup;
+        var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "savewiki.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("email=" + markup);
   $('.emailwiki').summernote('destroy');
 };
 
@@ -75,7 +96,10 @@ var editDirectory = function() {
 
 var saveDirectory = function() {
   var markup = $('.directorywiki').summernote('code');
-    window.location.href= "savewiki.php?directory=" + markup;
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "savewiki.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("directory=" + markup);
   $('.directorywiki').summernote('destroy');
 };
 
@@ -85,7 +109,10 @@ var editAdmin = function() {
 
 var saveAdmin = function() {
   var markup = $('.adminwiki').summernote('code');
-    window.location.href= "savewiki.php?admin=" + markup;
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "savewiki.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("admin=" + markup);
   $('.adminwiki').summernote('destroy');
 };
 
@@ -95,6 +122,9 @@ var editFAQ = function() {
 
 var saveFAQ = function() {
   var markup = $('.faqwiki').summernote('code');
-    window.location.href= "savewiki.php?faq=" + markup;
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "savewiki.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("faq=" + markup);
   $('.faqwiki').summernote('destroy');
 }
