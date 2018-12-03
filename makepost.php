@@ -11,15 +11,15 @@ if (isset($_POST['postMade'])) {
 	$body = htmlspecialchars(trim($_POST['postBody']));
 	$author = htmlspecialchars(trim($_SESSION['rin']));
 
-	//$insquery = 'INSERT INTO announcement (`title`, `subject`, `body`, `createdBy`) VALUES (?,?,?,?)';
-	//$stmt = $mysqli->prepare($insquery);
-	//$stmt->bind_param("sssi", $title, $subject, $body, $author);
-	//$stmt->execute();
-	//$stmt->close();
+	$insquery = 'INSERT INTO announcement (`title`, `subject`, `body`, `createdBy`) VALUES (?,?,?,?)';
+	$stmt = $mysqli->prepare($insquery);
+	$stmt->bind_param("sssi", $title, $subject, $body, $author);
+	$stmt->execute();
+	$stmt->close();
 
 	include("emailPHP.php");
 
-	$sql = "SELECT primaryEmail, secondaryEmail FROM `cadet`";
+	$sql = "SELECT primaryEmail, secondaryEmail FROM (cadet LEFT JOIN groupmember ON cadet.rin = groupmember.rin) LEFT JOIN cadetgroup ON groupmember.groupID = cadetgroup.id WHERE groupID IS NOT NULL;";
 	$stmt = $mysqli->prepare($sql);
 	$stmt->execute();
 	$result = $stmt->get_result();
