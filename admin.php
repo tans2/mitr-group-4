@@ -95,138 +95,139 @@ function passMatch()
 
 
 <body>
-<div class="card" style="position: absolute;left: 0px;width: 50%">
-  <div id="memWrapper" class="card-body">
-    <h5 id="memHeader" class="card-title">Add User</h5> 
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" onsubmit="return validateNewUser();" name="createcadet">
-    <div>
-      First Name:<br>
-      <input type="text" name="first" size="30" id="firstname"/>
-    </div>
-    <div>
-      Last Name:<br>
-      <input type="text" name="last" size="30" id="lastname"/>
-    </div>
-    <div>
-      RIN:<br>
-      <input type="text" name="rin" size="30" id="rin"/>
-    </div>
-    <div>
-      Password:<br>
-      <input type="password" name="pass" size="30" id="password"/>
-    </div>
-    <div>
-      Confirm Password:<br>
-      <input type="password" name="pass2" size="30" id="confpassword"/>
-    </div>
-    <div>
-      Administrative Privleges:<br>
-      <select name="admin">
-        <option value="0">No</option>
-        <option value="1">Yes</option>
-      </select>
-    </div>
-    <div>
-      Rank:<br>
-      <select name="rank">
-        <option value="None">None</option>
-        <optgroup label="ROTC Ranks">
-            <option value="AS100">AS100</option>
-            <option value="AS200">AS200</option>
-            <option value="AS250">AS250</option>
-            <option value="AS300">AS300</option>
-            <option value="AS350">AS350</option>
-            <option value="AS400">AS400</option>
-            <option value="AS500">AS500</option>
-        </optgroup>
-        <optgroup label="Enlisted Ranks">
-            <option value="Airman Basic">Airman Basic</option>
-            <option value="Airman">Airman</option>
-            <option value="Airman First Class">Airman First Class</option>
-            <option value="Senior Airman">Senior Airman</option>
-            <option value="Staff Sergeant">Staff Sergeant</option>
-            <option value="Technical Sergeant">Technical Sergeant</option>
-            <option value="Master Sergeant">Master Sergeant</option>
-            <option value="Senior Master Sergeant">Senior Master Sergeant</option>
-            <option value="Chief Master Sergeant">Chief Master Sergeant</option>
-        </optgroup>
-        <optgroup label="Officer Ranks">
-            <option value="Second Lieutenant">Second Lieutenant</option>
-            <option value="First Lieutenant">First Lieutenant</option>
-            <option value="Captain">Captain</option>
-            <option value="Major">Major</option>
-            <option value="Lieutenant Colonel">Lieutenant Colonel</option>
-            <option value="Colonel">Colonel</option>
-            <option value="Brigadier General">Brigadier General</option>
-            <option value="Major General">Major General</option>
-            <option value="Lieutenant General">Lieutenant General</option>
-            <option value="General">General</option>
-        </optgroup>
-      </select>
-    </div>
-    <div>
-      Flight:<br>
-      <select name="flight">
-        <option value="None">None</option>
-        <option value="Alpha">Alpha</option>
-        <option value="Bravo">Bravo</option>
-        <option value="Charlie">Charlie</option>
-        <option value="Delta">Delta</option>
-        <option value="Echo">Echo</option>
-        <option value="Foxtrot">Foxtrot</option>
-      </select>
-    </div>
-    <div class="clearfix">
-        Card Input:<br>
-        <input type="text" name="newrfid"/><br>
-    </div>
-    <br>
-    <div class="clearfix">
-      <input class="btn btn-primary" type="submit" value="Add Cadet" />
-      <input class="btn btn-primary" type="reset" value="Reset"/>
-    </div>
-  </form><br>
-</div>
-</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <div class="card">
+          <div id="memWrapper" class="card-body">
+            <h5 id="memHeader" class="card-title">Add User</h5> 
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" onsubmit="return validateNewUser();" name="createcadet">
+                <div>
+                  First Name:<br>
+                  <input type="text" name="first" size="30" id="firstname"/>
+                </div>
+                <div>
+                  Last Name:<br>
+                  <input type="text" name="last" size="30" id="lastname"/>
+                </div>
+                <div>
+                  RIN:<br>
+                  <input type="text" name="rin" size="30" id="rin"/>
+                </div>
+                <div>
+                  Password:<br>
+                  <input type="password" name="pass" size="30" id="password"/>
+                </div>
+                <div>
+                  Confirm Password:<br>
+                  <input type="password" name="pass2" size="30" id="confpassword"/>
+                </div>
+                <div>
+                  Administrative Privleges:<br>
+                  <select name="admin">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+                <div>
+                  Rank:<br>
+                  <select name="rank">
+                    <option value="None">None</option>
+                    <optgroup label="ROTC Ranks">
+                        <option value="AS100">AS100</option>
+                        <option value="AS200">AS200</option>
+                        <option value="AS250">AS250</option>
+                        <option value="AS300">AS300</option>
+                        <option value="AS350">AS350</option>
+                        <option value="AS400">AS400</option>
+                        <option value="AS500">AS500</option>
+                    </optgroup>
+                    <optgroup label="Enlisted Ranks">
+                        <option value="Airman Basic">Airman Basic</option>
+                        <option value="Airman">Airman</option>
+                        <option value="Airman First Class">Airman First Class</option>
+                        <option value="Senior Airman">Senior Airman</option>
+                        <option value="Staff Sergeant">Staff Sergeant</option>
+                        <option value="Technical Sergeant">Technical Sergeant</option>
+                        <option value="Master Sergeant">Master Sergeant</option>
+                        <option value="Senior Master Sergeant">Senior Master Sergeant</option>
+                        <option value="Chief Master Sergeant">Chief Master Sergeant</option>
+                    </optgroup>
+                    <optgroup label="Officer Ranks">
+                        <option value="Second Lieutenant">Second Lieutenant</option>
+                        <option value="First Lieutenant">First Lieutenant</option>
+                        <option value="Captain">Captain</option>
+                        <option value="Major">Major</option>
+                        <option value="Lieutenant Colonel">Lieutenant Colonel</option>
+                        <option value="Colonel">Colonel</option>
+                        <option value="Brigadier General">Brigadier General</option>
+                        <option value="Major General">Major General</option>
+                        <option value="Lieutenant General">Lieutenant General</option>
+                        <option value="General">General</option>
+                    </optgroup>
+                  </select>
+                </div>
+                <div>
+                  Flight:<br>
+                  <select name="flight">
+                    <option value="None">None</option>
+                    <option value="Alpha">Alpha</option>
+                    <option value="Bravo">Bravo</option>
+                    <option value="Charlie">Charlie</option>
+                    <option value="Delta">Delta</option>
+                    <option value="Echo">Echo</option>
+                    <option value="Foxtrot">Foxtrot</option>
+                  </select>
+                </div>
+                <div class="clearfix">
+                    Card Input:<br>
+                    <input type="text" name="newrfid"/><br>
+                </div>
+                <br>
+                <div class="clearfix">
+                  <input class="btn btn-primary" type="submit" value="Add Cadet" />
+                  <input class="btn btn-primary" type="reset" value="Reset"/>
+                </div>
+              </form><br>
+            </div>
+          </div>
+        </div>
 
-<div id="makeuser" class="card" style="position: absolute;right: 0px;width: 50%">  
-  <div id="memWrapper" class="card-body">
-    <!-- <h5 id="memHeader" class="card-title">Add User</h5> 
-    <a href="addcadet.php" class="card-title" style="float:left;">Create User</a><br></br> --> 
-    <h5 id="memHeader" class="card-title">Remove User</h5>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <select name="remove" size="10" style="width:80%;">
-                <?php 
-                    $stmt = $mysqli->prepare("SELECT * FROM cadet");
-                    $stmt->execute();
-                    $result = $stmt->get_result();
 
-                    while ($row = $result->fetch_assoc())
-                    {
-                        if(!empty($row['firstName']))
+      <div class="col-4">
+        <div class="card">
+          <div id="makeuser" class="card">  
+            <div id="memWrapper" class="card-body">
+              <h5 id="memHeader" class="card-title">Remove User</h5>
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                    <select name="remove" size="10" style="width:80%;">
+                      <?php 
+                        $stmt = $mysqli->prepare("SELECT * FROM cadet");
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+
+                        while ($row = $result->fetch_assoc())
+                        {
+                            if(!empty($row['firstName']))
                         {
                             echo "<option value='" . $row['rin'] . "'>" . $row['firstName'] . " " . $row['lastName'] . "</option>";
                         }
-                    }
-                ?>
-            </select><br></br>
-            <button class="btn btn-primary" name="submit" type="submit">Remove</button>
-        </form>
+                        }
+                      ?>
+                    </select><br></br>
+                    <button class="btn btn-primary" name="submit" type="submit">Remove</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
-    
-<div id="makeuser" class="card" style="position: absolute;right: 0px;bottom: 0px;width: 50%;height: 50%;">  
-    <div id="memWrapper" class="card-body">
-        <a class="btn btn-primary" href="attend.php">Set Event Attendance</a>
-    </div>
-        <div id="memWrapper" class="card-body">
-        <a class="btn btn-primary" href="addgroup.php">Create/Modify Group</a>
-    </div>
-        
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST"  name="changecadet">
-    <h4>Modify User's Info</h4>
-    <strong>Select Cadet</strong><br>
-    <select name="modifycadet" size="10" style="width:400px;">
+
+<div class="col-4">
+  <div class="card">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST"  name="changecadet">
+      <h5 class="card-title">Modify User Info</h4>
+      <strong>Select Cadet</strong><br>
+      <select name="modifycadet" size="10" style="width:80%;">
    
                 <?php 
                     $stmt = $mysqli->prepare("SELECT * FROM cadet");
@@ -239,7 +240,7 @@ function passMatch()
                 ?>
             <br>
          </select>
-      Administrative Privleges:<br>
+      Administrative Privileges:<br>
       <select name="admin">
         <option value="0">No</option>
         <option value="1">Yes</option>
@@ -294,7 +295,16 @@ function passMatch()
             </div>
         <button class="btn btn-primary" type="submit" name="changecadet">Modify Cadet Info</button>
     </form>
+  </div>
+</div>
     
+<div class="card" style="position: absolute;right: 0px;bottom: 0px;width: 30%;">  
+    <div id="memWrapper" class="card-body">
+        <a class="btn btn-primary" href="attend.php">Set Event Attendance</a>
+    </div>
+        <div id="memWrapper" class="card-body">
+        <a class="btn btn-primary" href="addgroup.php">Create/Modify Group</a>
+    </div>
 </div>
 
 <?php include('./assets/inc/footer.php'); ?>

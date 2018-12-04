@@ -60,17 +60,12 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 					}
 				}
 				?>
-			</select>
-			<button class="btn btn-sm btn-primary" type="submit" value="Submit" name="selectevent">View Attendees</button>
-                                            <div class="col-md-4 col-md-offset-4">
-                                <input type="submit" name="Export" class="btn btn-success" value="export to excel"/>
-                            </div>
+			</select><br></br>
+			<button class="btn btn-sm btn-primary" type="submit" value="Submit" name="selectevent">View Attendees</button><br></br>
+      <input class="btn btn-sm btn-primary" type="submit" name="Export" value="Export to Excel"/>
 			</form>
 		  </div>
   		</div>
-
-
-
     		
   	  </div>
     </div>
