@@ -6,7 +6,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     header('Location: index.php');
 }
 
-$stmt = $mysqli->prepare("SELECT * FROM cadet");
+$stmt = $mysqli->prepare("SELECT * FROM cadet ORDER BY lastName");
 $stmt->execute();
 $result = $stmt->get_result();
 
