@@ -11,6 +11,16 @@ if( $cadet->getAdmin() != 1 )
     header('Location: home.php');
 }
 
+if(isset($_POST['modifycadet']))
+{
+    echo $_POST['flight'] . $_POST['rank'] . $_POST['admin'] . $_POST['modifycadet'];
+    $updatequery = 'UPDATE cadet SET flight = ?, rank = ?, admin = ? WHERE rin = ?';
+    $stmt = $mysqli->prepare($updatequery);
+    $stmt->bind_param("ssii", $_POST['flight'], $_POST['rank'], $_POST['admin'], $_POST['modifycadet']);
+    $stmt->execute();
+    $stmt->close();
+}
+
 if(isset($_POST['submit']))
 {
     $smt = $mysqli->prepare("DELETE FROM cadet WHERE rin = ?");
@@ -210,86 +220,82 @@ function passMatch()
     <div id="memWrapper" class="card-body">
         <a class="btn btn-primary" href="attend.php">Set Event Attendance</a>
     </div>
-</div>
-<div id="Edit Groups" class="card" style = "position: absolute;right: 0px;bottom: 0px;width: 50%;height: 25%;">
-    <div class="card-body">
-            <form id="makegroup" method="POST" name="makegroup" action="group.php">
-                <strong>Create Group:</strong><br>
-                <input type="text" name="groupname" id="groupname"><br>
-                <button type="submit" name="submit">Create Group</button>
-            </form><br>
-
-            <?php 
-                if(isset($_POST['selectgroup']))
-                {
-                    $_SESSION['selectgroup'] = $_POST['selectgroup'];
-                } 
-            ?>
-
-            <h3>Select Group</h3>
-            <form id="selectgroup" method="POST" name="selectgroup" action="sendemail.php">
-                <select id="selectgroup" name="selectgroup">
-                <?php
-                    $query = 'SELECT * FROM cadetGroup';
-                    $stmt = $mysqli->prepare($query);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    while ($row = $result->fetch_assoc()) {
-                        if(isset($_SESSION['selectgroup']) && $_SESSION['selectgroup'] == $row['id'])
-                        {
-                            echo "<option selected value ='" . $row['id'] . "'>" . $row['label'] . "</option>";
-                        }
-                        else
-                        {
-                            echo "<option value ='" . $row['id'] . "'>" . $row['label'] . "</option>";
-                        }
-                        
-                    }
-                ?>
-                </select><br>
-                <button type="submit" name="submit">Select Group</button>
-            </form><br>
-
-
-
-            <form id="addgroup" method="POST" name="addgroup" action="group.php">
-                <strong>Add Members</strong><br> 
-                <div class="selectcadets" style="height:100px; width:100px overflow-y: scroll;">
-                <?php
-                    $query = 'SELECT * FROM cadet';
-                    $stmt = $mysqli->prepare($query);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<input type='checkbox' name='acadets[]' value ='" . $row['rin'] . "'>Cadet " . $row['lastName'] . "</input><br>";
-                    }
-                ?>
-            </div><br>
-            
-            <button type="submit" name="submit">Add Members</button>
-        </form><br>
-        
-        <form id="addgroup" method="POST" name="addgroup" action="group.php">
-            <strong>Remove Members</strong><br> 
-            <div class="selectcadets" style="height:100px; width:100px overflow-y: scroll;">
-            <?php
-                $query = 'SELECT cadet.rin as rin, cadet.lastName as lastName FROM cadet, groupMember WHERE cadet.rin = groupMember.rin AND groupMember.groupID = ?';
-                $stmt = $mysqli->prepare($query);
-                $stmt->bind_param( "i", $_SESSION['selectgroup'] );
-                $stmt->execute();
-                $result = $stmt->get_result();
-                while ($row = $result->fetch_assoc()) {
-                    echo "<input type='checkbox' name='rcadets[]' value ='" . $row['rin'] . "'>Cadet " . $row['lastName'] . "</input><br>";
-                }
-            ?>
-            </div><br>
-            
-            <button type="submit" name="submit">Remove Members</button>
-        </form>
+        <div id="memWrapper" class="card-body">
+        <a class="btn btn-primary" href="addgroup.php">Create/Modify Group</a>
     </div>
+        
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST"  name="changecadet">
+    <h4>Modify User's Info</h4>
+    <strong>Select Cadet</strong><br>
+    <select name="modifycadet" size="10" style="width:400px;">
+   
+                <?php 
+                    $stmt = $mysqli->prepare("SELECT * FROM cadet");
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    while ($row = $result->fetch_assoc())
+                    {
+                        echo "<option value='" . $row['rin'] . "'>" . $row['firstName'] . " " . $row['lastName'] . "</option><br>";
+                    }
+                ?>
+            <br>
+         </select>
+      Administrative Privleges:<br>
+      <select name="admin">
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select><br>
+      Rank:<br>
+      <select name="rank">
+        <option value="None">None</option>
+        <optgroup label="ROTC Ranks">
+            <option value="AS100">AS100</option>
+            <option value="AS200">AS200</option>
+            <option value="AS250">AS250</option>
+            <option value="AS300">AS300</option>
+            <option value="AS350">AS350</option>
+            <option value="AS400">AS400</option>
+            <option value="AS500">AS500</option>
+        </optgroup>
+        <optgroup label="Enlisted Ranks">
+            <option value="Airman Basic">Airman Basic</option>
+            <option value="Airman">Airman</option>
+            <option value="Airman First Class">Airman First Class</option>
+            <option value="Senior Airman">Senior Airman</option>
+            <option value="Staff Sergeant">Staff Sergeant</option>
+            <option value="Technical Sergeant">Technical Sergeant</option>
+            <option value="Master Sergeant">Master Sergeant</option>
+            <option value="Senior Master Sergeant">Senior Master Sergeant</option>
+            <option value="Chief Master Sergeant">Chief Master Sergeant</option>
+        </optgroup>
+        <optgroup label="Officer Ranks">
+            <option value="Second Lieutenant">Second Lieutenant</option>
+            <option value="First Lieutenant">First Lieutenant</option>
+            <option value="Captain">Captain</option>
+            <option value="Major">Major</option>
+            <option value="Lieutenant Colonel">Lieutenant Colonel</option>
+            <option value="Colonel">Colonel</option>
+            <option value="Brigadier General">Brigadier General</option>
+            <option value="Major General">Major General</option>
+            <option value="Lieutenant General">Lieutenant General</option>
+            <option value="General">General</option>
+        </optgroup>
+      </select>
+            <div>
+              Flight:<br>
+              <select name="flight">
+                <option value="None">None</option>
+                <option value="Alpha">Alpha</option>
+                <option value="Bravo">Bravo</option>
+                <option value="Charlie">Charlie</option>
+                <option value="Delta">Delta</option>
+                <option value="Echo">Echo</option>
+                <option value="Foxtrot">Foxtrot</option>
+              </select>
+            </div>
+        <button class="btn btn-primary" type="submit" name="changecadet">Modify Cadet Info</button>
+    </form>
+    
 </div>
-</body>
-</html>
-
 
 <?php include('./assets/inc/footer.php'); ?>
