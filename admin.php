@@ -13,7 +13,6 @@ if( $cadet->getAdmin() != 1 )
 
 if(isset($_POST['modifycadet']))
 {
-    echo $_POST['flight'] . $_POST['rank'] . $_POST['admin'] . $_POST['modifycadet'];
     $updatequery = 'UPDATE cadet SET flight = ?, rank = ?, admin = ? WHERE rin = ?';
     $stmt = $mysqli->prepare($updatequery);
     $stmt->bind_param("ssii", $_POST['flight'], $_POST['rank'], $_POST['admin'], $_POST['modifycadet']);
