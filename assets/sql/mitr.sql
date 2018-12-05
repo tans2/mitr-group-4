@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 06, 2018 at 12:13 AM
+-- Generation Time: Dec 06, 2018 at 12:19 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -142,7 +142,7 @@ INSERT INTO `cadet` (`firstName`, `rank`, `rin`, `primaryEmail`, `secondaryEmail
 CREATE TABLE `cadetEvent` (
   `name` varchar(255) COLLATE ascii_bin DEFAULT NULL,
   `mandatory` tinyint(1) DEFAULT NULL,
-  `date` date DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
   `eventID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
 
@@ -151,12 +151,12 @@ CREATE TABLE `cadetEvent` (
 --
 
 INSERT INTO `cadetEvent` (`name`, `mandatory`, `date`, `eventID`) VALUES
-('Test Event', 1, '2018-11-22', 1),
-('Fake Event', 1, '2018-11-29', 2),
-('askdjfaskd', 1, '2018-11-29', 3),
-('LLAB', 1, '2018-11-29', 4),
-('PT 37', 1, '2018-12-01', 5),
-('Fake Event LLAB', 1, '2018-12-05', 6);
+('Test Event', 1, '2018-11-22 00:00:00', 1),
+('Fake Event', 1, '2018-11-29 00:00:00', 2),
+('askdjfaskd', 1, '2018-11-29 00:00:00', 3),
+('LLAB', 1, '2018-11-29 00:00:00', 4),
+('PT 37', 1, '2018-12-01 00:00:00', 5),
+('Fake Event LLAB', 1, '2018-12-05 00:00:00', 6);
 
 -- --------------------------------------------------------
 
