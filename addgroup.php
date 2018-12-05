@@ -6,7 +6,9 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     header('Location: index.php');
 }
 ?>
-<div id="Edit Groups" class="card" style = "position: absolute;right: 0px;bottom: 0px;width: 50%;height: 25%;">
+
+
+<div id="Edit Groups" class="card" style = "position: absolute;width: 50%;">
     <div class="card-body">
             <form id="makegroup" method="POST" name="makegroup" action="group.php">
                 <strong>Create Group:</strong><br>

@@ -8,23 +8,31 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 
 <body>
   <div class="jumbotron container-fluid">
-	<h1 class="display-4"> Announcements </h1>
-	<a class="btn btn-primary" role="button" href="makepost.php">Make an Announcement</a>
+	<h1 class="display-4"> Announcements </h1><br>
+	<a class="btn btn-primary" role="button" href="makepost.php">Make an Announcement</a><br></br>
 	<?php
 	$query = 'SELECT * FROM announcement';
 	$result = $mysqli->query($query);
-      echo "<style>
-table, th, td {
+      /* echo "<style>
+table, thead, tbody, th, tr, td {
     border: 1px solid black;
     border-collapse: collapse;
 }
 </style>";
-      echo "<table style='width:100%;'><tr><th>Title</th><th>Subject</th> <th>Announcement</th><th>Created By</th><th>Acknowledge</th></tr>";
+      echo "<table class='table table-bordered table-responsive' style='width:100%;'>
+      <thead><tr>
+      <th scope='col'>Title</th>
+      <th scope='col'>Subject</th>
+      <th scope='col'>Announcement</th>
+      <th scope='col'>Created By</th>
+      <th scope='col'>Acknowledge</th>
+      </tr></thead><tbody>"; */ 
+      echo "<div class='card'>";
 	while ($row = $result->fetch_assoc()) {
 		//print out the information for the post
-		echo "<tr><td>" . $row['title'] . "</td>";
-		echo "<td>" . $row['subject'] . "</td>";
-        echo "<td>" . $row['body'] . "</td>";
+		echo "<div class='card-header'>" . $row['title'] . "</div>";
+		echo "<div class='card-body'><h5 class='card-title'>" . $row['subject'] . "</h5>";
+        echo "<p class='card-text'>" . $row['body'] . "</p>";
 		
 		if (isset($_POST[$row['uid']])) {
 			$insertquery = 'INSERT INTO acknowledge_posts (`rin`, `announcement_id`) VALUES (?,?)';
@@ -38,7 +46,7 @@ table, th, td {
 		$names = $poster->fetch_assoc();
 
 		//print out the author of the post
-		echo "<td>" . $names['firstName'] . ' ' . $names['lastName'] . "</td><td>";
+		echo "<p class='card-text'>" . $names['firstName'] . ' ' . $names['lastName'] . "</p>";
         
 		//make a button to read and understand post
 		echo '<form class="acknowledge" action="announcements.php" method="post">';
@@ -62,9 +70,9 @@ table, th, td {
 				echo $readrow['firstName'] . ' ' . $readrow['lastName'] . '<br>';
 			}
 		}
-		echo "</td></tr><br>";
+		echo "</div>";
 	}
-    echo "</table>";
+    echo "</div>";
 	?>
 </div>
 </body>

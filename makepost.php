@@ -44,16 +44,17 @@ if (isset($_POST['postMade'])) {
 
 <body>
 
-	<div class="jumbotron">
+	<div class="jumbotron container-fluid">
 		<h1 class="display-4"> Make an Announcement </h1>
+		<div class="card">
+			<div class="card-body">
+			<form class="makepost" action="makepost.php" method="post">
+				<p class="card-text">Title: <input class="form-control" type="text" name="postTitle"/>
+				<p class="card-text">Subject: <input class="form-control" type="text" name="postSubject"/>
+				<p class="card-text">Description: <textarea class="form-control" name="postBody"></textarea><br>
+				<input class="btn btn-sm btn-primary" type="submit" name="postMade" value="Submit"/>
+			</form>
 	</div>
-
-	<form class="makepost" action="makepost.php" method="post">
-		Title: <input type="text" name="postTitle"/>
-		Subject: <input type="text" name="postSubject"/>
-		Description: <textarea rows="10" cols="30" name="postBody"></textarea>
-		<input type="submit" name="postMade" value="Submit"/>
-	</form>
 
 </body>
 

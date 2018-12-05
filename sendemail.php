@@ -3,28 +3,32 @@ include('./assets/inc/header.php');
 include("assets/inc/dbinfo.php");
 ?>
 
-    <form id="batchemail" method="POST" action="sendemail.php">
-        <label for="address"><b>Mail Groups (Ctl/Command Click to multiselect)</b></label><br>
-        <select id="grouplist" name="groups[]" multiple>
-        <option value="null">No Groups</option>
-        <?php
-            $query = 'SELECT label FROM cadetGroup';
-            $stmt = $mysqli->prepare($query);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            while ($row = $result->fetch_assoc()) {
-                echo "<option value = '" . $row['label'] . "'>" . $row['label'] . "</option>";
-            }
-        ?>
-        </select><br>
-        <label for="address"><b>To Address (Add ; after each email address)</b></label><br>
-        <input type="text" name="To"><br>
-        <label for="subject"><b>Subject</b></label><br>
-        <input type="text" name="subject" required><br>
-        <label for="body"><b>Body</b></label><br>
-        <input type="text" name="body" required><br>
-        <input type="submit" name="send" value="Send">
-    </form><br>
+<div class="jumbotron container-fluid">
+  <h1 class="display-4"> Send an Email </h1>
+    <div class="card">
+      <div class="card-body">
+        <form id="batchemail" method="POST" action="sendemail.php">
+            <label class="card-text" for="address"><b>Mail Groups (Ctl/Command Click to multiselect)</b></label><br>
+            <select id="grouplist" name="groups[]" multiple>
+            <option value="null">No Groups</option>
+            <?php
+                $query = 'SELECT label FROM cadetGroup';
+                $stmt = $mysqli->prepare($query);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                while ($row = $result->fetch_assoc()) {
+                    echo "<option value = '" . $row['label'] . "'>" . $row['label'] . "</option>";
+                }
+            ?>
+            </select><br>
+            <label class="card-text" for="address"><b>To Address (Add ; after each email address)</b></label><br>
+            <input class="form-control" type="text" name="To"><br>
+            <label class="card-text" for="subject"><b>Subject</b></label><br>
+            <input class="form-control" type="text" name="subject" required><br>
+            <label class="card-text" for="body"><b>Body</b></label><br>
+            <input class="form-control" type="text" name="body" required><br>
+            <input class="btn btn-sm btn-primary" type="submit" name="send" value="Send">
+        </form><br>
 
     <?php
     include("emailPHP.php");

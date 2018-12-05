@@ -19,7 +19,7 @@ if ( isset($_SESSION['login']) && $_SESSION['login'] )
 ?>
 
 <body class="text-center"> 
-<div class="card" style="margin: auto;width: 30%;padding: 10px;">
+<div class="card" style="margin: auto;width:30%;padding: 10px;">
   <div class="card-body">
   	<form id="login" method="POST" action="loginAuth.php">
       <img class="img-fluid" src="assets/images/default.jpeg" alt="Responsive image">

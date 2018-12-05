@@ -12,9 +12,10 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 </head>
 
 <body>
-	<div class="card" style="width: 18rem;margin: auto;width: 30%;padding: 10px;">
-	<p>
-		Select Event
+  <div class="jumbotron container-fluid">
+	<h1 class="display-4"> Attendance </h1><br>
+	<div class="card" style="margin: auto;width: 30%;padding: 10px;">
+	<h5 class="card-title">Select Event</h5>
 		<form action="attend.php" method="post">
 			<select name="eventSelect">
 				<?php
@@ -29,9 +30,8 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
                 
 				?>
 			</select>
-			<input type="submit" id="selectevent" value="Submit"/>
+			<input class="btn btn-sm btn-primary" type="submit" id="selectevent" value="Submit"/>
 		</form>
-	</p>
 	</div>
 
 	<?php
@@ -39,7 +39,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 			$query = 'SELECT name FROM cadetEvent WHERE eventID = "' . $_POST["eventSelect"] . '"';
 			$result = $mysqli->query($query);
 			$row = $result->fetch_assoc();
-			echo "<h1> Event: " . $row["name"] . "</h1>";
+			echo "<h3 class='h3'> Event: " . $row["name"] . "</h3>";
 			$_SESSION["eventID"] = $_POST["eventSelect"];
 		} else if (isset($_SESSION['eventID'])) {
 			$query = 'SELECT name FROM cadetEvent WHERE eventID = "' . $_SESSION["eventID"] . '"';
@@ -88,19 +88,18 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 
 		if (isset($_SESSION['eventID'])) {
 			echo '<form class="attend" action="attend.php" method="post">';
-			echo 'Scan RPI ID Card: <input type="text" name="rfid" autofocus><br>';
-			echo '<input type="submit" value="Submit">';
-			echo '</form>';
+			echo 'Scan RPI ID Card: <input class="form-control" type="text" name="rfid" autofocus><br>';
+			echo '<input class="btn btn-sm btn-primary" type="submit" value="Submit">';
+			echo '</form><br>';
 			echo '<form class="attend" action="attend.php" method="post">';
-			echo 'No RFID Scanner? Enter RIN: <input type="text" name="rin"> <br>';
-			echo '<input type="submit" value="Submit">';
-			echo '</form>';
+			echo 'No RFID Scanner? Enter RIN: <input class="form-control" type="text" name="rin"> <br>';
+			echo '<input class="btn btn-sm btn-primary" type="submit" value="Submit">';
+			echo '</form><br>';
 
 			echo '<form class="show_attendance" action="attend.php" method="post">';
-			echo '<input type="submit" value="Show All Atendees" name="show_attendance"/>';
-			echo '</form>';
+			echo '<input class="btn btn-sm btn-primary" type="submit" value="Show All Atendees" name="show_attendance"/>';
+			echo '</form><br>';
 		}
-
 
 		if (isset($_POST["show_attendance"])) {
 			$query = 'SELECT rin FROM attendance WHERE eventid="' . $_SESSION["eventID"] .'"';
@@ -121,5 +120,5 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 		}
 	?>
 
-	<a href="connectrfid.php">Add an ID card to a cadet</a>
+	<button class="btn btn-sm btn-primary" href="connectrfid.php">Add Cadet ID Card</button>
 </body>

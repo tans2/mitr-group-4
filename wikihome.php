@@ -24,7 +24,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     	  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#docs">
       	    <div class="card-body">
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editIndex()" type="button">Edit</button>
-			  <button id="save" class="btn btn-primary btn-sm" onclick="saveIndex()" type="button">Save</button><br>
+			        <button id="save" class="btn btn-primary btn-sm" onclick="saveIndex()" type="button">Save</button><br>
 			  <!--<div class="indexwiki"><?php /* echo $wiki->getBody() */?></div> -->
       	    </div>
     	  </div>
@@ -41,7 +41,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     	  <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#docs">
       	    <div class="card-body">
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editHome()" type="button">Edit</button>
-			  <button id="save" class="btn btn-primary btn-sm" onclick="saveHome()" type="button">Save</button><br>
+			        <button id="save" class="btn btn-primary btn-sm" onclick="saveHome()" type="button">Save</button><br>
 			  <!--<div class="homewiki"><?php /* echo $wiki->getBody() */?></div> -->
       	    </div>
     	  </div>
@@ -58,7 +58,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     	  <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#docs">
       	    <div class="card-body">
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editProfile()" type="button">Edit</button>
-			  <button id="save" class="btn btn-primary btn-sm" onclick="saveProfile()" type="button">Save</button><br>
+			        <button id="save" class="btn btn-primary btn-sm" onclick="saveProfile()" type="button">Save</button><br>
 			  <!--<div class="profilewiki"><?php /* echo $wiki->getBody() */?></div> -->
       	    </div>
     	  </div>
@@ -75,7 +75,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     	  <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#docs">
       	    <div class="card-body">
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editEditProfile()" type="button">Edit</button>
-			  <button id="save" class="btn btn-primary btn-sm" onclick="saveEditProfile()" type="button">Save</button><br>
+			        <button id="save" class="btn btn-primary btn-sm" onclick="saveEditProfile()" type="button">Save</button><br>
 			  <!--<div class="editprofilewiki"><?php /* echo $wiki->getBody() */?></div> -->
       	    </div>
     	  </div>
@@ -92,7 +92,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     	  <div id="collapseFive" class="collapse show" aria-labelledby="headingFive" data-parent="#docs">
       	    <div class="card-body">
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editAnnouncements()" type="button">Edit</button>
-			  <button id="save" class="btn btn-primary btn-sm" onclick="saveAnnouncements()" type="button">Save</button><br>
+			        <button id="save" class="btn btn-primary btn-sm" onclick="saveAnnouncements()" type="button">Save</button><br>
 			  <!--<div class="announcementswiki"><?php /* echo $wiki->getBody() */?></div> -->
       	    </div>
     	  </div>
@@ -109,7 +109,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     	  <div id="collapseSix" class="collapse show" aria-labelledby="headingSix" data-parent="#docs">
       	    <div class="card-body">
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editEvents()" type="button">Edit</button>
-			  <button id="save" class="btn btn-primary btn-sm" onclick="saveEvents()" type="button">Save</button><br>
+			        <button id="save" class="btn btn-primary btn-sm" onclick="saveEvents()" type="button">Save</button><br>
 			  <!--<div class="eventswiki"><?php /* echo $wiki->getBody() */?></div> -->
       	    </div>
     	  </div>
@@ -126,7 +126,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     	  <div id="collapseSeven" class="collapse show" aria-labelledby="headingSeven" data-parent="#docs">
       	    <div class="card-body">
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editEmail()" type="button">Edit</button>
-			  <button id="save" class="btn btn-primary btn-sm" onclick="saveEmail()" type="button">Save</button><br>
+			        <button id="save" class="btn btn-primary btn-sm" onclick="saveEmail()" type="button">Save</button><br>
 			  <!--<div class="emailwiki"><?php /* echo $wiki->getBody() */?></div> -->
       	    </div>
     	  </div>
@@ -143,7 +143,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     	  <div id="collapseEight" class="collapse show" aria-labelledby="headingEight" data-parent="#docs">
       	    <div class="card-body">
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editDirectory()" type="button">Edit</button>
-			  <button id="save" class="btn btn-primary btn-sm" onclick="saveDirectory()" type="button">Save</button><br>
+			        <button id="save" class="btn btn-primary btn-sm" onclick="saveDirectory()" type="button">Save</button><br>
 			  <!--<div class="directorywiki"><?php /* echo $wiki->getBody() */?></div> -->
       	    </div>
     	  </div>
@@ -160,7 +160,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     	  <div id="collapseNine" class="collapse show" aria-labelledby="headingNine" data-parent="#docs">
       	    <div class="card-body">
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editAdmin()" type="button">Edit</button>
-			  <button id="save" class="btn btn-primary btn-sm" onclick="saveAdmin()" type="button">Save</button><br>
+			        <button id="save" class="btn btn-primary btn-sm" onclick="saveAdmin()" type="button">Save</button><br>
 			  <!--<div class="adminwiki"><?php /* echo $wiki->getBody() */?></div> -->
       	    </div>
     	  </div>
@@ -177,7 +177,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     	  <div id="collapseTen" class="collapse show" aria-labelledby="headingTen" data-parent="#docs">
       	    <div class="card-body">
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editFAQ()" type="button">Edit</button>
-			  <button id="save" class="btn btn-primary btn-sm" onclick="saveFAQ()" type="button">Save</button><br>
+			        <button id="save" class="btn btn-primary btn-sm" onclick="saveFAQ()" type="button">Save</button><br>
 			  <!--<div class="faqwiki"><?php /* echo $wiki->getBody() */?></div> -->
       	    </div>
     	  </div>
