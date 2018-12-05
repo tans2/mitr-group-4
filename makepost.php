@@ -11,7 +11,7 @@ if (isset($_POST['postMade'])) {
 	$body = htmlspecialchars(trim($_POST['postBody']));
 	$author = htmlspecialchars(trim($_SESSION['rin']));
 
-	$insquery = 'INSERT INTO announcement (`title`, `subject`, `body`, `createdBy`) VALUES (?,?,?,?)';
+	$insquery = 'INSERT INTO announcement (`title`, `subject`, `body`, `createdBy`, `date`, `uid`) VALUES (?,?,?,?,CURRENT_TIMESTAMP, NULL)';
 	$stmt = $mysqli->prepare($insquery);
 	$stmt->bind_param("sssi", $title, $subject, $body, $author);
 	$stmt->execute();
