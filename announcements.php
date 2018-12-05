@@ -11,7 +11,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 	<h1 class="display-4"> Announcements </h1><br>
 	<a class="btn btn-primary" role="button" href="makepost.php">Make an Announcement</a><br></br>
 	<?php
-	$query = 'SELECT * FROM announcement';
+	$query = 'SELECT * FROM announcement ORDER BY date DESC';
 	$result = $mysqli->query($query);
       /* echo "<style>
 table, thead, tbody, th, tr, td {
@@ -46,7 +46,7 @@ table, thead, tbody, th, tr, td {
 		$names = $poster->fetch_assoc();
 
 		//print out the author of the post
-		echo "<p class='card-text'>" . $names['firstName'] . ' ' . $names['lastName'] . "</p>";
+		echo "<p class='card-text'>Posted by: " . $names['firstName'] . ' ' . $names['lastName'] . "</p>";
         
 		//make a button to read and understand post
 		echo '<form class="acknowledge" action="announcements.php" method="post">';
