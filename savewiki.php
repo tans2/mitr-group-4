@@ -1,13 +1,19 @@
 <?php
-include("../objects/wiki.php");
-include("../inc/dbinfo.php");
+require_once('assets/inc/dbinfo.php');
+require_once('assets/objects/wiki.php');
+session_start();
+
+if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
+{
+    header('Location: index.php');
+}
 
 if(isset($_POST['index']))
 {
     $wiki = new wiki( "index", $mysqli );
     $wiki->setBody($_POST['index']);
     $wiki->updateWiki($mysqli);
-    header("Location: indexwiki.php");
+    header("Location: savewiki.php");
 } 
 elseif(isset($_POST['profile'])) 
 {
@@ -74,6 +80,6 @@ elseif(isset($_POST['faq']))
 }
 else
 {
-    header("Location: ../../wikihome.php");
+    header("Location: wikihome.php");
 }
 ?>
