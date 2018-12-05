@@ -11,7 +11,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 
 
 <html> 
-  <script src="../assets/js/wiki.js"></script>
+  <script src="assets/js/wiki.js"></script>
 </html>
 <body>
   <div class="jumbotron container-fluid">
