@@ -11,7 +11,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 </head>
 
 <body>
-  <div class="jumbotron">
+  <div class="jumbotron container-fluid">
   	<h1 class="display-4"> Events </h1>
   	<div class="container">
       <div class="row">
@@ -37,8 +37,8 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 			?>
 		    <h5 class="card-title">Create an Event</h5>
 		    <form action="createevent.php" method="post">
-			  <label for=title><b>Title: </b></label><br><input type="text" name="eventTitle" style="border-width:3px;"/><br>
-			  <label for=date><b>Date: </b></label><br><input type="date" name="eventDate" style="border-width:3px;"/><br>
+			  <label for=title><b>Title: </b></label><br><input class="form-control" type="text" name="eventTitle"/><br>
+			  <label for=date><b>Date: </b></label><br><input class="form-control" type="date" name="eventDate"/><br>
 			  <label for=mandatory><b>Mandatory: </b></label><input type="checkbox" name="mandatory" value="mandatory"/><br>
 			  <button class="btn btn-sm btn-primary" type="submit" value="Submit" name="eventMade">Submit</button>
 			</form>
@@ -46,10 +46,10 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 		</div>
 		
 		<div class="col-6">
-	      <div class="card" style="margin: auto;width: 50%;padding: 10px;">
+	    <div class="card" style="margin: auto;width: 50%;padding: 10px;">
 			<h5 class="card-title"> Select Event</h5>
 			<form action="attendance.php" method="post">
-			<select name="eventSelect">
+			<select class="form-control" name="eventSelect">
 				<?php
 				$result = $mysqli->query("SELECT name, eventID FROM cadetEvent");
 				while($row = $result->fetch_assoc()) {
@@ -60,7 +60,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 					}
 				}
 				?>
-			</select><br></br>
+			</select><br>
 			<button class="btn btn-sm btn-primary" type="submit" value="Submit" name="selectevent">View Attendees</button><br></br>
       <input class="btn btn-sm btn-primary" type="submit" name="Export" value="Export to Excel"/>
 			</form>

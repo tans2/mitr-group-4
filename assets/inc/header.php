@@ -30,7 +30,7 @@ if ( isset($_SESSION['login']) && $_SESSION['login'] )
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="home.php">
-            <img src="assets/images/airforcelogo.png" width="60" height="50" class="d-inline-block align-center" alt="">
+            <img src="assets/images/default.jpeg" width="80" height="80" class="d-inline-block align-center" alt="">
         </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -47,11 +47,11 @@ if ( isset($_SESSION['login']) && $_SESSION['login'] )
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> More
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="attendance.php">Attendance</a>
+              <a class="dropdown-item" href="attendance.php">Events</a>
               <a class="dropdown-item" href="announcements.php">Announcements</a>
                 <a class="dropdown-item" href="directory.php">Cadet Directory</a>
               <a class="dropdown-item" href="https://rpi.account.box.com/login">Media/Documents</a>
-                <a class="dropdown-item" href="wikihome.php">Wiki</a>
+                <a class="dropdown-item" href="wikihome.php">Documentation</a>
                 <a class="dropdown-item" href="sendemail.php">Send Email</a>
         <?php 
           if(isset($_SESSION["rin"])){
@@ -66,7 +66,7 @@ if ( isset($_SESSION['login']) && $_SESSION['login'] )
                     $row = $result->fetch_assoc();
               
               if($row['admin'] === 1) {
-                  echo "<a class=\"dropdown-item\" href=\"admin.php\">Admin Page</a>";
+                  echo "<a class=\"dropdown-item\" href=\"admin.php\">Admin</a>";
               }
         }
                 ?>

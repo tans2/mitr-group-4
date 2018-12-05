@@ -77,7 +77,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
       <div class="card">
         <div class="card-body">
           <form action="updateProfile.php" method="post" enctype="multipart/form-data" onsubmit="return validatePass()" name="passChange">
-            <h3>Change Password</h3>
+            <h5 class="card-title">Change Password</h5>
             <div>
                 <strong>Old Password:</strong><br>
                 <input type="password" name="oldPass" id="oldPass" size="30"/>

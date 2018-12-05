@@ -104,26 +104,26 @@ function passMatch()
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" onsubmit="return validateNewUser();" name="createcadet">
                 <div>
                   First Name:<br>
-                  <input type="text" name="first" size="30" id="firstname"/>
+                  <input class="form-control" type="text" name="first" size="30" id="firstname"/>
                 </div>
                 <div>
                   Last Name:<br>
-                  <input type="text" name="last" size="30" id="lastname"/>
+                  <input class="form-control" type="text" name="last" size="30" id="lastname"/>
                 </div>
                 <div>
                   RIN:<br>
-                  <input type="text" name="rin" size="30" id="rin"/>
+                  <input class="form-control" type="text" name="rin" size="30" id="rin"/>
                 </div>
                 <div>
                   Password:<br>
-                  <input type="password" name="pass" size="30" id="password"/>
+                  <input class="form-control" type="password" name="pass" size="30" id="password"/>
                 </div>
                 <div>
                   Confirm Password:<br>
-                  <input type="password" name="pass2" size="30" id="confpassword"/>
+                  <input class="form-control" type="password" name="pass2" size="30" id="confpassword"/>
                 </div>
                 <div>
-                  Administrative Privleges:<br>
+                  Administrative Privileges:<br>
                   <select name="admin">
                     <option value="0">No</option>
                     <option value="1">Yes</option>
@@ -181,12 +181,11 @@ function passMatch()
                 </div>
                 <div class="clearfix">
                     Card Input:<br>
-                    <input type="text" name="newrfid"/><br>
+                    <input class="form-control" type="text" name="newrfid"/><br>
                 </div>
-                <br>
                 <div class="clearfix">
-                  <input class="btn btn-primary" type="submit" value="Add Cadet" />
-                  <input class="btn btn-primary" type="reset" value="Reset"/>
+                  <input class="btn btn-sm btn-primary" type="submit" value="Add Cadet" />
+                  <input class="btn btn-sm btn-primary" type="reset" value="Reset"/>
                 </div>
               </form><br>
             </div>
@@ -195,10 +194,9 @@ function passMatch()
 
 
       <div class="col-4">
-        <div class="card">
-          <div id="makeuser" class="card">  
-            <div id="memWrapper" class="card-body">
-              <h5 id="memHeader" class="card-title">Remove User</h5>
+        <div id="makeuser" class="card">  
+          <div id="memWrapper" class="card-body">
+            <h5 id="memHeader" class="card-title">Remove User</h5>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                     <select name="remove" size="10" style="width:80%;">
                       <?php 
@@ -215,19 +213,19 @@ function passMatch()
                         }
                       ?>
                     </select><br></br>
-                    <button class="btn btn-primary" name="submit" type="submit">Remove</button>
+                    <button class="btn btn-sm btn-primary" name="submit" type="submit">Remove</button>
                 </form>
-            </div>
+          </div>
         </div>
-    </div>
-</div>
+      <!-- </div> -->
 
-<div class="col-4">
+<!-- <div class="col-4"> -->
   <div class="card">
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST"  name="changecadet">
-      <h5 class="card-title">Modify User Info</h4>
+    <div class="card-body">
+      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST"  name="changecadet">
+      <h5 class="card-title">Modify User Info</h5>
       <strong>Select Cadet</strong><br>
-      <select name="modifycadet" size="10" style="width:80%;">
+      <select name="modifycadet" size="10" style="width:80%;margin:auto">
    
                 <?php 
                     $stmt = $mysqli->prepare("SELECT * FROM cadet");
@@ -293,18 +291,22 @@ function passMatch()
                 <option value="Foxtrot">Foxtrot</option>
               </select>
             </div>
-        <button class="btn btn-primary" type="submit" name="changecadet">Modify Cadet Info</button>
+        <button class="btn btn-sm btn-primary" type="submit" name="changecadet">Modify Cadet Info</button>
     </form>
+  <!-- </div> -->
   </div>
 </div>
+</div>
     
-<div class="card" style="position: absolute;right: 0px;bottom: 0px;width: 30%;">  
-    <div id="memWrapper" class="card-body">
-        <a class="btn btn-primary" href="attend.php">Set Event Attendance</a>
-    </div>
-        <div id="memWrapper" class="card-body">
-        <a class="btn btn-primary" href="addgroup.php">Create/Modify Group</a>
+<div class="col-4">
+<div class="card">  
+    <div class="card-body">
+        <h5 class="card-title">Additional Admin Links</h5>
+        <a class="btn btn-sm btn-primary" href="attend.php">Set Event Attendance</a><br></br>
+        <a class="btn btn-sm btn-primary" href="addgroup.php">Create/Modify Group</a>
     </div>
 </div>
+</div>
+
 
 <?php include('./assets/inc/footer.php'); ?>

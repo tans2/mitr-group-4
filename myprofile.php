@@ -8,7 +8,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 
 
 <body>
-  <div class="jumbotron">
+  <div class="jumbotron container-fluid">
       <h1 class="display-4"><?php echo "Cadet " . $cadet->getLast() ?></h1>
         <div class="container">
           <div class="row">

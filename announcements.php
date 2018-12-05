@@ -7,7 +7,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 ?>
 
 <body>
-  <div class="jumbotron">
+  <div class="jumbotron container-fluid">
 	<h1 class="display-4"> Announcements </h1>
 	<a class="btn btn-primary" role="button" href="makepost.php">Make an Announcement</a>
 	<?php
