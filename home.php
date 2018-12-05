@@ -20,7 +20,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
             echo "<div class=\"card-body\">";
     		echo "<h5 class=\"card-title\">" . $row['name'] . "</h5>";
     		echo "<p class=\"card-text\">" . $row['date'] . "</p>";
-    		echo "<a href='announcements.php?eventid=" . $row['eventID'] . "' class=\"btn btn-primary\">View</a></div>";
+    		echo "<a href='attendance.php?eventid=" . $row['eventID'] . "' class=\"btn btn-primary\">View</a></div>";
   		
         } ?>
 	</div>

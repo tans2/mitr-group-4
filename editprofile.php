@@ -50,17 +50,17 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
       <div class="card">
         <div class="card-body">
           <strong>Bio: </strong>
-          <div class="cadetBio"><?php echo $cadet->getBio() ?></div>
+          <div class="cadetBio"><?php echo $cadet->getBio(); ?></div>
           <button id="edit" class="btn btn-sm btn-primary" onclick="editBio()" type="button">Edit</button>
           <button id="save" class="btn btn-sm btn-primary" onclick="saveBio()" type="button">Save</button><br><br>
 
           <strong>Air Force Goals: </strong>
-          <div class="afGoals"><?php echo $cadet->getAirForceGoals() ?></div>
+          <div class="afGoals"><?php echo $cadet->getAirForceGoals(); ?></div>
           <button id="edit" class="btn btn-sm btn-primary" onclick="editAFG()" type="button">Edit</button>
           <button id="save" class="btn btn-sm btn-primary" onclick="saveAFG()" type="button">Save</button><br><br>
 
           <strong>Personal Goals: </strong>
-          <div class="pGoals"><?php echo $cadet->getPersonalGoals() ?></div>
+          <div class="pGoals"><?php echo $cadet->getPersonalGoals(); ?></div>
           <button id="edit" class="btn btn-sm btn-primary" onclick="editPG()" type="button">Edit</button>
           <button id="save" class="btn btn-sm btn-primary" onclick="savePG()" type="button">Save</button><br><br>
 
