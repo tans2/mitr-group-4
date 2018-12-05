@@ -125,18 +125,22 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     else
     {
          if(isset($_POST["Export"])){  
-              $query = "SELECT firstName, lastName, flight, name, date FROM cadet, cadetEvent WHERE cadetEvent.eventID = " . $_POST["eventSelect"];
+              $query = "SELECT firstName, lastName, flight, name, excused_absence, date FROM cadet, cadetEvent, attendance WHERE cadet.rin = attendance.rin AND attendance.eventid = cadetEvent.eventID AND attendance.eventid = " . $_POST["eventSelect"];
         $result = $mysqli->query($query);
              if(file_exists("assets/files/eventAttendance.csv"))
              {
                  unlink("assets/files/eventAttendance.csv");
              }
         $file = fopen("assets/files/eventAttendance.csv","w"); 
-          fputcsv($file, array('First Name', 'Last Name', 'Flight', 'Event', 'Date'));  
-
-        while ($row = $result->fetch_assoc()) {
-            fputcsv($file, $row);
+          fputcsv($file, array('First Name', 'Last Name', 'Flight', 'Event', 'Excused', 'Date'));  
+        if($result->num_rows > 0)
+        {
+             while ($row = $result->fetch_assoc()) 
+             {
+                fputcsv($file, $row);
+             }
         }
+       
             
           fclose($file);  
              echo "<a href='assets/files/eventAttendance.csv' target='_blank'>Download Attendance File</a>";
