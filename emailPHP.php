@@ -30,7 +30,7 @@ function send($addresses, $subject, $body){
     $mail->Port = 587;                                   
 
     $mail->From = "afrotcdet550@gmail.com";
-    $mail->FromName = "Airforce ROTC Detatchment 550";
+    $mail->FromName = "Airforce ROTC Det 550";
 
     $arrlength = count($addresses);
 

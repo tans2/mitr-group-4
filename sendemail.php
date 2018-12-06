@@ -9,7 +9,7 @@ include("assets/inc/dbinfo.php");
       <div class="card-body">
         <form id="batchemail" method="POST" action="sendemail.php">
             <label class="card-text" for="address"><b>Mail Groups (Ctl/Command Click to multiselect)</b></label><br>
-            <select id="grouplist" name="groups[]" multiple>
+            <select id="grouplist" class="form-control" name="groups[]" multiple>
             <option value="null">No Groups</option>
             <?php
                 $query = 'SELECT label FROM cadetGroup';
@@ -41,8 +41,7 @@ include("assets/inc/dbinfo.php");
                 $addresses = explode(";", $trimmed);
             }
             if(isset($_POST["groups"]) && $_POST["groups"] != "null" && !in_array("null", $_POST["groups"])){
-
-                $query = 'SELECT primaryEmail AS email FROM (cadet LEFT JOIN groupmember ON cadet.rin = groupmember.rin) LEFT JOIN cadetgroup ON groupmember.groupID = cadetgroup.id WHERE cadetgroup.label = ?';
+                $query = 'SELECT primaryEmail AS email FROM (cadet LEFT JOIN groupMember ON cadet.rin = groupMember.rin) LEFT JOIN cadetGroup ON groupMember.groupID = cadetGroup.id WHERE cadetGroup.label = ?';
                 $stmt = $mysqli->prepare($query);
                 $size = count($_POST["groups"]);
                 for($x = 0; $x < $size; $x++) { 
@@ -50,7 +49,6 @@ include("assets/inc/dbinfo.php");
                     $stmt->execute();
                     $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()){
-                        echo $row['email'];
                         $addresses[] = $row['email'];
                     }
                 }
