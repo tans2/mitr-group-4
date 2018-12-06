@@ -59,7 +59,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 
             <form id="addgroup" method="POST" name="addgroup" action="group.php" style="<?php echo $visible ?>">
                 <strong>Add Members</strong><br> 
-                <div class="selectcadets" style="height:100px; width:100px overflow-y: scroll;">
+                <div class="selectcadets" style="height:100px; width:200px; overflow-y: scroll;">
                 <?php
                     $query = 'SELECT * FROM cadet';
                     $stmt = $mysqli->prepare($query);
@@ -76,7 +76,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         
         <form id="addgroup" method="POST" name="addgroup" action="group.php" style="<?php echo $visible ?>">
             <strong>Remove Members</strong><br> 
-            <div class="selectcadets" style="height:100px; width:100px overflow-y: scroll;">
+            <div class="selectcadets" style="height:100px; width:200px; overflow-y: scroll;">
             <?php
                 $query = 'SELECT cadet.rin as rin, cadet.lastName as lastName FROM cadet, groupMember WHERE cadet.rin = groupMember.rin AND groupMember.groupID = ?';
                 $stmt = $mysqli->prepare($query);
