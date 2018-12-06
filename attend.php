@@ -88,7 +88,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 
 		if (isset($_SESSION['eventID'])) {
 			echo '<form class="attend" action="attend.php" method="post">';
-			echo 'Scan RPI ID Card: <input class="form-control" type="text" name="rfid" autofocus><br>';
+			echo 'Scan RPI ID Card: <input class="form-control" type="password" name="rfid" autofocus><br>';
 			echo '<input class="btn btn-sm btn-primary" type="submit" value="Submit">';
 			echo '</form><br>';
 			echo '<form class="attend" action="attend.php" method="post">';

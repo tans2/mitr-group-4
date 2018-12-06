@@ -18,29 +18,30 @@ if (isset($_POST['postMade'])) {
 	$stmt->close();
 
 	include("emailPHP.php");
-
-	if(isset($_POST["groups"]) && !in_array("All", $_POST["groups"])){
-		$query = 'SELECT primaryEmail AS email FROM (cadet LEFT JOIN groupMember ON cadet.rin = groupMember.rin) LEFT JOIN cadetGroup ON groupMember.groupID = cadetGroup.id WHERE cadetGroup.label = ?';
-		$stmt = $mysqli->prepare($query);
-		$size = count($_POST["groups"]);
-		for($x = 0; $x < $size; $x++) { 
-			$stmt->bind_param("s", $_POST['groups'][$x]);
+	if(!isset($_POST["groups"]) || in_array("null"), $_POST["groups"]){
+		if(isset($_POST["groups"]) && !in_array("null", $_POST["groups"])){
+			$query = 'SELECT primaryEmail AS email FROM (cadet LEFT JOIN groupMember ON cadet.rin = groupMember.rin) LEFT JOIN cadetGroup ON groupMember.groupID = cadetGroup.id WHERE cadetGroup.label = ?';
+			$stmt = $mysqli->prepare($query);
+			$size = count($_POST["groups"]);
+			for($x = 0; $x < $size; $x++) { 
+				$stmt->bind_param("s", $_POST['groups'][$x]);
+				$stmt->execute();
+				$result = $stmt->get_result();
+				while ($row = $result->fetch_assoc()){
+					$targets[] = $row['email'];
+				}
+			}
+		} else {
+			$sql = "SELECT primaryEmail, secondaryEmail FROM (cadet LEFT JOIN groupMember ON cadet.rin = groupMember.rin) LEFT JOIN cadetGroup ON groupMember.groupID = cadetGroup.id WHERE groupID IS NOT NULL;";
+			$stmt = $mysqli->prepare($sql);
 			$stmt->execute();
 			$result = $stmt->get_result();
-			while ($row = $result->fetch_assoc()){
-				$targets[] = $row['email'];
-			}
-		}
-	} else {
-		$sql = "SELECT primaryEmail, secondaryEmail FROM (cadet LEFT JOIN groupMember ON cadet.rin = groupMember.rin) LEFT JOIN cadetGroup ON groupMember.groupID = cadetGroup.id WHERE groupID IS NOT NULL;";
-		$stmt = $mysqli->prepare($sql);
-		$stmt->execute();
-		$result = $stmt->get_result();
-		while($row = $result->fetch_assoc()) {
-			if(!is_null($row["primaryEmail"])){
-				$targets[] = $row["primaryEmail"];
-			} else if (!is_null($row["secondaryEmail"])) {
-				$targets[] = $row["secondaryEmail"];
+			while($row = $result->fetch_assoc()) {
+				if(!is_null($row["primaryEmail"])){
+					$targets[] = $row["primaryEmail"];
+				} else if (!is_null($row["secondaryEmail"])) {
+					$targets[] = $row["secondaryEmail"];
+				}
 			}
 		}
 	}
@@ -66,7 +67,7 @@ if (isset($_POST['postMade'])) {
 			<form class="makepost" action="makepost.php" method="post">
 				<label class="card-text" for="address">Groups to notify (Ctl/Command Click to multiselect)</label><br>
 				<select id="grouplist" class="form-control" name="groups[]" multiple>
-				<option value="All">All Groups [Default]</option>
+				<option value="null">No Groups [Default]</option>
 				<?php
 					$query = 'SELECT label FROM cadetGroup';
 					$stmt = $mysqli->prepare($query);

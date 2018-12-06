@@ -10,7 +10,7 @@ include("assets/inc/dbinfo.php");
         <form id="batchemail" method="POST" action="sendemail.php">
             <label class="card-text" for="address"><b>Mail Groups (Ctl/Command Click to multiselect)</b></label><br>
             <select id="grouplist" class="form-control" name="groups[]" multiple>
-            <option value="null">No Groups</option>
+            <option value="null">No Groups [Default]</option>
             <?php
                 $query = 'SELECT label FROM cadetGroup';
                 $stmt = $mysqli->prepare($query);
