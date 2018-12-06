@@ -237,12 +237,12 @@ function passMatch()
                     }
                 ?>
             <br>
-         </select>
+         </select><br></br>
       Administrative Privileges:<br>
       <select name="admin">
         <option value="0">No</option>
         <option value="1">Yes</option>
-      </select><br>
+      </select><br></br>
       Rank:<br>
       <select name="rank">
         <option value="None">None</option>
@@ -278,9 +278,8 @@ function passMatch()
             <option value="Lieutenant General">Lieutenant General</option>
             <option value="General">General</option>
         </optgroup>
-      </select>
-            <div>
-              Flight:<br>
+      </select><br></br>
+            Flight:<br>
               <select name="flight">
                 <option value="None">None</option>
                 <option value="Alpha">Alpha</option>
@@ -289,8 +288,7 @@ function passMatch()
                 <option value="Delta">Delta</option>
                 <option value="Echo">Echo</option>
                 <option value="Foxtrot">Foxtrot</option>
-              </select>
-            </div>
+              </select><br></br>
         <button class="btn btn-sm btn-primary" type="submit" name="changecadet">Modify Cadet Info</button>
     </form>
   <!-- </div> -->

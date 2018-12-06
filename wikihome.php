@@ -25,7 +25,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         	</button>
       		</h5>
     	  </div>
-    	  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#docs">
+    	  <div id="collapseOne" class="collapse in" aria-labelledby="headingOne" data-parent="#docs">
       	    <div class="card-body">
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editIndex()" type="button">Edit</button>
 			  <button id="save" class="btn btn-primary btn-sm" onclick="saveIndex()" type="button">Save</button><br>
@@ -42,7 +42,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         	</button>
       		</h5>
     	  </div>
-    	  <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#docs">
+    	  <div id="collapseTwo" class="collapse in" aria-labelledby="headingTwo" data-parent="#docs">
       	    <div class="card-body">
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editHome()" type="button">Edit</button>
 			  <button id="save" class="btn btn-primary btn-sm" onclick="saveHome()" type="button">Save</button><br>
@@ -59,7 +59,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         	</button>
       		</h5>
     	  </div>
-    	  <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#docs">
+    	  <div id="collapseThree" class="collapse in" aria-labelledby="headingThree" data-parent="#docs">
       	    <div class="card-body">
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editProfile()" type="button">Edit</button>
 			  <button id="save" class="btn btn-primary btn-sm" onclick="saveProfile()" type="button">Save</button><br>
@@ -76,7 +76,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         	</button>
       		</h5>
     	  </div>
-    	  <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#docs">
+    	  <div id="collapseFour" class="collapse in" aria-labelledby="headingFour" data-parent="#docs">
       	    <div class="card-body">
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editEditProfile()" type="button">Edit</button>
 			  <button id="save" class="btn btn-primary btn-sm" onclick="saveEditProfile()" type="button">Save</button><br>
@@ -93,7 +93,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         	</button>
       		</h5>
     	  </div>
-    	  <div id="collapseFive" class="collapse show" aria-labelledby="headingFive" data-parent="#docs">
+    	  <div id="collapseFive" class="collapse in" aria-labelledby="headingFive" data-parent="#docs">
       	    <div class="card-body">
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editAnnouncements()" type="button">Edit</button>
 			  <button id="save" class="btn btn-primary btn-sm" onclick="saveAnnouncements()" type="button">Save</button><br>
@@ -110,7 +110,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         	</button>
       		</h5>
     	  </div>
-    	  <div id="collapseSix" class="collapse show" aria-labelledby="headingSix" data-parent="#docs">
+    	  <div id="collapseSix" class="collapse in" aria-labelledby="headingSix" data-parent="#docs">
       	    <div class="card-body">
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editEvents()" type="button">Edit</button>
 			  <button id="save" class="btn btn-primary btn-sm" onclick="saveEvents()" type="button">Save</button><br>
@@ -127,7 +127,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         	</button>
       		</h5>
     	  </div>
-    	  <div id="collapseSeven" class="collapse show" aria-labelledby="headingSeven" data-parent="#docs">
+    	  <div id="collapseSeven" class="collapse in" aria-labelledby="headingSeven" data-parent="#docs">
       	    <div class="card-body">
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editEmail()" type="button">Edit</button>
 			  <button id="save" class="btn btn-primary btn-sm" onclick="saveEmail()" type="button">Save</button><br>
@@ -144,7 +144,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         	</button>
       		</h5>
     	  </div>
-    	  <div id="collapseEight" class="collapse show" aria-labelledby="headingEight" data-parent="#docs">
+    	  <div id="collapseEight" class="collapse in" aria-labelledby="headingEight" data-parent="#docs">
       	    <div class="card-body">
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editDirectory()" type="button">Edit</button>
 			  <button id="save" class="btn btn-primary btn-sm" onclick="saveDirectory()" type="button">Save</button><br>
@@ -161,7 +161,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         	</button>
       		</h5>
     	  </div>
-    	  <div id="collapseNine" class="collapse show" aria-labelledby="headingNine" data-parent="#docs">
+    	  <div id="collapseNine" class="collapse in" aria-labelledby="headingNine" data-parent="#docs">
       	    <div class="card-body">
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editAdmin()" type="button">Edit</button>
 			  <button id="save" class="btn btn-primary btn-sm" onclick="saveAdmin()" type="button">Save</button><br>
@@ -178,7 +178,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         	</button>
       		</h5>
     	  </div>
-    	  <div id="collapseTen" class="collapse show" aria-labelledby="headingTen" data-parent="#docs">
+    	  <div id="collapseTen" class="collapse in" aria-labelledby="headingTen" data-parent="#docs">
       	    <div class="card-body">
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editFAQ()" type="button">Edit</button>
 			  <button id="save" class="btn btn-primary btn-sm" onclick="saveFAQ()" type="button">Save</button><br>

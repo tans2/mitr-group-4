@@ -29,14 +29,15 @@ if (isset($_POST['addcard'])) {
 </head>
 
 <body>
-
-	<div class="jumbotron">
-		<h1 class="display-4"> Connect RFID </h1>
-	</div>
-
-	<form action="connectrfid.php" method="post">
-		RIN: <input type="text" name="newrin"/><br>
-		Scan Card: <input type="text" name="newrfid"/><br>
-		<input type="submit" name="addcard" value="Submit"/>
-	</form>
+  <div class="jumbotron container-fluid">
+	<h1 class="display-4"> Connect RFID </h1>
+	<div class="card">
+	  <div class="card-body">
+		  <form action="connectrfid.php" method="post">
+			RIN: <input class="form-control" type="text" name="newrin"/><br>
+			Scan Card: <input class="form-control" type="text" name="newrfid"/><br>
+			<input class="btn btn-primary btn-sm" type="submit" name="addcard" value="Submit"/>
+		  </form>
+	  </div>
+  </div>
 </body>

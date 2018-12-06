@@ -6,10 +6,15 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 }
 ?>
 
-	<div class="card" style="position: absolute;left: 0px;width: 50%;">
-  		<div class="card-header">
-    		Activity
-  		</div>
+
+  <div class="jumbotron jumbotron-fluid">
+    <h1 class="display-4"> Hello! </h1>
+    <div class="row">
+      <div class="col-4">
+	    <div class="card" style="width:100%">
+  		  <div class="card-header">
+    		Events
+  		  </div>
   		<?php $sql = "SELECT * FROM `cadetEvent` ORDER BY date DESC LIMIT 5";
         $stmt = $mysqli->prepare($sql);
         $stmt->execute();
@@ -23,9 +28,19 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     		echo "<a href='attendance.php?eventid=" . $row['eventID'] . "' class=\"btn btn-primary\">View</a></div>";
   		
         } ?>
-	</div>
+	   </div>
+      </div>
 
-	<div class="card" style="position: absolute;right: 0px;width: 50%;">
+    <div class="col-4">
+      <div class="card" style="width:100%">
+        <div class="card-header">
+            Announcements
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+	  <div class="card" style="width:100%">
   		<div class="card-header">
     		Status
   		</div>
@@ -104,6 +119,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         <p class="card-text">Attendance: <?php echo $perc; ?>%</p>
     		<a href="attendance.php" class="btn btn-primary">View</a>
   		</div>
-	</div>
+      </div>
+    </div>
 
-<!-- <?php /* include('./assets/inc/footer.php'); */ ?> --> 
+<?php include('./assets/inc/footer.php'); ?>

@@ -16,7 +16,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
   	<div class="container">
       <div class="row">
         <div class="col-6">
-		  <div class="card" style="margin: auto;width: 50%;padding: 10px;">
+		  <div class="card" style="margin: auto;width: 100%;padding: 10px;">
 		  	<?php 
 			  if (isset($_POST["eventMade"])) {
 				$mandatory = 0;
@@ -46,7 +46,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 		</div>
 		
 		<div class="col-6">
-	    <div class="card" style="margin: auto;width: 50%;padding: 10px;">
+	    <div class="card" style="margin: auto;width: 100%;padding: 10px;">
 			<h5 class="card-title"> Select Event</h5>
 			<form action="attendance.php" method="post">
 			<select class="form-control" name="eventSelect">
@@ -69,11 +69,11 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     		
   	  </div>
     </div>
-  </div>
  
     
 <?php
 	if (isset($_POST["selectevent"])) {
+    echo '<br></br>';
 		$eventquery = 'SELECT name, mandatory, date FROM cadetEvent WHERE eventID = "' . $_POST["eventSelect"] . '"';
 		$eventresult = $mysqli->query($eventquery);
 		$erow = $eventresult->fetch_assoc();
@@ -147,6 +147,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
  }
     }
 ?>
+</div>
 </body>
 
 <?php include('./assets/inc/footer.php'); ?>

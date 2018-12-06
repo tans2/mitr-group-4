@@ -99,6 +99,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 			echo '<form class="show_attendance" action="attend.php" method="post">';
 			echo '<input class="btn btn-sm btn-primary" type="submit" value="Show All Atendees" name="show_attendance"/>';
 			echo '</form><br>';
+			echo '<a class="btn btn-sm btn-primary" href="connectrfid.php">Add Cadet ID Card</a>';
 		}
 
 		if (isset($_POST["show_attendance"])) {
@@ -120,5 +121,4 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 		}
 	?>
 
-	<button class="btn btn-sm btn-primary" href="connectrfid.php">Add Cadet ID Card</button>
 </body>

@@ -1,3 +1,9 @@
+$(document).ready(function(){
+  $("a.collapsed").click(function(){
+    $(this).find(".btn:contains('answers')").toggleClass("collapsed");
+  });
+});
+
 var editIndex = function() {
   $('.indexwiki').summernote({focus: true});
 };
