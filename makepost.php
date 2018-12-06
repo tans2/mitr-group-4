@@ -18,7 +18,7 @@ if (isset($_POST['postMade'])) {
 	$stmt->close();
 
 	include("emailPHP.php");
-	if(!isset($_POST["groups"]) || in_array("null"), $_POST["groups"]){
+	if(!isset($_POST["groups"]) || in_array("null", $_POST["groups"])){
 		if(isset($_POST["groups"]) && !in_array("null", $_POST["groups"])){
 			$query = 'SELECT primaryEmail AS email FROM (cadet LEFT JOIN groupMember ON cadet.rin = groupMember.rin) LEFT JOIN cadetGroup ON groupMember.groupID = cadetGroup.id WHERE cadetGroup.label = ?';
 			$stmt = $mysqli->prepare($query);

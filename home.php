@@ -25,7 +25,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
             echo "<div class=\"card-body\">";
     		echo "<h5 class=\"card-title\">" . $row['name'] . "</h5>";
     		echo "<p class=\"card-text\">" . $row['date'] . "</p>";
-    		echo "<a href='attendance.php?eventid=" . $row['eventID'] . "' class=\"btn btn-primary\">View</a></div>";
+    		echo "<a href='attendance.php?eventid=" . $row['eventID'] . "' class=\"btn btn-sm btn-primary\">View</a></div>";
   		
         } ?>
 	   </div>
@@ -36,6 +36,19 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         <div class="card-header">
             Announcements
         </div>
+            <?php
+            $query = 'SELECT a.title, a.subject, c.firstName, c.lastName FROM announcement a, cadet c WHERE a.createdBy = c.rin ORDER BY date DESC LIMIT 5;';
+            $stmt = $mysqli->prepare($query);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            while($row = $result->fetch_assoc()) {
+                echo "<div class='card-body'>";
+                echo "<h5 class='card-title'>" . $row['title'] . '</h5>';
+                echo "<p class='card-text'> " . $row['subject'] . '</p>';
+                echo "<p class='card-text'>" . $row['firstName'] . ' ' . $row['lastName'] . '</p></div>';
+            }
+            ?>
       </div>
     </div>
 
@@ -117,7 +130,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
                         }
                          ?>
         <p class="card-text">Attendance: <?php echo $perc; ?>%</p>
-    		<a href="attendance.php" class="btn btn-primary">View</a>
+    		<a href="attendance.php" class="btn btn-sm btn-primary">View</a>
   		</div>
       </div>
     </div>
