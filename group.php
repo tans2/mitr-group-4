@@ -49,6 +49,6 @@
             $smt->close();
         }
     }
-    header("Location: sendemail.php");
+    header("Location: addgroup.php");
 
 ?>
