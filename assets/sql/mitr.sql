@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 05, 2018 at 11:37 PM
+-- Generation Time: Dec 06, 2018 at 12:19 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -40,7 +40,8 @@ CREATE TABLE `acknowledge_posts` (
 INSERT INTO `acknowledge_posts` (`rin`, `announcement_id`) VALUES
 (123123123, 1),
 (123123123, 2),
-(123123123, 3);
+(123123123, 3),
+(123123123, 4);
 
 -- --------------------------------------------------------
 
@@ -65,7 +66,13 @@ INSERT INTO `announcement` (`title`, `subject`, `body`, `createdBy`, `uid`, `dat
 ('Fake Announcement', 'This is a test.', 'This is a fake announcement with random text in it about nothing very important.', 123123123, 1, '2018-12-05 22:34:55'),
 ('Fake Announcement', 'Something', 'Something happened that\'s important', 123123123, 2, '2018-12-05 22:34:55'),
 ('New E', 'New Event', 'asldkfjalsdkjf', 123123123, 3, '2018-12-05 22:34:55'),
-('asldkfjasdlkjf', 'ads;lfkj asdfja;d', 'as;ldk fjas;dlkfj a;sldk jf;qlkj ', 123123123, 4, '2018-12-05 22:35:16');
+('asldkfjasdlkjf', 'ads;lfkj asdfja;d', 'as;ldk fjas;dlkfj a;sldk jf;qlkj ', 123123123, 4, '2018-12-05 22:35:16'),
+('This is a Big Test', 'Lets see', 'I really hope this doesn\'t suck....', 123123123, 5, '2018-12-05 22:43:29'),
+('This is a Big Test', 'Lets see', 'I really hope this doesn\'t suck....', 123123123, 6, '2018-12-05 22:44:24'),
+('asdfasd', 'asdfasdf', 'asdfasdfasdf', 111111111, 7, '2018-12-05 22:45:14'),
+('This is a Big Test', 'Lets see', 'I really hope this doesn\'t suck....', 123123123, 8, '2018-12-05 22:45:57'),
+('This is a Big Test', 'Lets see', 'I really hope this doesn\'t suck....', 123123123, 9, '2018-12-05 22:46:14'),
+('asdfasdf', 'asdfasdf', 'asdfasdf', 123123123, 10, '2018-12-05 22:51:21');
 
 -- --------------------------------------------------------
 
@@ -148,7 +155,8 @@ INSERT INTO `cadetEvent` (`name`, `mandatory`, `date`, `eventID`) VALUES
 ('Fake Event', 1, '2018-11-29 00:00:00', 2),
 ('askdjfaskd', 1, '2018-11-29 00:00:00', 3),
 ('LLAB', 1, '2018-11-29 00:00:00', 4),
-('PT 37', 1, '2018-12-01 00:00:00', 5);
+('PT 37', 1, '2018-12-01 00:00:00', 5),
+('Fake Event LLAB', 1, '2018-12-05 00:00:00', 6);
 
 -- --------------------------------------------------------
 
@@ -213,7 +221,7 @@ INSERT INTO `wiki` (`name`, `body`) VALUES
 ('email', '<p>Email Wiki Page</p>'),
 ('events', '<p>Events Wiki Page</p>'),
 ('faq', '<h1><b><u>FAQ</u></b></h1>'),
-('home', '<h3>This is the new Wiki Page<br>as</h3><div class=\"card-header\" id=\"headingThree\">\n      		<h5 class=\"mb-0\">\n        	<button class=\"btn btn-link collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseThree\" aria-expanded=\"false\" aria-controls=\"collapseThree\">\n          	  Profile Page\n        	</button>\n      		</h5>\n    	  </div>\n    	  <div id=\"collapseThree\" class=\"in collapse\" aria-labelledby=\"headingThree\" data-parent=\"#docs\" style=\"\" aria-expanded=\"true\">\n      	    <div class=\"card-body\">\n      	  	  <button id=\"edit\" class=\"btn btn-primary btn-sm\" onclick=\"editProfile()\" type=\"button\">Edit</button>\n			  <button id=\"save\" class=\"btn btn-primary btn-sm\" onclick=\"saveProfile()\" type=\"button\">Save</button><br>\n			  <div class=\"profilewiki\" style=\"\"><h1><b><u>Profile Wiki Page</u></b></h1></div> \n      	    </div>\n    	  </div>\n  		'),
+('home', '<h3>Hopefully this works</h3><p><br></p><p><br></p>'),
 ('index', '<p>sss</p>'),
 ('profile', '<h1><b><u>Profile Wiki Page</u></b></h1>');
 
@@ -277,13 +285,13 @@ ALTER TABLE `wiki`
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `cadetEvent`
 --
 ALTER TABLE `cadetEvent`
-  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `cadetGroup`
