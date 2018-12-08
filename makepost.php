@@ -1,4 +1,5 @@
 <?php
+require_once "vendor/autoload.php";
 include('./assets/inc/header.php');
 if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 {
@@ -6,9 +7,9 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 }
 
 if (isset($_POST['postMade'])) {
-	$title = htmlspecialchars(trim($_POST['postTitle']));
-	$subject = htmlspecialchars(trim($_POST['postSubject']));
-	$body = htmlspecialchars(trim($_POST['postBody']));
+	$title = Html2Text\Html2Text::convert($_POST['postTitle']);
+	$subject = Html2Text\Html2Text::convert($_POST['postSubject']);
+	$body = $_POST['postBody'];
 	$author = htmlspecialchars(trim($_SESSION['rin']));
 
 	$insquery = 'INSERT INTO announcement (`title`, `subject`, `body`, `createdBy`, `date`, `uid`) VALUES (?,?,?,?,CURRENT_TIMESTAMP, NULL)';
