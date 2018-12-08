@@ -18,41 +18,26 @@ if (isset($_POST['postMade'])) {
 	$stmt->close();
 
 	include("emailPHP.php");
-	if(!isset($_POST["groups"]) || in_array("null", $_POST["groups"])){
-		if(isset($_POST["groups"]) && !in_array("null", $_POST["groups"])){
-			$query = 'SELECT primaryEmail AS email FROM (cadet LEFT JOIN groupMember ON cadet.rin = groupMember.rin) LEFT JOIN cadetGroup ON groupMember.groupID = cadetGroup.id WHERE cadetGroup.label = ?';
-			$stmt = $mysqli->prepare($query);
-			$size = count($_POST["groups"]);
-			for($x = 0; $x < $size; $x++) { 
-				$stmt->bind_param("s", $_POST['groups'][$x]);
-				$stmt->execute();
-				$result = $stmt->get_result();
-				while ($row = $result->fetch_assoc()){
-					$targets[] = $row['email'];
-				}
-			}
-		} else {
-			$sql = "SELECT primaryEmail, secondaryEmail FROM (cadet LEFT JOIN groupMember ON cadet.rin = groupMember.rin) LEFT JOIN cadetGroup ON groupMember.groupID = cadetGroup.id WHERE groupID IS NOT NULL;";
-			$stmt = $mysqli->prepare($sql);
+	if(isset($_POST["groups"]) && !in_array("null", $_POST["groups"])){
+		$query = 'SELECT primaryEmail AS email FROM (cadet LEFT JOIN groupMember ON cadet.rin = groupMember.rin) LEFT JOIN cadetGroup ON groupMember.groupID = cadetGroup.id WHERE cadetGroup.label = ?';
+		$stmt = $mysqli->prepare($query);
+		$size = count($_POST["groups"]);
+		for($x = 0; $x < $size; $x++) { 
+			$stmt->bind_param("s", $_POST['groups'][$x]);
 			$stmt->execute();
 			$result = $stmt->get_result();
-			while($row = $result->fetch_assoc()) {
-				if(!is_null($row["primaryEmail"])){
-					$targets[] = $row["primaryEmail"];
-				} else if (!is_null($row["secondaryEmail"])) {
-					$targets[] = $row["secondaryEmail"];
-				}
+			while ($row = $result->fetch_assoc()){
+				$targets[] = $row['email'];
 			}
 		}
+		$emailSubject = $title . ": " . $subject;
+		$poster = $mysqli->query('SELECT firstName, lastName FROM cadet WHERE rin="' . $author . '"');
+		$postername = $poster->fetch_assoc();
+		$emailBody = $body . "<br>&nbsp;<br>" . "Created by:<br>" . $postername['firstName'] . " " . $postername['lastName'] . "<br>" . $author;
+		
+		send($targets, $emailSubject, $emailBody);
 	}
 	
-	$emailSubject = $title . ": " . $subject;
-	$poster = $mysqli->query('SELECT firstName, lastName FROM cadet WHERE rin="' . $author . '"');
-	$postername = $poster->fetch_assoc();
-	$emailBody = $body . "<br>&nbsp;<br>" . "Created by:<br>" . $postername['firstName'] . " " . $postername['lastName'] . "<br>" . $author;
-	
-	send($targets, $emailSubject, $emailBody); 
-
 	//echo "<script type='text/javascript'>location.href='announcements.php';</script>";
 	//header('Location: announcements.php');
 }
