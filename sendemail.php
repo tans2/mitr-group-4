@@ -19,7 +19,7 @@ include("assets/inc/dbinfo.php");
             };
           </script>
 <style>
-.note-popover .popover-content, .panel-heading.note-toolbar {
+.note-popover .popover-content {
     display: none;
 }
 </style>
