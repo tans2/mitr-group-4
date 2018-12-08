@@ -53,6 +53,22 @@ if( isset($_POST['rin']) && isset($_POST['pass']) && isset($_POST['pass2']) && p
     header('Location: admin.php');
 }
 
+if (isset($_POST['dannouncement'])) {
+    $query = "DELETE FROM announcement WHERE uid ='" . $_POST['deleteAnnouncement']."';";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $stmt->close();
+    header('Location: admin.php');
+}
+
+if (isset($_POST['devent'])) {
+    $query = "DELETE FROM cadetEvent WHERE eventID ='" . $_POST['deleteEvent']."';";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $stmt->close();
+    header('Location: admin.php');
+}
+
 // Checks to make sure the confirmation password and actual password match
 function passMatch()
 {
@@ -306,5 +322,31 @@ function passMatch()
 </div>
 </div>
 
+<form action="admin.php" method="post">
+    <select name="deleteEvent">
+        <?php
+        $query = "SELECT name, date, eventID FROM cadetEvent;";
+        $result = $mysqli->query($query);
+        while ($row = $result->fetch_assoc()) {
+            echo '<option value="'.$row['eventID'].'">'.$row['name'].' '.$row['date'].'</option>';
+        }
+        ?>
+    </select>
+    <button class="btn btn-sm btn-primary" type="submit" name="devent">Delete Event</button>
+</form>
+
+<form action="admin.php" method="post">
+    <select name="deleteAnnouncement">
+        <?php
+        $query = "SELECT title, uid, date FROM announcement;";
+        $result = $mysqli->query($query);
+        while ($row = $result->fetch_assoc()) {
+            echo '<option value="'.$row['uid'].'">'.$row['title'].' '.$row['date'].'</option>';
+        }
+        ?>
+    </select>
+    <button class="btn btn-sm btn-primary" type="submit" name="dannouncement">Delete Announcement</button>
+
+</form>
 
 <?php include('./assets/inc/footer.php'); ?>
