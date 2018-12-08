@@ -26,7 +26,7 @@ var saveIndex = function() {
 
 var editProfile = function() {
   $('.profilewiki').summernote({focus: true, toolbar: [
-    // [groupName, [list of button]]
+//     [groupName, [list of button]]
     ['style', ['bold', 'italic', 'underline', 'clear']],
     ['font', ['strikethrough', 'superscript', 'subscript']],
     ['color', ['color']],

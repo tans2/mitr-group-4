@@ -18,6 +18,11 @@ include("assets/inc/dbinfo.php");
                 document.getElementById('body').value = $('#body').summernote('code');
             };
           </script>
+<style>
+.note-popover .popover-content, .panel-heading.note-toolbar {
+    display: none;
+}
+</style>
 
 <div class="jumbotron container-fluid">
   <h1 class="display-4"> Send an Email </h1>
