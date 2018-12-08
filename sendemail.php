@@ -1,13 +1,29 @@
 <?php
 include('./assets/inc/header.php');
 include("assets/inc/dbinfo.php");
-?>
+?>    <script>
+              $(document).ready(function(){
+                  $('#body').summernote({focus: true, toolbar: [
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'hr']],
+                    ['view', ['fullscreen', 'codeview']],
+                    ['help', ['help']]
+                  ] });
+              });
+            
+             function sendBody() {
+                document.getElementById('body').value = $('#body').summernote('code');
+            };
+          </script>
 
 <div class="jumbotron container-fluid">
   <h1 class="display-4"> Send an Email </h1>
     <div class="card">
       <div class="card-body">
-        <form id="batchemail" method="POST" action="sendemail.php">
+        <form id="batchemail" method="POST" action="sendemail.php" novalidate>
             <label class="card-text" for="address"><b>Mail Groups (Ctl/Command Click to multiselect)</b></label><br>
             <select id="grouplist" class="form-control" name="groups[]" multiple>
             <option value="null">No Groups [Default]</option>
@@ -26,8 +42,8 @@ include("assets/inc/dbinfo.php");
             <label class="card-text" for="subject"><b>Subject</b></label><br>
             <input class="form-control" type="text" name="subject" required><br>
             <label class="card-text" for="body"><b>Body</b></label><br>
-            <input class="form-control" type="text" name="body" required><br>
-            <input class="btn btn-sm btn-primary" type="submit" name="send" value="Send">
+            <input class="form-control" type="text" name="body" id="body" required><br>
+            <button class="btn btn-sm btn-primary" type="submit" name="send" onclick="sendBody()" value="Send">Send</button>
         </form><br>
 
     <?php

@@ -5,7 +5,13 @@ $(document).ready(function(){
 });
 
 var editIndex = function() {
-  $('.indexwiki').summernote({focus: true});
+  $('.indexwiki').summernote({focus: true, toolbar: [
+    // [groupName, [list of button]]
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough', 'superscript', 'subscript']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol']]
+  ]});
 };
 
 var saveIndex = function() {
@@ -19,7 +25,13 @@ var saveIndex = function() {
 
 
 var editProfile = function() {
-  $('.profilewiki').summernote({focus: true});
+  $('.profilewiki').summernote({focus: true, toolbar: [
+    // [groupName, [list of button]]
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough', 'superscript', 'subscript']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol']]
+  ]});
 };
 
 var saveProfile = function() {
@@ -32,7 +44,13 @@ var saveProfile = function() {
 };
 
 var editHome = function() {
-  $('.homewiki').summernote({focus: true});
+  $('.homewiki').summernote({focus: true, toolbar: [
+    // [groupName, [list of button]]
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough', 'superscript', 'subscript']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol']]
+  ]});
 };
 
 var saveHome = function() {
@@ -45,7 +63,13 @@ var saveHome = function() {
 };
 
 var editEditProfile = function() {
-  $('.editprofilewiki').summernote({focus: true});
+  $('.editprofilewiki').summernote({focus: true, toolbar: [
+    // [groupName, [list of button]]
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough', 'superscript', 'subscript']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol']]
+  ]});
 };
 
 var saveEditProfile = function() {
@@ -58,7 +82,13 @@ var saveEditProfile = function() {
 };
 
 var editAnnouncements = function() {
-  $('.announcementswiki').summernote({focus: true});
+  $('.announcementswiki').summernote({focus: true, toolbar: [
+    // [groupName, [list of button]]
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough', 'superscript', 'subscript']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol']]
+  ]});
 };
 
 var saveAnnouncements = function() {
@@ -71,7 +101,13 @@ var saveAnnouncements = function() {
 };
 
 var editEvents = function() {
-  $('.eventswiki').summernote({focus: true});
+  $('.eventswiki').summernote({focus: true, toolbar: [
+    // [groupName, [list of button]]
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough', 'superscript', 'subscript']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol']]
+  ]});
 };
 
 var saveEvents = function() {
@@ -84,7 +120,13 @@ var saveEvents = function() {
 };
 
 var editEmail = function() {
-  $('.emailwiki').summernote({focus: true});
+  $('.emailwiki').summernote({focus: true, toolbar: [
+    // [groupName, [list of button]]
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough', 'superscript', 'subscript']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol']]
+  ]});
 };
 
 var saveEmail = function() {
@@ -97,7 +139,13 @@ var saveEmail = function() {
 };
 
 var editDirectory = function() {
-  $('.directorywiki').summernote({focus: true});
+  $('.directorywiki').summernote({focus: true, toolbar: [
+    // [groupName, [list of button]]
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough', 'superscript', 'subscript']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol']]
+  ]});
 };
 
 var saveDirectory = function() {
@@ -110,7 +158,13 @@ var saveDirectory = function() {
 };
 
 var editAdmin = function() {
-  $('.adminwiki').summernote({focus: true});
+  $('.adminwiki').summernote({focus: true, toolbar: [
+    // [groupName, [list of button]]
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough', 'superscript', 'subscript']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol']]
+  ]});
 };
 
 var saveAdmin = function() {
@@ -123,7 +177,13 @@ var saveAdmin = function() {
 };
 
 var editFAQ = function() {
-  $('.faqwiki').summernote({focus: true});
+  $('.faqwiki').summernote({focus: true, toolbar: [
+    // [groupName, [list of button]]
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough', 'superscript', 'subscript']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol']]
+  ]});
 }
 
 var saveFAQ = function() {

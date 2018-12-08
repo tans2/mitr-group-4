@@ -1,5 +1,11 @@
 var editBio = function() {
-  $('.cadetBio').summernote({focus: true});
+  $('.cadetBio').summernote({focus: true, toolbar: [
+    // [groupName, [list of button]]
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough', 'superscript', 'subscript']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol']]
+  ]});
 };
 
 var saveBio = function() {
@@ -12,7 +18,13 @@ var saveBio = function() {
 };
     
 var editAFG = function() {
-  $('.afGoals').summernote({focus: true});
+  $('.afGoals').summernote({focus: true, toolbar: [
+    // [groupName, [list of button]]
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough', 'superscript', 'subscript']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol']]
+  ]});
 };
 
 var saveAFG = function() {
@@ -25,7 +37,13 @@ var saveAFG = function() {
 };
     
 var editPG = function() {
-  $('.pGoals').summernote({focus: true});
+  $('.pGoals').summernote({focus: true, toolbar: [
+    // [groupName, [list of button]]
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough', 'superscript', 'subscript']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol']]
+  ]});
 };
 
 var savePG = function() {
@@ -38,7 +56,13 @@ var savePG = function() {
 };
     
 var editAA = function() {
-  $('.awards').summernote({focus: true});
+  $('.awards').summernote({focus: true, toolbar: [
+    // [groupName, [list of button]]
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough', 'superscript', 'subscript']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol']]
+  ]});
 };
 
 var saveAA = function() {
