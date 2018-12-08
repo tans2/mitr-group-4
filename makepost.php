@@ -59,7 +59,28 @@ if (isset($_POST['postMade'])) {
 ?>
 
 <body>
-
+ <script>
+              $(document).ready(function(){
+                  $('#body').summernote({focus: true, toolbar: [
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'hr']],
+                    ['view', ['fullscreen', 'codeview']],
+                    ['help', ['help']]
+                  ] });
+              });
+            
+             function saveBody() {
+                document.getElementById('body').value = $('#body').summernote('code');
+            };
+          </script>
+<style>
+.note-popover .popover-content {
+    display: none;
+}
+</style>
 	<div class="jumbotron container-fluid">
 		<h1 class="display-4"> Make an Announcement </h1>
 		<div class="card">
@@ -80,8 +101,8 @@ if (isset($_POST['postMade'])) {
 				</select><br>
 				<p class="card-text">Title: <input class="form-control" type="text" name="postTitle"/>
 				<p class="card-text">Subject: <input class="form-control" type="text" name="postSubject"/>
-				<p class="card-text">Description: <textarea class="form-control" name="postBody"></textarea><br>
-				<input class="btn btn-sm btn-primary" type="submit" name="postMade" value="Submit"/>
+				<p class="card-text">Description: <textarea class="form-control" name="postBody" id="body"></textarea><br>
+				<input class="btn btn-sm btn-primary" type="submit" name="postMade" value="Submit" onclick="saveBody()"/>
 			</form>
 	</div>
 

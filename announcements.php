@@ -32,7 +32,7 @@ table, thead, tbody, th, tr, td {
 		//print out the information for the post
 		echo "<div class='card-header'>" . $row['title'] . "</div>";
 		echo "<div class='card-body'><h5 class='card-title'>" . $row['subject'] . "</h5>";
-        echo "<p class='card-text'>" . $row['body'] . "</p>";
+        echo $row['body'];
 		
 		if (isset($_POST[$row['uid']])) {
 			$insertquery = 'INSERT INTO acknowledge_posts (`rin`, `announcement_id`) VALUES (?,?)';
