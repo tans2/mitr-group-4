@@ -39,7 +39,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 		    <form action="createevent.php" method="post">
 			  <label for=title><b>Title: </b></label><br><input class="form-control" type="text" name="eventTitle"/><br>
 			  <label for=date><b>Date: </b></label><br><input class="form-control" type="datetime-local" name="eventDate"/><br>
-			  <label for=mandatory><b>Mandatory: </b></label><input type="checkbox" name="mandatory" value="mandatory"/><br>
+			  <label for=mandatory><b>Event Type: </b></label><br><select name="type"><option value="nonpmt">Non PMT</option><option value="pt">PT</option><option value="llab">LLAB</option></select><br><br> 
 			  <button class="btn btn-sm btn-primary" type="submit" value="Submit" name="eventMade">Submit</button>
 			</form>
 		  </div>

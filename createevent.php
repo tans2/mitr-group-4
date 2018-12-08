@@ -11,10 +11,26 @@ if (isset($_POST["eventMade"])) {
 	}
 	$title = htmlspecialchars(trim($_POST['eventTitle']));
 	$date = $_POST['eventDate'];
+    $type = $_POST['type'];
+    if($type == 'pt')
+    {
+        $pt = 1;
+        $llab = null;
+    }
+    else if($type == 'llab')
+    {
+        $pt = null;
+        $llab = 1;
+    }
+    else
+    {
+        $pt = null;
+        $llab = null;
+    }
 
-	$insertquery = 'INSERT INTO cadetEvent (`name`, `mandatory`, `date`) VALUES (?,?,?)';
+	$insertquery = 'INSERT INTO cadetEvent (name, date, pt, llab) VALUES (?,?,?,?)';
 	$stmt = $mysqli->prepare($insertquery);
-	$stmt->bind_param("sis", $title, $mandatory, $date);
+	$stmt->bind_param("sdii", $title, $date, $pt, $llab);
 	$stmt->execute();
 	$stmt->close();
 

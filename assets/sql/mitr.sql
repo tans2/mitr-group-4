@@ -2,10 +2,10 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: db2.internal:3306
--- Generation Time: Dec 05, 2018 at 09:55 PM
--- Server version: 5.6.33-0ubuntu0.14.04.1
--- PHP Version: 7.2.7
+-- Host: localhost
+-- Generation Time: Dec 08, 2018 at 05:45 AM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `afrotc_mitr`
+-- Database: `mitr`
 --
 
 -- --------------------------------------------------------
@@ -140,6 +140,7 @@ INSERT INTO `attendance` (`rin`, `eventid`, `excused_absence`) VALUES
 (661262304, 1, NULL),
 (661262304, 2, NULL),
 (661310280, 2, NULL),
+(661550966, 2, NULL),
 (661788027, 2, NULL);
 
 -- --------------------------------------------------------
@@ -186,7 +187,7 @@ INSERT INTO `cadet` (`firstName`, `rank`, `rin`, `primaryEmail`, `secondaryEmail
 ('Stephanie', 'None', 661527408, NULL, NULL, 0, NULL, '$2y$10$SS1nfZmrHiPMC1fros8wluXu4YimDmy7bfLbWZyOeUJUYLmZ/3Ms6', NULL, 'None', NULL, '', NULL, NULL, NULL, 'Tan', '', 1, 0),
 ('Edward', 'AS400', 661542604, 'maxwee@rpi.edu', 'edwardmaxwell89@gmail.com', 2073913931, 0, '$2y$10$tgvxx2DhaDqxyQZE60uTTOsh0NK7idODcHvvpQiBxGbUjcM42rGWq', '<p class=\"MsoNormal\"><span style=\"color: rgb(34, 34, 34); background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\">Edward Maxwell is currently a senior at\nRensselaer Polytechnic Institute (RPI) in Troy, NY, where he studies\nAeronautical and Mechanical Engineering with a focus in space vehicle\ndesign.', 'None', 'CW/CC', '', NULL, '<p class=\"MsoNormal\" style=\"margin-bottom:0in;margin-bottom:.0001pt\"><b><span style=\"font-size:12.0pt;line-height:\n107%;font-family:', NULL, 'Maxwell', '', 1, 0),
 ('Corey', 'AS350', 661543683, NULL, NULL, 0, NULL, '$2y$10$hs6Lgj7V.wwzQt7R2HWfT.v5j.klDokEV6Z0TwlAlKMOpCUys6eTC', NULL, 'Bravo', NULL, '', NULL, NULL, NULL, 'Person', '', 0, 12312),
-('Joseph', 'AS300', 661550966, 'messaj@rpi.edu', 'jmessare46@gmail.com', 5855009728, 0, '$2y$10$vzuUXA21f9Cv7VJfjWeDKehro067ob16QVLlwy34G4f5JGlOd3OOi', '<p>Cadet Messare started his ROTC career at RIT in 2016. He currently is an Information Technology ', 'Alpha', 'Deputy Flight Commander', 'Joseph Messare', '<ul><li>Become an ALO</li></ul>', '<ul><li>Silver Medal for Military Excellence</li></ul>', 'William', 'Messare', '<ul><li>Get over 30 pull-ups</li><li>Save $100 a month</li></ul>', 1, 22983),
+('Joseph', 'AS300', 661550966, 'messaj@rpi.edu', 'jmessare46@gmail.com', 5855009728, 0, '$2y$10$vzuUXA21f9Cv7VJfjWeDKehro067ob16QVLlwy34G4f5JGlOd3OOi', '<p>asdCadet Messare started his ROTC career at RIT in 2016. He currently is an Information Technologywfqwerq</p>', 'Alpha', 'Deputy Flight Commander', 'Joseph Messare', '<ul><li>Become an ALO</li></ul>', '<ul><li>Silver Medal for Military Excellence</li></ul>', 'William', 'Messare', '<ul><li>Get over 30 pull-ups</li><li>Save $100 a month</li></ul>', 1, 22983),
 ('Sydney', 'AS200', 661582760, 'lukes@rpi.edu', 'sydneyluke1@aol.com', 5187299887, 0, '$2y$10$/acoQJUJ1yUnEcThvaUmkuLmgcY2NYAz.TeYCZ4hLzftkWZmp8i4K', NULL, 'Charlie', 'IIK', '', NULL, NULL, NULL, 'Luke', '', 0, 0),
 ('Andrew', 'AS300', 661622412, NULL, NULL, 0, NULL, '$2y$10$v/wi8NO5qfsaq9JlWKwmQOHxlwogvUiaC.SQivcPq8YVKyTOnxDjm', NULL, 'Alpha', NULL, '', NULL, NULL, NULL, 'Woods', '', 1, 0),
 ('Spencer', 'AS300', 661624427, 'schins@rpi.edu', 'spencer.schindler17@gmail.com', 8454176930, 0, '$2y$10$KlMmBuTG35bozC/Kj5JuCuo/jZoggbwpcTk/sh.Y1Citwe7IlAdu.', NULL, 'Bravo', 'Bravo Flight Commander ', 'spencer.schindler17@mail.com', '<p>Space Officer or Developmental Engineer</p>', NULL, '', 'Schindler', '', 0, 0),
@@ -227,19 +228,23 @@ INSERT INTO `cadet` (`firstName`, `rank`, `rin`, `primaryEmail`, `secondaryEmail
 
 CREATE TABLE `cadetEvent` (
   `name` varchar(255) COLLATE ascii_bin DEFAULT NULL,
-  `mandatory` tinyint(1) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
-  `eventID` int(11) NOT NULL
+  `eventID` int(11) NOT NULL,
+  `pt` tinyint(4) DEFAULT NULL,
+  `llab` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
 
 --
 -- Dumping data for table `cadetEvent`
 --
 
-INSERT INTO `cadetEvent` (`name`, `mandatory`, `date`, `eventID`) VALUES
-('Test Event', 1, '2018-11-22 00:00:00', 1),
-('PT 37', 1, '2018-11-30 00:00:00', 2),
-('a', 1, '2018-12-04 00:00:00', 3);
+INSERT INTO `cadetEvent` (`name`, `date`, `eventID`, `pt`, `llab`) VALUES
+('Test Event', '2018-11-22 00:00:00', 1, NULL, NULL),
+('PT 37', '2018-11-30 00:00:00', 2, 1, NULL),
+('a', '2018-12-04 00:00:00', 3, NULL, NULL),
+('PT Test', '0000-00-00 00:00:00', 4, 1, NULL),
+('LLAB test', '2018-12-13 05:06:04', 5, NULL, 1),
+('Fake Event LLAB', '0000-00-00 00:00:00', 6, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -368,7 +373,7 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `cadetEvent`
 --
 ALTER TABLE `cadetEvent`
-  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `cadetGroup`
