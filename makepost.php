@@ -8,7 +8,6 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 if (isset($_POST['postMade'])) {
 	$title = htmlspecialchars(trim($_POST['postTitle']));
 	$subject = htmlspecialchars(trim($_POST['postSubject']));
-	$HTMLbody = $_POST['postBody'];
 	$body = htmlspecialchars(trim($_POST['postBody']));
 	$author = htmlspecialchars(trim($_SESSION['rin']));
 
@@ -50,7 +49,7 @@ if (isset($_POST['postMade'])) {
 	$emailSubject = $title . ": " . $subject;
 	$poster = $mysqli->query('SELECT firstName, lastName FROM cadet WHERE rin="' . $author . '"');
 	$postername = $poster->fetch_assoc();
-	$emailBody = $HTMLbody . "<br>&nbsp;<br>" . "Created by:<br>" . $postername['firstName'] . " " . $postername['lastName'] . "<br>" . $author;
+	$emailBody = $body . "<br>&nbsp;<br>" . "Created by:<br>" . $postername['firstName'] . " " . $postername['lastName'] . "<br>" . $author;
 	
 	send($targets, $emailSubject, $emailBody); 
 
