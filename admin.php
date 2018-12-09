@@ -200,7 +200,7 @@ function passMatch()
                     <input class="form-control" type="text" name="newrfid"/><br>
                 </div>
                 <div class="clearfix">
-                  <input class="btn btn-sm btn-primary" type="submit" value="Add Cadet" />
+                  <input class="btn btn-sm btn-primary" type="submit" value="Add User" />
                   <input class="btn btn-sm btn-primary" type="reset" value="Reset"/>
                 </div>
               </form><br>

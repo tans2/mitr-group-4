@@ -10,7 +10,15 @@ $cadet = new cadet( $_GET['rin'], $mysqli );
 
 <body>
   <div class="jumbotron">
-      <h1 class="display-4"><?php echo "Cadet " . $cadet->getLast() ?></h1>
+      <h1 class="display-4"><?php     
+            if(strpos($cadet->getRank(), "AS") !== false || strpos($cadet->getRank(), "None") !== false)
+            {
+                echo "Cadet " . $cadet->getLast();
+            }
+            else
+            {
+                echo $cadet->getRank() . " " . $cadet->getLast();
+            } ?></h1>
         <div class="container">
           <div class="row">
           <div class="col-4">

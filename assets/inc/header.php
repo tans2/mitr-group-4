@@ -51,7 +51,7 @@ if ( isset($_SESSION['login']) && $_SESSION['login'] )
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="attendance.php">Events</a>
               <a class="dropdown-item" href="announcements.php">Announcements</a>
-                <a class="dropdown-item" href="directory.php">Cadet Directory</a>
+                <a class="dropdown-item" href="directory.php">Directory</a>
               <a class="dropdown-item" href="https://rpi.account.box.com/login">Media/Documents</a>
                 <a class="dropdown-item" href="wikihome.php">Documentation</a>
                 <a class="dropdown-item" href="sendemail.php">Send Email</a>
