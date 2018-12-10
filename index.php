@@ -11,9 +11,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
     
-<?php 
-  if ( isset($_SESSION['login']) && $_SESSION['login'] )
-  {
+    <?php 
+    session_start();
+if ( isset($_SESSION['login']) && $_SESSION['login'] )
+{
     header('Location: home.php');
   }
 ?>
@@ -33,6 +34,7 @@
       <button class="btn btn-sm btn-primary" type="submit" name="submit">Login</button>
       <button class="btn btn-sm btn-secondary" type="reset" name="reset">Reset</button>
     </form>
+      <br><a href='forgotpass.php'>Forgot Password?</a>
   </div>
 </div>
 </body>
