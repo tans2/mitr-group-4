@@ -87,11 +87,11 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 <?php
 	if (isset($_POST["selectevent"])) {
     echo '<br></br>';
-		$eventquery = 'SELECT name, mandatory, date FROM cadetEvent WHERE eventID = "' . $_POST["eventSelect"] . '"';
+		$eventquery = 'SELECT name, pt, llab, date FROM cadetEvent WHERE eventID = "' . $_POST["eventSelect"] . '"';
 		$eventresult = $mysqli->query($eventquery);
 		$erow = $eventresult->fetch_assoc();
 		echo $erow['name'] . ' ' . $erow['date'];
-		if ($erow['mandatory']) {
+		if ($erow['pt'] || $erow['llab']) {
 			echo ' - MANDATORY';
 		}
         $query = 'SELECT rin FROM attendance WHERE eventid="' . $_POST["eventSelect"] .'"';
