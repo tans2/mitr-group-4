@@ -10,7 +10,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
-    
+    <style>
+
+/* Styles for mobile */
+@media (max-width: 500px) 
+{
+    .card
+    {
+        width: 100%;
+    }
+}
+@media (min-width: 500px) 
+{
+    .card
+    {
+        width: 40%;
+    }
+}
+</style>
     <?php 
     session_start();
 if ( isset($_SESSION['login']) && $_SESSION['login'] )
@@ -20,7 +37,7 @@ if ( isset($_SESSION['login']) && $_SESSION['login'] )
 ?>
 
 <body class="text-center"> 
-<div class="card" style="margin: auto;width:30%;padding: 10px;">
+<div class="card" style="margin: auto;padding: 10px;">
   <div class="card-body">
   	<form id="login" method="POST" action="loginAuth.php">
       <img class="img-fluid" src="assets/images/default.jpeg" alt="Responsive image">
