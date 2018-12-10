@@ -9,7 +9,22 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 <head>
   <title>My Profile</title>
 </head>
-
+<style>
+/* Styles for mobile */
+@media (max-width: 500px) 
+{
+    .col-4, .col-8
+    {
+        -ms-flex: 100%;
+        flex: 100%;
+        max-width: 100%;
+    }
+    body
+    {
+        min-width: 400px;
+    }
+}
+</style>
 <body>
   <div class="jumbotron container-fluid">
     <h1 class="display-4"><?php     
