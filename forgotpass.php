@@ -34,7 +34,8 @@ if(isset($_POST['rin']))
                         <br><br>
                         <p>Temporary Password: " . $pass . "</p>";
             echo(send($email, "Password Reset", $message));
-            header('Location: index.php');
+            echo("<script>window.location.href = 'index.php';</script>");
+            //header('Location: index.php');
         }
         else
         {
