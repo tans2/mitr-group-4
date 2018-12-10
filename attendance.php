@@ -9,14 +9,29 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 	<title>Cadet Events</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
-
+<style>
+/* Styles for mobile */
+@media (max-width: 500px) 
+{
+    .col-6
+    {
+        flex: 100%;
+        max-width: 100%;
+        padding-bottom: 10px;
+    }
+    body
+    {
+        min-width: 400px;
+    }
+}
+</style>
 <body>
   <div class="jumbotron container-fluid">
   	<h1 class="display-4"> Events </h1>
   	<div class="container">
       <div class="row">
         <div class="col-6">
-		      <div class="card" style="margin: auto;width: 100%;padding: 10px;">
+		      <div class="card" style="margin: auto;padding: 10px;">
     		  	<?php 
     			  if (isset($_POST["eventMade"])) {
     				$mandatory = 0;

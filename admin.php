@@ -92,6 +92,22 @@ function passMatch()
     <script src="assets/js/addCadet.js"></script>
 </head>
 
+<style>
+/* Styles for mobile */
+@media (max-width: 800px) 
+{
+    .col-4
+    {
+        flex: 100%;
+        max-width: 100%;
+        padding-bottom: 10px;
+    }
+    body
+    {
+        min-width: 400px;
+    }
+}
+</style>
 
 <body>
   <div class="container">
