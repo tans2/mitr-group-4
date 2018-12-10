@@ -10,12 +10,29 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 <head>
   <title>Add Group</title>
 </head>
-
+<style>
+/* Styles for mobile */
+@media (max-width: 500px) 
+{
+    .card
+    {
+        width: 100%;
+    }
+    body
+    {
+        min-width: 400px;
+    }
+    .selectcadets
+    {
+        width: 100%;
+    }
+}
+</style>
 <body>
 <div class="jumbotron container-fluid">
   <div class="container">
     <h1 class="display-4"> Create Group </h1>
-    <div class="card" id="Edit Groups" style = "width:50%;">
+    <div class="card" id="Edit Groups">
       <div class="card-body">
         
         <form id="makegroup" method="POST" name="makegroup" action="group.php">
@@ -66,7 +83,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 
         <form id="addgroup" method="POST" name="addgroup" action="group.php" style="<?php echo $visible ?>">
           <h5 class="card-text">Add Members</h5>
-            <div class="selectcadets" style="height:100px; width:200px; overflow-y: scroll;">
+            <div class="selectcadets" style="height:100px;overflow-y: scroll;border: solid grey 1px;">
             <?php
               $query = 'SELECT * FROM cadet';
               $stmt = $mysqli->prepare($query);
@@ -76,13 +93,13 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
                 echo "<input type='checkbox' name='acadets[]' value ='" . $row['rin'] . "'>Cadet " . $row['lastName'] . "</input><br>";
               }
             ?>
-            </div>
+            </div><br>
             <button class="btn btn-sm btn-primary" type="submit" name="submit">Add Members</button>
         </form><br>
         
         <form id="addgroup" method="POST" name="addgroup" action="group.php" style="<?php echo $visible ?>">
-          <h5>Remove Members</h5><br> 
-          <div class="selectcadets" style="height:100px; width:200px; overflow-y: scroll;">
+          <h5>Remove Members</h5>
+          <div class="selectcadets" style="height:100px;border: solid grey 1px;overflow-y: scroll;">
           <?php
             $query = 'SELECT cadet.rin as rin, cadet.lastName as lastName FROM cadet, groupMember WHERE cadet.rin = groupMember.rin AND groupMember.groupID = ?';
             $stmt = $mysqli->prepare($query);
