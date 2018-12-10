@@ -10,11 +10,31 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 	<title>Cadet Events</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
-
+<style>
+/* Styles for mobile */
+@media (max-width: 500px) 
+{
+    .card
+    {
+        width: 100%;
+    }
+    body
+    {
+        min-width: 400px;
+    }
+}
+@media (min-width: 600px) 
+{
+    .card
+    {
+        width: 40%;
+    }
+}
+</style>
 <body>
   <div class="jumbotron container-fluid">
 	<h1 class="display-4"> Attendance </h1><br>
-	<div class="card" style="margin: auto;width: 30%;padding: 10px;">
+	<div class="card" style="margin: auto;padding: 10px;">
 	<h5 class="card-title">Select Event</h5>
 		<form action="attend.php" method="post">
 			<select name="eventSelect">
