@@ -38,35 +38,35 @@ if (isset($_POST['postMade'])) {
 		
 		send($targets, $emailSubject, $emailBody);
 	}
-	
-	//echo "<script type='text/javascript'>location.href='announcements.php';</script>";
-	//header('Location: announcements.php');
 }
 ?>
 
-<body>
- <script>
-              $(document).ready(function(){
-                  $('#body').summernote({focus: true, toolbar: [
-                    ['font', ['bold', 'italic', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'hr']],
-                    ['view', ['fullscreen', 'codeview']],
-                    ['help', ['help']]
-                  ] });
-              });
+<head>
+  <title>Make Announcement</title>
+  <script>
+        $(document).ready(function(){
+          $('#body').summernote({focus: true, toolbar: [
+            ['font', ['bold', 'italic', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol']],
+            ['table', ['table']],
+            ['insert', ['link', 'hr']],
+            ['view', ['fullscreen', 'codeview']],
+            ['help', ['help']]
+            ] });
+        });
             
-             function saveBody() {
-                document.getElementById('body').value = $('#body').summernote('code');
-            };
-          </script>
-<style>
-.note-popover .popover-content {
-    display: none;
-}
-</style>
+        function saveBody() {
+          document.getElementById('body').value = $('#body').summernote('code');
+        };
+  </script>
+  <style>
+    .note-popover .popover-content {
+      display: none;
+    }
+  </style>
+</head>
+<body> 
 	<div class="jumbotron container-fluid">
 		<h1 class="display-4"> Make an Announcement </h1>
 		<div class="card">
@@ -91,7 +91,4 @@ if (isset($_POST['postMade'])) {
 				<input class="btn btn-sm btn-primary" type="submit" name="postMade" value="Submit" onclick="saveBody()"/>
 			</form>
 	</div>
-
 </body>
-
-<?php include('./assets/inc/footer.php');

@@ -35,6 +35,4 @@ else
     $_SESSION['fail'] = true;
     header('Location: index.php');
 }
-
-
 ?>

@@ -8,6 +8,10 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 $cadet = new cadet( $_GET['rin'], $mysqli );
 ?>
 
+<head>
+  <title> View Profile </title>
+</head>
+
 <body>
   <div class="jumbotron">
       <h1 class="display-4"><?php     
@@ -97,5 +101,3 @@ $cadet = new cadet( $_GET['rin'], $mysqli );
     </div>
   </div>
 </body>
-    
-<?php include('./assets/inc/footer.php') ?>
