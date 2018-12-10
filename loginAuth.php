@@ -20,17 +20,19 @@ if( isset($_POST['rin']) && isset($_POST['psw']) )
     // Verify that the correct password is given
     if(password_verify($pass, $res))
     {
-        $_SESSION['login'] = true ;
+        $_SESSION['login'] = true;
         $_SESSION['rin'] = $rin;
         header('Location: home.php');
     }
     else
     {
+        $_SESSION['fail'] = true;
         header('Location: index.php');
     }
 }
 else
 {
+    $_SESSION['fail'] = true;
     header('Location: index.php');
 }
 

@@ -27,6 +27,7 @@
 </head>
     
     <?php 
+    session_start();
 if ( isset($_SESSION['login']) && $_SESSION['login'] )
 {
     header('Location: home.php');
@@ -48,6 +49,7 @@ if ( isset($_SESSION['login']) && $_SESSION['login'] )
       <button class="btn btn-sm btn-primary" type="submit" name="submit">Login</button>
       <button class="btn btn-sm btn-secondary" type="reset" name="reset">Reset</button>
     </form>
+      <br><a href='forgotpass.php'>Forgot Password?</a>
   </div>
 </div>
 </body>
