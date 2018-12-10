@@ -3,7 +3,7 @@ include('assets/inc/dbinfo.php');
 if(isset($_POST['rin']))
 {
     $rin = $_POST['rin'];
-    $email = $_POST['email'];
+    $email[] = $_POST['email'];
     
     $stmt = $mysqli->prepare("SELECT * FROM cadet WHERE rin = ?");
     $stmt->bind_param( "i", $rin);
@@ -12,7 +12,7 @@ if(isset($_POST['rin']))
 
     if ($row = $result->fetch_assoc())
     {
-        if($row['primaryEmail'] == $email)
+        if($row['primaryEmail'] == array_values($email)[0])
         {
             // Records user name and password submissions
             $pass = randomPassword();
@@ -28,6 +28,13 @@ if(isset($_POST['rin']))
             // 
             // HERE IS WHERE THE EMAIL SHOULD BE SENT WITH $pass 
             //
+            include("emailPHP.php");
+            $message = "<h2>Password Reset</h2>
+                        <p>The below is your temporary password please change it as soon as possible!</p>
+                        <br><br>
+                        <p>Temporary Password: " . $pass . "</p>";
+            echo(send($email, "Password Reset", $message));
+            header('Location: index.php');
         }
         else
         {
@@ -74,7 +81,6 @@ function randomPassword() {
 }
 </style>
     
-<script src="assets/js/forgotLogin.js"></script>
 </head>
     
     <?php 
