@@ -141,5 +141,3 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
   		</div>
       </div>
     </div>
-
-<?php include('./assets/inc/footer.php'); ?>
