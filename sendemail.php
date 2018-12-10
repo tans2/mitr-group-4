@@ -1,33 +1,29 @@
 <?php
 include('./assets/inc/header.php');
 include("assets/inc/dbinfo.php");
-?>    
+?>    <script>
+              $(document).ready(function(){
+                  $('#body').summernote({focus: true, toolbar: [
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'hr']],
+                    ['view', ['fullscreen', 'codeview']],
+                    ['help', ['help']]
+                  ] });
+              });
+            
+             function sendBody() {
+                document.getElementById('body').value = $('#body').summernote('code');
+            };
+          </script>
+<style>
+.note-popover .popover-content {
+    display: none;
+}
+</style>
 
-<head>
-  <title> Send Email </title>
-  <script>
-    $(document).ready(function(){
-      $('#body').summernote({focus: true, toolbar: [
-        ['font', ['bold', 'italic', 'underline', 'clear']],
-        ['color', ['color']],
-        ['para', ['ul', 'ol']],
-        ['table', ['table']],
-        ['insert', ['link', 'hr']],
-        ['view', ['fullscreen', 'codeview']],
-        ['help', ['help']]
-        ] });
-    });        
-    function sendBody() {
-        document.getElementById('body').value = $('#body').summernote('code');
-    };
-  </script>
-  <style>
-    .note-popover .popover-content {
-      display: none;
-    }
-  </style>
-</head>
-<body>
 <div class="jumbotron container-fluid">
   <h1 class="display-4"> Send an Email </h1>
     <div class="card">
@@ -84,3 +80,4 @@ include("assets/inc/dbinfo.php");
     ?>
 </body>
 </html>
+<?php include("./assets/inc/footer.php"); ?>

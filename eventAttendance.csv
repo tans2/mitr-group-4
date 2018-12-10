@@ -1,0 +1,4 @@
+"First Name","Last Name",Flight,Event,Date
+,,Alpha,"Test Event","2018-11-22 00:00:00"
+"new ",user,None,"Test Event","2018-11-22 00:00:00"
+John,Doe,Alpha,"Test Event","2018-11-22 00:00:00"

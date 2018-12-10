@@ -9,11 +9,10 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 }
 ?>
 
-<head>
-  <title> Documentation </title>
-  <script src="assets/js/wiki.js"></script>
-</head>
 
+<html> 
+  <script src="assets/js/wiki.js"></script>
+</html>
 <body>
   <div class="jumbotron container-fluid">
   	<h1 class="display-4"> Documentation </h1>
@@ -28,9 +27,9 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     	  </div>
     	  <div id="collapseOne" class="collapse in" aria-labelledby="headingOne" data-parent="#docs">
       	    <div class="card-body">
-              <div class="indexwiki"><?php $wiki = new wiki( "index", $mysqli ); echo $wiki->getBody(); ?></div> 
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editIndex()" type="button">Edit</button>
-			        <button id="save" class="btn btn-primary btn-sm" onclick="saveIndex()" type="button">Save</button><br>
+			  <button id="save" class="btn btn-primary btn-sm" onclick="saveIndex()" type="button">Save</button><br>
+			  <div class="indexwiki"><?php $wiki = new wiki( "index", $mysqli ); echo $wiki->getBody(); ?></div> 
       	    </div>
     	  </div>
   		</div>
@@ -45,9 +44,9 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     	  </div>
     	  <div id="collapseTwo" class="collapse in" aria-labelledby="headingTwo" data-parent="#docs">
       	    <div class="card-body">
-              <div class="homewiki"><?php $wiki = new wiki( "home", $mysqli ); echo $wiki->getBody(); ?></div> 
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editHome()" type="button">Edit</button>
-			        <button id="save" class="btn btn-primary btn-sm" onclick="saveHome()" type="button">Save</button><br>
+			  <button id="save" class="btn btn-primary btn-sm" onclick="saveHome()" type="button">Save</button><br>
+			  <div class="homewiki"><?php $wiki = new wiki( "home", $mysqli ); echo $wiki->getBody(); ?></div> 
       	    </div>
     	  </div>
   		</div>
@@ -62,9 +61,9 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     	  </div>
     	  <div id="collapseThree" class="collapse in" aria-labelledby="headingThree" data-parent="#docs">
       	    <div class="card-body">
-              <div class="profilewiki"><?php $wiki = new wiki( "profile", $mysqli ); echo $wiki->getBody(); ?></div> 
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editProfile()" type="button">Edit</button>
-			        <button id="save" class="btn btn-primary btn-sm" onclick="saveProfile()" type="button">Save</button><br>
+			  <button id="save" class="btn btn-primary btn-sm" onclick="saveProfile()" type="button">Save</button><br>
+			  <div class="profilewiki"><?php $wiki = new wiki( "profile", $mysqli ); echo $wiki->getBody(); ?></div> 
       	    </div>
     	  </div>
   		</div>
@@ -79,9 +78,9 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     	  </div>
     	  <div id="collapseFour" class="collapse in" aria-labelledby="headingFour" data-parent="#docs">
       	    <div class="card-body">
-              <div class="editprofilewiki"><?php $wiki = new wiki( "editprofile", $mysqli ); echo $wiki->getBody(); ?></div> 
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editEditProfile()" type="button">Edit</button>
-			        <button id="save" class="btn btn-primary btn-sm" onclick="saveEditProfile()" type="button">Save</button><br>
+			  <button id="save" class="btn btn-primary btn-sm" onclick="saveEditProfile()" type="button">Save</button><br>
+			  <div class="editprofilewiki"><?php $wiki = new wiki( "editprofile", $mysqli ); echo $wiki->getBody(); ?></div> 
       	    </div>
     	  </div>
   		</div>
@@ -96,9 +95,9 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     	  </div>
     	  <div id="collapseFive" class="collapse in" aria-labelledby="headingFive" data-parent="#docs">
       	    <div class="card-body">
-              <div class="announcementswiki"><?php $wiki = new wiki( "announcements", $mysqli ); echo $wiki->getBody(); ?></div> 
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editAnnouncements()" type="button">Edit</button>
-			        <button id="save" class="btn btn-primary btn-sm" onclick="saveAnnouncements()" type="button">Save</button><br>
+			  <button id="save" class="btn btn-primary btn-sm" onclick="saveAnnouncements()" type="button">Save</button><br>
+			  <div class="announcementswiki"><?php $wiki = new wiki( "announcements", $mysqli ); echo $wiki->getBody(); ?></div> 
       	    </div>
     	  </div>
   		</div>
@@ -113,9 +112,9 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     	  </div>
     	  <div id="collapseSix" class="collapse in" aria-labelledby="headingSix" data-parent="#docs">
       	    <div class="card-body">
-              <div class="eventswiki"><?php $wiki = new wiki( "events", $mysqli ); echo $wiki->getBody(); ?></div> 
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editEvents()" type="button">Edit</button>
-			        <button id="save" class="btn btn-primary btn-sm" onclick="saveEvents()" type="button">Save</button><br>
+			  <button id="save" class="btn btn-primary btn-sm" onclick="saveEvents()" type="button">Save</button><br>
+			  <div class="eventswiki"><?php $wiki = new wiki( "events", $mysqli ); echo $wiki->getBody(); ?></div> 
       	    </div>
     	  </div>
   		</div>
@@ -130,9 +129,9 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     	  </div>
     	  <div id="collapseSeven" class="collapse in" aria-labelledby="headingSeven" data-parent="#docs">
       	    <div class="card-body">
-              <div class="emailwiki"><?php $wiki = new wiki( "email", $mysqli ); echo $wiki->getBody(); ?></div> 
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editEmail()" type="button">Edit</button>
-			        <button id="save" class="btn btn-primary btn-sm" onclick="saveEmail()" type="button">Save</button><br>
+			  <button id="save" class="btn btn-primary btn-sm" onclick="saveEmail()" type="button">Save</button><br>
+			  <div class="emailwiki"><?php $wiki = new wiki( "email", $mysqli ); echo $wiki->getBody(); ?></div> 
       	    </div>
     	  </div>
   		</div>
@@ -147,9 +146,9 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     	  </div>
     	  <div id="collapseEight" class="collapse in" aria-labelledby="headingEight" data-parent="#docs">
       	    <div class="card-body">
-              <div class="directorywiki"><?php $wiki = new wiki( "directory", $mysqli ); echo $wiki->getBody(); ?></div> 
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editDirectory()" type="button">Edit</button>
-			        <button id="save" class="btn btn-primary btn-sm" onclick="saveDirectory()" type="button">Save</button><br>
+			  <button id="save" class="btn btn-primary btn-sm" onclick="saveDirectory()" type="button">Save</button><br>
+			  <div class="directorywiki"><?php $wiki = new wiki( "directory", $mysqli ); echo $wiki->getBody(); ?></div> 
       	    </div>
     	  </div>
   		</div>
@@ -164,9 +163,9 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     	  </div>
     	  <div id="collapseNine" class="collapse in" aria-labelledby="headingNine" data-parent="#docs">
       	    <div class="card-body">
-              <div class="adminwiki"><?php $wiki = new wiki( "admin", $mysqli ); echo $wiki->getBody(); ?></div> 
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editAdmin()" type="button">Edit</button>
-			        <button id="save" class="btn btn-primary btn-sm" onclick="saveAdmin()" type="button">Save</button><br>
+			  <button id="save" class="btn btn-primary btn-sm" onclick="saveAdmin()" type="button">Save</button><br>
+			  <div class="adminwiki"><?php $wiki = new wiki( "admin", $mysqli ); echo $wiki->getBody(); ?></div> 
       	    </div>
     	  </div>
   		</div>
@@ -181,13 +180,26 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     	  </div>
     	  <div id="collapseTen" class="collapse in" aria-labelledby="headingTen" data-parent="#docs">
       	    <div class="card-body">
-              <div class="faqwiki"><?php $wiki = new wiki( "faq", $mysqli ); echo $wiki->getBody(); ?></div> 
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editFAQ()" type="button">Edit</button>
-			        <button id="save" class="btn btn-primary btn-sm" onclick="saveFAQ()" type="button">Save</button><br>
+			  <button id="save" class="btn btn-primary btn-sm" onclick="saveFAQ()" type="button">Save</button><br>
+			  <div class="faqwiki"><?php $wiki = new wiki( "faq", $mysqli ); echo $wiki->getBody(); ?></div> 
       	    </div>
     	  </div>
   		</div>
-    </div>
-  </div>
-</body>
-</html>
+          
+          
+<!-- <p><a title="Login Page" href="assets/wiki/indexwiki.php" target="_blank" rel="noopener">Index Page</a></p>
+<p><a title="Home Page" href="assets/wiki/homewiki.php" target="_blank" rel="noopener">Home Page</a></p>
+<p><a title="Profile Page" href="assets/wiki/profilewiki.php" target="_blank" rel="noopener">Profile Page</a></p>
+<p><a title="Edit Profile Page" href="assets/wiki/editprofilewiki.php" target="_blank" rel="noopener">Edit Profile Page</a></p>
+<p><a title="Announcements Page" href="assets/wiki/announcementswiki.php" target="_blank" rel="noopener">Announcements Page</a></p>
+<p><a title="Events Page" href="assets/wiki/eventswiki.php" target="_blank" rel="noopener">Events Page</a></p>
+<p><a title="Email Page" href="assets/wiki/emailwiki.php" target="_blank" rel="noopener">Email Page</a></p>
+<p><a title="Directory Page" href="assets/wiki/directorywiki.php" target="_blank" rel="noopener">Directory Page</a></p>
+<p><a title="Admin Page" href="assets/wiki/adminwiki.php" target="_blank" rel="noopener">Admin Page</a></p>
+<p><a title="FAQ Page" href="assets/wiki/faqwiki.php" target="_blank" rel="noopener">FAQ Page</a></p> --> 
+
+<?php
+include('./assets/inc/footer.php');
+
+?>

@@ -3,10 +3,8 @@ include('./assets/inc/header.php');
 
 if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 {
-  header('Location: index.php');
+    header('Location: index.php');
 }
-
-echo "<head><title>Cadet Directory</title></head>";
 
 echo "<div class=\"jumbotron container-fluid\">";
 echo "<h1 class=\"display-4\"> Detachment Directory </h1>";
@@ -17,13 +15,13 @@ $result = $stmt->get_result();
 
 while ($row = $result->fetch_assoc())
 {
-  if(file_exists("./assets/images/". $row['rin'] . ".jpg"))
+    if(file_exists("./assets/images/". $row['rin'] . ".jpg"))
     {
-      $file = "assets/images/". $row['rin'] . ".jpg";
+        $file = "assets/images/". $row['rin'] . ".jpg";
     }
-  else
+    else
     {
-      $file = "assets/images/default.jpeg";
+        $file = "assets/images/default.jpeg";
     }
     echo "<div class=\"card\" style=\"width:250px;display:inline-block;text-align:center;\">";
     // This needs to be fixed with cadet's picture
@@ -31,13 +29,17 @@ while ($row = $result->fetch_assoc())
     echo "<div class=\"card-body\">";
     if(strpos($row['rank'], "AS") !== false || strpos($row['rank'], "None") !== false)
     {
-      echo "<h5 class=\"card-title\">Cadet " . $row['lastName'] . "</h5>";
+        echo "<h5 class=\"card-title\">Cadet " . $row['lastName'] . "</h5>";
     }
     else
     {
-      echo "<h5 class=\"card-title\">" . $row['rank'] . " " . $row['lastName'] . "</h5>";
+        echo "<h5 class=\"card-title\">" . $row['rank'] . " " . $row['lastName'] . "</h5>";
     }
     echo "<p class=\"card-text\"><strong>Rank: </strong>" . $row['rank'] . "<br><strong>Flight: </strong>" . $row['flight'] . "</p>";
     echo "<a href='viewprofile.php?rin=" . $row['rin'] . "' class=\"btn btn-sm btn-primary\">View Profile</a></div></div>";
 }
 ?>
+
+
+
+<?php include('./assets/inc/footer.php'); ?>

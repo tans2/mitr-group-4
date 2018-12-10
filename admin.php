@@ -88,7 +88,24 @@ function passMatch()
 
 <head>
     <meta charset="utf-8" />
-    <title>Admin</title>
+    <title>Register</title>
+    <style type="text/css">
+        form div
+        {
+            margin: 1em;
+        }
+        form div label
+        {
+            float: left;
+            width: 10%;
+        }
+        form div.radio {
+            float: left;
+        }
+        .clearfix {
+            clear: both;
+        }
+    </style>
     <script src="assets/js/addCadet.js"></script>
 </head>
 
@@ -216,116 +233,120 @@ function passMatch()
                 </form>
           </div>
         </div>
+      <!-- </div> -->
 
-        <div class="card">
-          <div class="card-body">
-            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST"  name="changecadet">
-            <h5 class="card-title">Modify User Info</h5>
-            <strong>Select Cadet</strong><br>
-            <select name="modifycadet" size="10" style="width:80%;margin:auto">
+<!-- <div class="col-4"> -->
+  <div class="card">
+    <div class="card-body">
+      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST"  name="changecadet">
+      <h5 class="card-title">Modify User Info</h5>
+      <strong>Select Cadet</strong><br>
+      <select name="modifycadet" size="10" style="width:80%;margin:auto">
+   
                 <?php 
-                  $stmt = $mysqli->prepare("SELECT * FROM cadet");
-                  $stmt->execute();
-                  $result = $stmt->get_result();
-                  while ($row = $result->fetch_assoc())
-                  {
-                    echo "<option value='" . $row['rin'] . "'>" . $row['firstName'] . " " . $row['lastName'] . "</option><br>";
-                  }
+                    $stmt = $mysqli->prepare("SELECT * FROM cadet");
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    while ($row = $result->fetch_assoc())
+                    {
+                        echo "<option value='" . $row['rin'] . "'>" . $row['firstName'] . " " . $row['lastName'] . "</option><br>";
+                    }
                 ?>
-                <br>
-            </select><br></br>
-            Administrative Privileges:<br>
-            <select name="admin">
-              <option value="0">No</option>
-              <option value="1">Yes</option>
-            </select><br></br>
-            Rank:<br>
-            <select name="rank">
-              <option value="None">None</option>
-              <optgroup label="ROTC Ranks">
-                <option value="AS100">AS100</option>
-                <option value="AS200">AS200</option>
-                <option value="AS250">AS250</option>
-                <option value="AS300">AS300</option>
-                <option value="AS350">AS350</option>
-                <option value="AS400">AS400</option>
-                <option value="AS500">AS500</option>
-              </optgroup>
-              <optgroup label="Enlisted Ranks">
-                <option value="Airman Basic">Airman Basic</option>
-                <option value="Airman">Airman</option>
-                <option value="Airman First Class">Airman First Class</option>
-                <option value="Senior Airman">Senior Airman</option>
-                <option value="Staff Sergeant">Staff Sergeant</option>
-                <option value="Technical Sergeant">Technical Sergeant</option>
-                <option value="Master Sergeant">Master Sergeant</option>
-                <option value="Senior Master Sergeant">Senior Master Sergeant</option>
-                <option value="Chief Master Sergeant">Chief Master Sergeant</option>
-              </optgroup>
-              <optgroup label="Officer Ranks">
-                <option value="Second Lieutenant">Second Lieutenant</option>
-                <option value="First Lieutenant">First Lieutenant</option>
-                <option value="Captain">Captain</option>
-                <option value="Major">Major</option>
-                <option value="Lieutenant Colonel">Lieutenant Colonel</option>
-                <option value="Colonel">Colonel</option>
-                <option value="Brigadier General">Brigadier General</option>
-                <option value="Major General">Major General</option>
-                <option value="Lieutenant General">Lieutenant General</option>
-                <option value="General">General</option>
-              </optgroup>
+            <br>
+         </select><br></br>
+      Administrative Privileges:<br>
+      <select name="admin">
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select><br></br>
+      Rank:<br>
+      <select name="rank">
+        <option value="None">None</option>
+        <optgroup label="ROTC Ranks">
+            <option value="AS100">AS100</option>
+            <option value="AS200">AS200</option>
+            <option value="AS250">AS250</option>
+            <option value="AS300">AS300</option>
+            <option value="AS350">AS350</option>
+            <option value="AS400">AS400</option>
+            <option value="AS500">AS500</option>
+        </optgroup>
+        <optgroup label="Enlisted Ranks">
+            <option value="Airman Basic">Airman Basic</option>
+            <option value="Airman">Airman</option>
+            <option value="Airman First Class">Airman First Class</option>
+            <option value="Senior Airman">Senior Airman</option>
+            <option value="Staff Sergeant">Staff Sergeant</option>
+            <option value="Technical Sergeant">Technical Sergeant</option>
+            <option value="Master Sergeant">Master Sergeant</option>
+            <option value="Senior Master Sergeant">Senior Master Sergeant</option>
+            <option value="Chief Master Sergeant">Chief Master Sergeant</option>
+        </optgroup>
+        <optgroup label="Officer Ranks">
+            <option value="Second Lieutenant">Second Lieutenant</option>
+            <option value="First Lieutenant">First Lieutenant</option>
+            <option value="Captain">Captain</option>
+            <option value="Major">Major</option>
+            <option value="Lieutenant Colonel">Lieutenant Colonel</option>
+            <option value="Colonel">Colonel</option>
+            <option value="Brigadier General">Brigadier General</option>
+            <option value="Major General">Major General</option>
+            <option value="Lieutenant General">Lieutenant General</option>
+            <option value="General">General</option>
+        </optgroup>
+      </select><br></br>
+            Flight:<br>
+              <select name="flight">
+                <option value="None">None</option>
+                <option value="Alpha">Alpha</option>
+                <option value="Bravo">Bravo</option>
+                <option value="Charlie">Charlie</option>
+                <option value="Delta">Delta</option>
+                <option value="Echo">Echo</option>
+                <option value="Foxtrot">Foxtrot</option>
               </select><br></br>
-                Flight:<br>
-                  <select name="flight">
-                    <option value="None">None</option>
-                    <option value="Alpha">Alpha</option>
-                    <option value="Bravo">Bravo</option>
-                    <option value="Charlie">Charlie</option>
-                    <option value="Delta">Delta</option>
-                    <option value="Echo">Echo</option>
-                    <option value="Foxtrot">Foxtrot</option>
-                  </select><br></br>
-                <button class="btn btn-sm btn-primary" type="submit" name="changecadet">Modify Cadet Info</button>
-            </form>
-          </div>
-        </div>
-      </div>
+        <button class="btn btn-sm btn-primary" type="submit" name="changecadet">Modify Cadet Info</button>
+    </form>
+  <!-- </div> -->
+  </div>
+</div>
+</div>
     
-        <div class="col-4">
-          <div class="card">  
-            <div class="card-body">
-              <h5 class="card-title">Additional Admin Links</h5>
-              <a class="btn btn-sm btn-primary" href="attend.php">Set Event Attendance</a><br></br>
-              <a class="btn btn-sm btn-primary" href="addgroup.php">Create/Modify Group</a><br></br>
-
-                <form action="admin.php" method="post">
-                  <select name="deleteEvent">
-                    <?php
-                      $query = "SELECT name, date, eventID FROM cadetEvent;";
-                      $result = $mysqli->query($query);
-                      while ($row = $result->fetch_assoc()) {
-                        echo '<option value="'.$row['eventID'].'">'.$row['name'].' '.$row['date'].'</option>';
-                      }
-                    ?>
-                  </select><br></br>
-                  <button class="btn btn-sm btn-primary" type="submit" name="devent">Delete Event</button>
-                </form><br>
-
-                <form action="admin.php" method="post">
-                  <select name="deleteAnnouncement">
-                    <?php
-                      $query = "SELECT title, uid, date FROM announcement;";
-                      $result = $mysqli->query($query);
-                      while ($row = $result->fetch_assoc()) {
-                        echo '<option value="'.$row['uid'].'">'.$row['title'].' '.$row['date'].'</option>';
-                      }
-                    ?>
-                  </select><br></br>
-                <button class="btn btn-sm btn-primary" type="submit" name="dannouncement">Delete Announcement</button>
-                </form>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="col-4">
+<div class="card">  
+    <div class="card-body">
+        <h5 class="card-title">Additional Admin Links</h5>
+        <a class="btn btn-sm btn-primary" href="attend.php">Set Event Attendance</a><br></br>
+        <a class="btn btn-sm btn-primary" href="addgroup.php">Create/Modify Group</a>
     </div>
-</body>
+</div>
+</div>
+
+<form action="admin.php" method="post">
+    <select name="deleteEvent">
+        <?php
+        $query = "SELECT name, date, eventID FROM cadetEvent;";
+        $result = $mysqli->query($query);
+        while ($row = $result->fetch_assoc()) {
+            echo '<option value="'.$row['eventID'].'">'.$row['name'].' '.$row['date'].'</option>';
+        }
+        ?>
+    </select>
+    <button class="btn btn-sm btn-primary" type="submit" name="devent">Delete Event</button>
+</form>
+
+<form action="admin.php" method="post">
+    <select name="deleteAnnouncement">
+        <?php
+        $query = "SELECT title, uid, date FROM announcement;";
+        $result = $mysqli->query($query);
+        while ($row = $result->fetch_assoc()) {
+            echo '<option value="'.$row['uid'].'">'.$row['title'].' '.$row['date'].'</option>';
+        }
+        ?>
+    </select>
+    <button class="btn btn-sm btn-primary" type="submit" name="dannouncement">Delete Announcement</button>
+
+</form>
+
+<?php include('./assets/inc/footer.php'); ?>

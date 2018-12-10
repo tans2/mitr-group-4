@@ -6,11 +6,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 }
 
 ?>
-
-<head>
-  <title>Edit Profile</title>
-  <script src="assets/js/editProfile.js"></script>
-</head>
+<script src="assets/js/editProfile.js"></script>
 
 <div class="container">
   <div class="row">
@@ -100,5 +96,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         </div>
       </div>
     </div>
-  </div>
-</div>
+
+<?php        
+    include('./assets/inc/footer.php');   
+?>

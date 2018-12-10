@@ -5,24 +5,26 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 }
 
 if (isset($_POST['addcard'])) {
-  if (isset($_POST['newrin']) && isset($_POST['newrfid'])) {
-	$cadetrin = trim($_POST['newrin']);
-	$cadetrfid = trim($_POST['newrfid']);
+	if (isset($_POST['newrin']) && isset($_POST['newrfid'])) {
+		$cadetrin = trim($_POST['newrin']);
+		$cadetrfid = trim($_POST['newrfid']);
 
-	$updatequery = 'UPDATE cadet SET `rfid` = ? WHERE `rin` = ?';
-	$stmt = $mysqli->prepare($updatequery);
-	$stmt->bind_param("ii", $cadetrfid, $cadetrin);
-	$stmt->execute();
-	$stmt->close();
-	header('Location: attend.php');
-  } else {
-	echo '<script> alert(You must enter both a valid RIN and scan the ID card);</script>';
-  }
+		$updatequery = 'UPDATE cadet SET `rfid` = ? WHERE `rin` = ?';
+		$stmt = $mysqli->prepare($updatequery);
+		$stmt->bind_param("ii", $cadetrfid, $cadetrin);
+		$stmt->execute();
+		$stmt->close();
+
+		header('Location: attend.php');
+	} else {
+		echo '<script> alert(You must enter both a valid RIN and scan the ID card);</script>';
+	}
 }
+
 ?>
 
 <head>
-	<title>Connect RFID</title>
+	<title>Cadet Events</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 
