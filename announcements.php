@@ -6,6 +6,10 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 }
 ?>
 
+<head>
+  <title>Announcements</title>
+</head>
+
 <body>
   <div class="jumbotron container-fluid">
 	<h1 class="display-4"> Announcements </h1><br>
@@ -13,21 +17,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 	<?php
 	$query = 'SELECT * FROM announcement ORDER BY date DESC';
 	$result = $mysqli->query($query);
-      /* echo "<style>
-table, thead, tbody, th, tr, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-</style>";
-      echo "<table class='table table-bordered table-responsive' style='width:100%;'>
-      <thead><tr>
-      <th scope='col'>Title</th>
-      <th scope='col'>Subject</th>
-      <th scope='col'>Announcement</th>
-      <th scope='col'>Created By</th>
-      <th scope='col'>Acknowledge</th>
-      </tr></thead><tbody>"; */ 
-      echo "<div class='card'>";
+    echo "<div class='card'>";
 	while ($row = $result->fetch_assoc()) {
 		//print out the information for the post
 		echo "<div class='card-header'>" . $row['title'] . "</div>";
@@ -76,5 +66,3 @@ table, thead, tbody, th, tr, td {
 	?>
 </div>
 </body>
-
-<?php include('./assets/inc/footer.php');
