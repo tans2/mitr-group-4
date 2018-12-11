@@ -38,6 +38,7 @@ if (isset($_POST['postMade'])) {
 		
 		send($targets, $emailSubject, $emailBody);
 	}
+	echo "<script>window.location.href = 'announcements.php';</script>";
 }
 ?>
 
