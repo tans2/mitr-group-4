@@ -32,26 +32,8 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
       <div class="row">
         <div class="col-6">
 		      <div class="card" style="margin: auto;padding: 10px;">
-    		  	<?php 
-    			  if (isset($_POST["eventMade"])) {
-    				$mandatory = 0;
-    			  if (isset($_POST['mandatory'])) {
-    				$mandatory = 1;
-    			  }
-    			  $title = htmlspecialchars(trim($_POST['eventTitle']));
-    			  $date = $_POST['eventDate'];
-
-    			  $insertquery = 'INSERT INTO cadetEvent (`name`, `mandatory`, `date`) VALUES (?,?,?)';
-    			  $stmt = $mysqli->prepare($insertquery);
-    			  $stmt->bind_param("sis", $title, $mandatory, $date);
-    			  $stmt->execute();
-    			  $stmt->close();
-
-    			  header('Location: attendance.php');
-    			  }
-    			  ?>
 		        <h5 class="card-title">Create an Event</h5>
-  		    <form action="createevent.php" method="post">
+  		    <form action="attendance.php" method="post" name="makeevent">
   			   <label for=title><b>Title: </b></label><br><input class="form-control" type="text" name="eventTitle"/><br>
   			   <label for=date><b>Date: </b></label><br><input class="form-control" type="datetime-local" name="eventDate"/><br>
   			   <label for=mandatory><b>Event Type: </b></label><br><select name="type"><option value="nonpmt">Non PMT</option><option value="pt">PT</option><option value="llab">LLAB</option></select><br><br> 
@@ -76,7 +58,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     				}
     				?>
     			</select><br>
-    			<button class="btn btn-sm btn-primary" type="submit" value="Submit" name="selectevent">View Attendees</button><br></br>
+    			<button class="btn btn-sm btn-primary" type="submit" value="Submit" name="selectevent">View Attendees</button><br><br>
           <input class="btn btn-sm btn-primary" type="submit" name="Export" value="Export to Excel"/>
     			</form>
     		  </div>
@@ -84,7 +66,34 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
       </div>
     </div>
     
-<?php
+<?php 
+    if(isset($_POST['eventTitle']))
+    {
+      if (isset($_POST['type']) && $_POST['type'] === 'llab')
+      {
+          $llab = 1;
+          $pt = 0;
+      }
+      else if (isset($_POST['type']) && $_POST['type'] === 'pt') 
+      {
+          $llab = 0;
+          $pt = 1;
+      }
+      else
+      {
+          $llab = 0;
+          $pt = 0;
+      }
+      $title = htmlspecialchars(trim($_POST['eventTitle']));
+      $date = $_POST['eventDate'];
+      $insertquery = "INSERT INTO `cadetEvent` (`name`, `date`, `pt`, `llab`) VALUES (?,?,?,?)";
+      $stmt = $mysqli->prepare($insertquery);
+      $stmt->bind_param( "ssii", $title, $date, $pt, $llab );
+      $stmt->execute();
+      $stmt->close();
+        header('Location: attendance.php');
+      }
+    
 	if (isset($_POST["selectevent"])) {
     echo '<br></br>';
 		$eventquery = 'SELECT name, pt, llab, date FROM cadetEvent WHERE eventID = "' . $_POST["eventSelect"] . '"';

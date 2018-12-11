@@ -45,7 +45,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
   		  <div class="card-header">
     		Events
   		  </div>
-  		<?php $sql = "SELECT * FROM `cadetEvent` ORDER BY date DESC LIMIT 5";
+  		<?php $sql = "SELECT * FROM cadetEvent ORDER BY ABS( DATEDIFF( cadetEvent.date, NOW() ) ) LIMIT 5";
         $stmt = $mysqli->prepare($sql);
         $stmt->execute();
         $result = $stmt->get_result();
