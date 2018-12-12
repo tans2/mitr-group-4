@@ -31,9 +31,9 @@ if(isset($_POST['submit']))
 // Check if the passwords are the same if there is uname, pass, pass2 and both pass and pass2 match
 if( isset($_POST['rin']) && isset($_POST['pass']) && isset($_POST['pass2']) && passMatch())
 {
-    $smt = $mysqli->prepare("INSERT INTO cadet (rin, password, rank, firstName, lastName, admin, flight) VALUES (?,?,?,?,?,?,?)");
+    $smt = $mysqli->prepare("INSERT INTO cadet (rin, password, rank, firstName, lastName, admin, flight, primaryEmail) VALUES (?,?,?,?,?,?,?,?)");
     $hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
-    $smt->bind_param( "issssis", $_POST['rin'], $hash, $_POST['rank'], $_POST['first'], $_POST['last'], $_POST['admin'], $_POST['flight'] );
+    $smt->bind_param( "issssiss", $_POST['rin'], $hash, $_POST['rank'], $_POST['first'], $_POST['last'], $_POST['admin'], $_POST['flight'], $_POST['email'] );
     $smt->execute();
     $smt->close();
     
@@ -128,6 +128,10 @@ function passMatch()
                 <div>
                   RIN:<br>
                   <input class="form-control" type="text" name="rin" size="30" id="rin"/>
+                </div>
+                <div>
+                  Email:<br>
+                  <input class="form-control" type="text" name="email" size="30" id="email"/>
                 </div>
                 <div>
                   Password:<br>

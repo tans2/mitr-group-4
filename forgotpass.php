@@ -22,12 +22,7 @@ if(isset($_POST['rin']))
             $stmt = $mysqli->prepare("UPDATE cadet SET password = ? WHERE rin = ?");
             $stmt->bind_param( "si", $hash, $rin);
             $stmt->execute();
-        //    $stmt->bind_result($res);
-        //    $stmt->fetch();
-            
-            // 
-            // HERE IS WHERE THE EMAIL SHOULD BE SENT WITH $pass 
-            //
+
             include("emailPHP.php");
             $message = "<h2>Password Reset</h2>
                         <p>The below is your temporary password please change it as soon as possible!</p>
@@ -35,7 +30,8 @@ if(isset($_POST['rin']))
                         <p>Temporary Password: " . $pass . "</p>";
             echo(send($email, "Password Reset", $message));
             echo("<script>window.location.href = 'index.php';</script>");
-            //header('Location: index.php');
+            
+            header('Location: index.php');
         }
         else
         {
