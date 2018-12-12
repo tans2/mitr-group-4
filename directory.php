@@ -44,13 +44,17 @@ while ($row = $result->fetch_assoc())
     // This needs to be fixed with cadet's picture
     echo "  <img class=\"img-fluid\" style='padding:5px;height:200px;width:200px;' src=\"" . $file . "\" alt=\"Cadet Profile Picture\">";
     echo "<div class=\"card-body\">";
-    if(strpos($row['rank'], "AS") !== false || strpos($row['rank'], "None") !== false)
+    if(strpos($row['rank'], "AS") !== false)
     {
-      echo "<h5 class=\"card-title\">Cadet " . $row['lastName'] . "</h5>";
+        echo "<h5 class=\"card-title\">Cadet " . $row['lastName'] . "</h5>";
+    }
+    else if(strpos($row['rank'], "None") !== false)
+    {
+        echo "<h5 class=\"card-title\"> " . $row['firstName'] . " " . $row['lastName'] . "</h5>";
     }
     else
     {
-      echo "<h5 class=\"card-title\">" . $row['rank'] . " " . $row['lastName'] . "</h5>";
+        echo "<h5 class=\"card-title\">" . $row['rank'] . " " . $row['lastName'] . "</h5>";
     }
     echo "<p class=\"card-text\"><strong>Rank: </strong>" . $row['rank'] . "<br><strong>Flight: </strong>" . $row['flight'] . "</p>";
     echo "<a href='viewprofile.php?rin=" . $row['rin'] . "' class=\"btn btn-sm btn-primary\">View Profile</a></div></div>";
