@@ -42,12 +42,12 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
           <div class="card">
             <img class="card-img-top" alt="Profile picture" src=
             <?php
-              $files = glob("./assets/images/*.{jpg,png,jpeg}", GLOB_BRACE);
+              $files = glob("assets/images/*.{jpg,png,jpeg}", GLOB_BRACE);
               $found = false;
               foreach($files as $file)
                 {
                   $info = pathinfo($file);
-                  if($info['filename'] === $_SESSION['rin'])
+                  if($info['filename'] == $_SESSION['rin'])
                     {
                       echo $file; 
                       $found = true;
