@@ -65,6 +65,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
             <strong>Phone Number: </strong> <?php echo $cadet->getPrimPhone() ?><br>
             <strong>Flight: </strong> <?php echo $cadet->getFlight() ?><br>
             <strong>Position: </strong> <?php echo $cadet->getPosition() ?><br>
+            <strong>Major: </strong> <?php echo $cadet->getMajor() ?><br>
             </p>
             <a class="btn btn-primary" role="button" href="editprofile.php">Edit Page</a>
           </div>

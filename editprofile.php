@@ -43,6 +43,10 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
                 <strong>Position:</strong><br>
                 <input class="form-control"type="text" name="position" size="30" value="<?php echo $cadet->getPosition() ?>"/>
             </div><br>
+            <div>
+                <strong>Major:</strong><br>
+                <input class="form-control"type="text" name="major" size="30" value="<?php echo $cadet->getMajor() ?>"/>
+            </div><br>
             <button class="btn btn-sm btn-primary" type="reset">Reset</button>
             <button class="btn btn-sm btn-primary" type="submit" name="submit">Save Changes</button>
         </form><br>

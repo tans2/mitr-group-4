@@ -18,6 +18,7 @@ class cadet {
     var $AGoals;
     var $awards;
     var $admin;
+    var $major;
     
     
     /*
@@ -55,6 +56,7 @@ class cadet {
         $this->PGoals = $row['PGoals'];
         $this->awards = $row['awards'];
         $this->admin = $row['admin'];
+        $this->major = $row['major'];
         
         $stmt->close();
     }
@@ -64,10 +66,18 @@ class cadet {
      */
     function updateCadet( $mysqli )
     {
-        $stmt = $mysqli->prepare("UPDATE cadet SET firstName = ?, lastName = ?, rank = ?, primaryEmail = ?, secondaryEmail = ?, primaryPhone = ?, secondaryPhone = ?, password = ?, bio = ?, flight = ?, position = ?, groupMe = ?, PGoals = ?, AFGoals = ?, awards = ?, admin = ? WHERE rin = ?");
-        $stmt->bind_param( "sssssiissssssssii", $this->first, $this->last, $this->rank, $this->primEmail, $this->secEmail, $this->primPhone, $this->secPhone, $this->pass, $this->bio, $this->flight, $this->position, $this->groupMe, $this->PGoals, $this->AGoals, $this->awards, $this->admin, $this->rin );
+        $stmt = $mysqli->prepare("UPDATE cadet SET firstName = ?, lastName = ?, rank = ?, primaryEmail = ?, secondaryEmail = ?, primaryPhone = ?, secondaryPhone = ?, password = ?, bio = ?, flight = ?, position = ?, groupMe = ?, PGoals = ?, AFGoals = ?, awards = ?, admin = ?, major = ? WHERE rin = ?");
+        $stmt->bind_param( "sssssiissssssssisi", $this->first, $this->last, $this->rank, $this->primEmail, $this->secEmail, $this->primPhone, $this->secPhone, $this->pass, $this->bio, $this->flight, $this->position, $this->groupMe, $this->PGoals, $this->AGoals, $this->awards, $this->admin, $this->major, $this->rin );
         $stmt->execute();
         $stmt->close();
+    }
+    
+    function setMajor($major) { 
+        $this->major = $major; 
+    }
+
+    function getMajor() { 
+        return $this->major; 
     }
     
     function setAdmin($admin) { 

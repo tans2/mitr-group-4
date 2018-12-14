@@ -8,7 +8,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 
     if(isset($_POST['submit']))
     {
-        saveGenInfo( $cadet, $mysqli, $_POST['pphone'], $_POST['sphone'], $_POST['pemail'], $_POST['semail'], $_POST['groupme'], $_POST['position'] );
+        saveGenInfo( $cadet, $mysqli, $_POST['pphone'], $_POST['sphone'], $_POST['pemail'], $_POST['semail'], $_POST['groupme'], $_POST['position'], $_POST['major'] );
     }
 
     if(isset($_FILES['file']))
@@ -26,7 +26,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         move_uploaded_file($temp_file, $target_file); 
     }
 
-   function saveGenInfo( $cadet, $mysqli, $pPhone, $sPhone, $pEmail, $sEmail, $groupMe, $position ) 
+   function saveGenInfo( $cadet, $mysqli, $pPhone, $sPhone, $pEmail, $sEmail, $groupMe, $position, $major ) 
     {
         $cadet->setPrimPhone($pPhone);
         $cadet->setSecPhone($sPhone);
@@ -34,6 +34,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         $cadet->setSecEmail($sEmail);
         $cadet->setGroupMe($groupMe);
         $cadet->setPosition($position);
+        $cadet->setMajor($major);
     }
 
     if(isset($_POST['bio']))
