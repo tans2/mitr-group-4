@@ -22,11 +22,47 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 }
 
 echo "<head><title>Cadet Directory</title></head>";
+?>
 
-echo "<div class=\"jumbotron container-fluid\">";
-echo "<h1 class=\"display-4\"> Detachment Directory </h1>";
+<div class=\"jumbotron container-fluid\">
+    <h1 class=\"display-4\"> Detachment Directory </h1><br>
+<form action="directory.php" method="post">
+    <select class="form-control" name="showcadets">
+<?php
+$result = $mysqli->query("SELECT major FROM cadet");
+$options = array();
+while($row = $result->fetch_assoc()) 
+{
+    if(!in_array($row['major'], $options) && strcmp("", $row['major']) != 0)
+    {
+       array_push($options, $row['major']);
+    } 
+}
+?>
+        <option value="all"  selected>All</option>';
+<?php
+foreach( $options as $option )
+{
+    echo '<option value="' . $option . '">'. $option . '</option>';
+}
+?>
+    </select><br>
+    <button class="btn btn-sm btn-primary" type="submit" value="Submit" name="submit">Show Cadets</button><br><br>
 
-$stmt = $mysqli->prepare("SELECT * FROM cadet ORDER BY lastName");
+    </form>
+
+
+    
+<?php
+if(!isset($_POST['showcadets']) || strcmp($_POST['showcadets'], "all") == 0)
+{
+    $stmt = $mysqli->prepare("SELECT * FROM cadet ORDER BY lastName");
+}
+else
+{
+    $stmt = $mysqli->prepare("SELECT * FROM cadet WHERE major = '" . $_POST['showcadets'] . "' ORDER BY lastName");
+}
+
 $stmt->execute();
 $result = $stmt->get_result();
 
