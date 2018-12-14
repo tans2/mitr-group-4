@@ -1,3 +1,2 @@
-"First Name","Last Name",Flight,Event,Excused,Date
-"new ",user,None,"Test Event",,2018-11-22
-John,Doe,None,"Test Event",,2018-11-22
+"First Name","Last Name",Flight,Event,Excused,Time
+Joseph,Messare,Alpha,"LLAB test",,"2018-12-12 01:27:51"
