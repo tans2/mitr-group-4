@@ -166,7 +166,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
       	    <div class="card-body">
               <div class="adminwiki"><?php $wiki = new wiki( "admin", $mysqli ); echo $wiki->getBody(); ?></div> 
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editAdmin()" type="button">Edit</button>
-			        <button id="save" class="btn btn-primary btn-sm" onclick="saveAdmin()" type="button">Save</button><br>
+                <button id="save" class="btn btn-primary btn-sm" onclick="saveAdmin()" type="button">Save</button><br>
       	    </div>
     	  </div>
   		</div>
@@ -184,6 +184,23 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
               <div class="faqwiki"><?php $wiki = new wiki( "faq", $mysqli ); echo $wiki->getBody(); ?></div> 
       	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editFAQ()" type="button">Edit</button>
 			        <button id="save" class="btn btn-primary btn-sm" onclick="saveFAQ()" type="button">Save</button><br>
+      	    </div>
+    	  </div>
+  		</div>
+          
+        <div class="card">
+    	  <div class="card-header" id="headingEleven">
+      		<h5 class="mb-0">
+        	<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="true" aria-controls="collapseEleven">
+          	  Warrior Knowledge
+        	</button>
+      		</h5>
+    	  </div>
+    	  <div id="collapseEleven" class="collapse in" aria-labelledby="headingEleven" data-parent="#docs">
+      	    <div class="card-body">
+              <div class="wkwiki"><?php $wiki = new wiki( "wk", $mysqli ); echo $wiki->getBody(); ?></div> 
+      	  	  <button id="edit" class="btn btn-primary btn-sm" onclick="editWK()" type="button">Edit</button>
+			     <button id="save" class="btn btn-primary btn-sm" onclick="saveWK()" type="button">Save</button><br>
       	    </div>
     	  </div>
   		</div>

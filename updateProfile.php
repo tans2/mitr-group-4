@@ -9,18 +9,13 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     if(isset($_POST['submit']))
     {
         $uploadOK = 1;
-        saveGenInfo( $cadet, $mysqli, $_POST['pphone'], $_POST['sphone'], $_POST['pemail'], $_POST['semail'], $_POST['groupme'], $_POST['position'], $_POST['major'] );
-    }
-
-   function saveGenInfo( $cadet, $mysqli, $pPhone, $sPhone, $pEmail, $sEmail, $groupMe, $position, $major ) 
-    {
-        $cadet->setPrimPhone($pPhone);
-        $cadet->setSecPhone($sPhone);
-        $cadet->setPrimEmail($pEmail);
-        $cadet->setSecEmail($sEmail);
-        $cadet->setGroupMe($groupMe);
-        $cadet->setPosition($position);
-        $cadet->setMajor($major);
+        $cadet->setPrimPhone($_POST['pphone']);
+        $cadet->setSecPhone($_POST['sphone']);
+        $cadet->setPrimEmail($_POST['pemail']);
+        $cadet->setSecEmail($_POST['semail']);
+        $cadet->setGroupMe($_POST['groupme']);
+        $cadet->setPosition($_POST['position']);
+        $cadet->setMajor($_POST['major']);
     }
 
     if(isset($_POST['bio']))

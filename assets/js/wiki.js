@@ -194,3 +194,22 @@ var saveFAQ = function() {
     xhttp.send("faq=" + markup);
   $('.faqwiki').summernote('destroy');
 }
+
+var editWK = function() {
+  $('.wkwiki').summernote({focus: true, toolbar: [
+    // [groupName, [list of button]]
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough', 'superscript', 'subscript']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol']]
+  ]});
+}
+
+var saveWK = function() {
+  var markup = $('.wkwiki').summernote('code');
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "savewiki.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("wk=" + markup);
+  $('.wkwiki').summernote('destroy');
+}

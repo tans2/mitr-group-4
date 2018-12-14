@@ -68,6 +68,12 @@ elseif(isset($_POST['faq']))
     $wiki->setBody($_POST['faq']);
     $wiki->updateWiki($mysqli);
 }
+elseif(isset($_POST['wk']))
+{
+    $wiki = new wiki( "wk", $mysqli );
+    $wiki->setBody($_POST['wk']);
+    $wiki->updateWiki($mysqli);
+}
 
 header("Location: wikihome.php");
 ?>
