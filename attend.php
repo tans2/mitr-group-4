@@ -39,7 +39,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 		<form action="attend.php" method="post">
 			<select name="eventSelect">
 				<?php
-				$result = $mysqli->query("SELECT name, eventID FROM cadetEvent");
+				$result = $mysqli->query("SELECT name, eventID FROM cadetEvent ORDER BY ABS( DATEDIFF( cadetEvent.date, NOW() ) )");
 				while($row = $result->fetch_assoc()) {
 				    if (isset($_POST['eventSelect']) && $_POST['eventSelect'] == $row['eventID']) {
 						echo '<option value="' . $row['eventID'] . '"  selected>'.$row['name'] . '</option>';
@@ -50,9 +50,9 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
                 
 				?>
 			</select>
-			<input class="btn btn-sm btn-primary" type="submit" id="selectevent" value="Submit"/>
+			<br><br><input class="btn btn-sm btn-primary" type="submit" id="selectevent" value="Submit"/>
 		</form>
-	</div>
+	</div><br>
 
 	<?php
 		if (isset($_POST["eventSelect"])) {
@@ -117,9 +117,9 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 			echo '</form><br>';
 
 			echo '<form class="show_attendance" action="attend.php" method="post">';
-			echo '<input class="btn btn-sm btn-primary" type="submit" value="Show All Atendees" name="show_attendance"/>';
+			echo "<input class='btn btn-sm btn-primary' type='submit' value='Show All Atendees' name='show_attendance'/>";
 			echo '</form><br>';
-			echo '<a class="btn btn-sm btn-primary" href="connectrfid.php">Add Cadet ID Card</a>';
+			echo "<a class='btn btn-sm btn-primary' href='connectrfid.php'>Add Cadet ID Card</a><br><br>";
 		}
 
 		if (isset($_POST["show_attendance"])) {

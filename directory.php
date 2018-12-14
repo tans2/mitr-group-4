@@ -16,6 +16,7 @@ include('./assets/inc/header.php');
 }
 </style>
 <?php
+// Makes sure user is logged in
 if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 {
   header('Location: index.php');
@@ -43,7 +44,15 @@ while($row = $result->fetch_assoc())
 <?php
 foreach( $options as $option )
 {
-    echo '<option value="' . $option . '">'. $option . '</option>';
+    // If option was selected makes it appear in dropdown as selected
+    if($_POST['showcadets'] == $option)
+    {
+        echo '<option selected value="' . $option . '">'. $option . '</option>'; 
+    }
+    else
+    {
+        echo '<option value="' . $option . '">'. $option . '</option>'; 
+    }
 }
 ?>
     </select><br>

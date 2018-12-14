@@ -18,7 +18,8 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 	$query = 'SELECT * FROM announcement ORDER BY date DESC';
 	$result = $mysqli->query($query);
     echo "<div class='card'>";
-	while ($row = $result->fetch_assoc()) {
+	while ($row = $result->fetch_assoc()) 
+    {
 		//print out the information for the post
 		echo "<div class='card-header'>" . $row['title'] . "</div>";
 		echo "<div class='card-body'><h5 class='card-title'>" . $row['subject'] . "</h5>";
