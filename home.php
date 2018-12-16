@@ -6,36 +6,10 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 }
 ?>
 
-<style>
-
-/* Styles for mobile */
-@media (max-width: 500px) 
-{
-    .col-4 
-    {
-        -ms-flex: 90%;
-        flex: 90%;
-        max-width: 95%;
-        padding: 10px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    body
-    {
-        min-width: 400px;
-    }
-}
-@media (min-width: 500px) 
-{
-    .col-4 
-    {
-        -ms-flex: 0 0 33.333333%;
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%;
-    }
-}
-</style>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/home.css">
+</head>
 
   <div class="jumbotron jumbotron-fluid">
     <h1 class="display-4"> Hello! </h1>

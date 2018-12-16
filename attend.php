@@ -9,28 +9,8 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
 <head>
 	<title>Cadet Events</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/attend.css">
 </head>
-<style>
-/* Styles for mobile */
-@media (max-width: 500px) 
-{
-    .card
-    {
-        width: 100%;
-    }
-    body
-    {
-        min-width: 400px;
-    }
-}
-@media (min-width: 600px) 
-{
-    .card
-    {
-        width: 40%;
-    }
-}
-</style>
 <body>
   <div class="jumbotron container-fluid">
 	<h1 class="display-4"> Attendance </h1><br>
