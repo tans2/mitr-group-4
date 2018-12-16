@@ -1,78 +1,12 @@
 <?php 
 include('./assets/inc/header.php'); 
-if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
-{
-    header('Location: index.php');
-}
-
-if(isset($_POST['cadetbio']))
-{
-    $cadet->setBio($_POST['cadetbio']);
-    $cadet->updateCadet( $mysqli );
-    header('Location: editprofile.php');
-}
-
-if(isset($_POST['afgoals']))
-{
-    $cadet->setAirForceGoals($_POST['afgoals']);
-    $cadet->updateCadet( $mysqli );
-    header('Location: editprofile.php');
-}
-
-if(isset($_POST['pgoals']))
-{
-    $cadet->setPersonalGoals($_POST['pgoals']);
-    $cadet->updateCadet( $mysqli );
-    header('Location: editprofile.php');
-}
-
-if(isset($_POST['awards']))
-{
-    $cadet->setAwards($_POST['awards']);
-    $cadet->updateCadet( $mysqli );
-    header('Location: editprofile.php');
-}
 ?>
 
 <head>
     <title>Edit Profile</title>
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=ij0h6vcxvcacvu1l56udgaairzb672xtq1kktiizh2cpf4fe"></script>
         <script src="assets/js/editProfile.js"></script>
-    <style>   
-        .col-4
-        {
-            flex: 50%; 
-            max-width: 50%; 
-        }
-        .row
-        {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 100%;
-        }
-        #left
-        {
-            float: left;
-            width: 50%;
-            padding: 10px;
-        }
-        
-        #right
-        {
-            float: right;
-            width: 50%;
-            padding: 10px
-        }
-        
-        #bottom
-        {
-            display: block;
-            width: 100%;
-            float: left;
-            padding: 10px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="assets/css/editprofile.css">
 </head>
 
   <div class="row">

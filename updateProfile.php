@@ -18,32 +18,34 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         $cadet->setMajor($_POST['major']);
     }
 
-    if(isset($_POST['bio']))
+    if(isset($_POST['cadetbio']))
     {
-        $cadet->setBio($_POST['bio']);
+        $cadet->setBio($_POST['cadetbio']);
+        $cadet->updateCadet( $mysqli );
+        header('Location: editprofile.php');
     }
 
-    if(isset($_POST['aa']))
+    if(isset($_POST['afgoals']))
     {
-        $cadet->setAwards($_POST['aa']);
+        $cadet->setAirForceGoals($_POST['afgoals']);
+        $cadet->updateCadet( $mysqli );
+        header('Location: editprofile.php');
     }
 
-    if(isset($_POST['afg']))
+    if(isset($_POST['pgoals']))
     {
-        $cadet->setAirForceGoals($_POST['afg']);
+        $cadet->setPersonalGoals($_POST['pgoals']);
+        $cadet->updateCadet( $mysqli );
+        header('Location: editprofile.php');
     }
 
-    if(isset($_POST['pg']))
+    if(isset($_POST['awards']))
     {
-        $cadet->setPersonalGoals($_POST['pg']);
-    }
-    
-    if(isset($_POST['updatepass']))
-    {
-        $cadet->setPass($_POST['newPass']);
+        $cadet->setAwards($_POST['awards']);
+        $cadet->updateCadet( $mysqli );
+        header('Location: editprofile.php');
     }
 
-    $cadet->updateCadet( $mysqli );
 
     if(isset($_FILES['file']))
     {
