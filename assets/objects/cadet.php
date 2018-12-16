@@ -19,6 +19,8 @@ class cadet {
     var $awards;
     var $admin;
     var $major;
+    var $question;
+    var $answer;
     
     
     /*
@@ -57,7 +59,9 @@ class cadet {
         $this->awards = $row['awards'];
         $this->admin = $row['admin'];
         $this->major = $row['major'];
-        
+        $this->question = $row['question'];
+        $this->answer = $row['answer'];
+
         $stmt->close();
     }
     
@@ -66,10 +70,26 @@ class cadet {
      */
     function updateCadet( $mysqli )
     {
-        $stmt = $mysqli->prepare("UPDATE cadet SET firstName = ?, lastName = ?, rank = ?, primaryEmail = ?, secondaryEmail = ?, primaryPhone = ?, secondaryPhone = ?, password = ?, bio = ?, flight = ?, position = ?, groupMe = ?, PGoals = ?, AFGoals = ?, awards = ?, admin = ?, major = ? WHERE rin = ?");
-        $stmt->bind_param( "sssssiissssssssisi", $this->first, $this->last, $this->rank, $this->primEmail, $this->secEmail, $this->primPhone, $this->secPhone, $this->pass, $this->bio, $this->flight, $this->position, $this->groupMe, $this->PGoals, $this->AGoals, $this->awards, $this->admin, $this->major, $this->rin );
+        $stmt = $mysqli->prepare("UPDATE cadet SET firstName = ?, lastName = ?, rank = ?, primaryEmail = ?, secondaryEmail = ?, primaryPhone = ?, secondaryPhone = ?, password = ?, bio = ?, flight = ?, position = ?, groupMe = ?, PGoals = ?, AFGoals = ?, awards = ?, admin = ?, major = ?, question = ?, answer = ? WHERE rin = ?");
+        $stmt->bind_param( "sssssiissssssssisssi", $this->first, $this->last, $this->rank, $this->primEmail, $this->secEmail, $this->primPhone, $this->secPhone, $this->pass, $this->bio, $this->flight, $this->position, $this->groupMe, $this->PGoals, $this->AGoals, $this->awards, $this->admin, $this->major, $this->question, $this->answer, $this->rin );
         $stmt->execute();
         $stmt->close();
+    }
+    
+    function setQuestion($question) { 
+        $this->question = $question; 
+    }
+
+    function getQuestion() { 
+        return $this->question; 
+    }
+    
+    function setAnswer($answer) { 
+        $this->answer = $answer; 
+    }
+
+    function getAnswer() { 
+        return $this->answer; 
     }
     
     function setMajor($major) { 

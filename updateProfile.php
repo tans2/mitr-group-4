@@ -71,7 +71,7 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
         }
     }
 
-    if( $uploadOK == 1 )
+    if( !isset($uploadOK) || $uploadOK == 1 )
     {
         header('Location: myprofile.php');
     }

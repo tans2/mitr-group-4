@@ -31,9 +31,9 @@ if(isset($_POST['submit']))
 // Check if the passwords are the same if there is uname, pass, pass2 and both pass and pass2 match
 if( isset($_POST['rin']) && isset($_POST['pass']) && isset($_POST['pass2']) && passMatch())
 {
-    $smt = $mysqli->prepare("INSERT INTO cadet (rin, password, rank, firstName, lastName, admin, flight, primaryEmail) VALUES (?,?,?,?,?,?,?,?)");
+    $smt = $mysqli->prepare("INSERT INTO cadet (rin, password, rank, firstName, lastName, admin, flight, primaryEmail, question, answer) VALUES (?,?,?,?,?,?,?,?,?,?)");
     $hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
-    $smt->bind_param( "issssiss", $_POST['rin'], $hash, $_POST['rank'], $_POST['first'], $_POST['last'], $_POST['admin'], $_POST['flight'], $_POST['email'] );
+    $smt->bind_param( "issssissss", $_POST['rin'], $hash, $_POST['rank'], $_POST['first'], $_POST['last'], $_POST['admin'], $_POST['flight'], $_POST['email'], $_POST['question'], $_POST['answer'] );
     $smt->execute();
     $smt->close();
     
@@ -200,8 +200,27 @@ function passMatch()
                 </div>
                 <div class="clearfix">
                     Card Input:<br>
-                    <input class="form-control" type="text" name="newrfid"/><br>
+                    <input class="form-control" type="text" name="newrfid"/>
                 </div>
+                <div>      
+                  Security Question:<br>
+                  <select name="question">
+                    <option value="What was your childhood nickname?">What was your childhood nickname?</option>
+                    <option value="What is the name of your favorite childhood friend?">What is the name of your favorite childhood friend?</option>
+                    <option value="In what city or town did your mother and father meet?">In what city or town did your mother and father meet?</option>
+                    <option value="What is your favorite team?">What is your favorite team?</option>
+                    <option value="What is your favorite movie?">What is your favorite movie?</option>
+                    <option value="What was your favorite sport in high school?">What was your favorite sport in high school?</option>
+                    <option value="What was your favorite food as a child?">What was your favorite food as a child?</option>
+                    <option value="What was the make and model of your first car?">What was the make and model of your first car?</option>
+                    <option value="Who is your childhood sports hero?">Who is your childhood sports hero?</option>
+                      <option value="In what town was your first job?">In what town was your first job?</option>
+                      <option value="What was the name of the company where you had your first job?">What was the name of the company where you had your first job?</option>
+
+                  </select><br>
+                  Response:<br>
+                  <input type="text" style="width:100%;" name="answer" id="answer"><br>
+                </div><br>
                 <div class="clearfix">
                   <input class="btn btn-sm btn-primary" type="submit" value="Add User" />
                   <input class="btn btn-sm btn-primary" type="reset" value="Reset"/>

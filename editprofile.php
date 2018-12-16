@@ -5,16 +5,78 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     header('Location: index.php');
 }
 
+if(isset($_POST['cadetbio']))
+{
+    $cadet->setBio($_POST['cadetbio']);
+    $cadet->updateCadet( $mysqli );
+    header('Location: editprofile.php');
+}
+
+if(isset($_POST['afgoals']))
+{
+    $cadet->setAirForceGoals($_POST['afgoals']);
+    $cadet->updateCadet( $mysqli );
+    header('Location: editprofile.php');
+}
+
+if(isset($_POST['pgoals']))
+{
+    $cadet->setPersonalGoals($_POST['pgoals']);
+    $cadet->updateCadet( $mysqli );
+    header('Location: editprofile.php');
+}
+
+if(isset($_POST['awards']))
+{
+    $cadet->setAwards($_POST['awards']);
+    $cadet->updateCadet( $mysqli );
+    header('Location: editprofile.php');
+}
 ?>
 
 <head>
-  <title>Edit Profile</title>
-  <script src="assets/js/editProfile.js"></script>
+    <title>Edit Profile</title>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=ij0h6vcxvcacvu1l56udgaairzb672xtq1kktiizh2cpf4fe"></script>
+        <script src="assets/js/editProfile.js"></script>
+    <style>   
+        .col-4
+        {
+            flex: 50%; 
+            max-width: 50%; 
+        }
+        .row
+        {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+        #left
+        {
+            float: left;
+            width: 50%;
+            padding: 10px;
+        }
+        
+        #right
+        {
+            float: right;
+            width: 50%;
+            padding: 10px
+        }
+        
+        #bottom
+        {
+            display: block;
+            width: 100%;
+            float: left;
+            padding: 10px;
+        }
+    </style>
 </head>
 
-<div class="container">
   <div class="row">
-    <div class="col-4">
+    <div id="left">
       <div class="card">
         <div class="card-body">
           <form action="updateProfile.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" name="genInfo">
@@ -54,34 +116,8 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
     </div>
   </div>
 
-    <div class="col-4">
-      <div class="card">
-        <div class="card-body">
-          <strong>Bio: </strong>
-          <div class="cadetBio"><?php echo $cadet->getBio(); ?></div>
-          <button id="edit" class="btn btn-sm btn-primary" onclick="editBio()" type="button">Edit</button>
-          <button id="save" class="btn btn-sm btn-primary" onclick="saveBio()" type="button">Save</button><br><br>
 
-          <strong>Air Force Goals: </strong>
-          <div class="afGoals"><?php echo $cadet->getAirForceGoals(); ?></div>
-          <button id="edit" class="btn btn-sm btn-primary" onclick="editAFG()" type="button">Edit</button>
-          <button id="save" class="btn btn-sm btn-primary" onclick="saveAFG()" type="button">Save</button><br><br>
-
-          <strong>Personal Goals: </strong>
-          <div class="pGoals"><?php echo $cadet->getPersonalGoals(); ?></div>
-          <button id="edit" class="btn btn-sm btn-primary" onclick="editPG()" type="button">Edit</button>
-          <button id="save" class="btn btn-sm btn-primary" onclick="savePG()" type="button">Save</button><br><br>
-
-          <strong>Awards and Achievements: </strong>
-          <div class="awards"><?php echo $cadet->getAwards() ?></div>
-          <button id="edit" class="btn btn-sm btn-primary" onclick="editAA()" type="button">Edit</button>
-          <button id="save" class="btn btn-sm btn-primary" onclick="saveAA()" type="button">Save</button><br><br>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="col-4">
+    <div id="right">
       <div class="card">
         <div class="card-body">
           <form action="updateProfile.php" method="post" enctype="multipart/form-data" onsubmit="return validatePass()" name="passChange">
@@ -101,8 +137,39 @@ if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
             <button class="btn btn-sm btn-primary" type="reset">Reset</button>
             <button class="btn btn-sm btn-primary" type="submit" name="updatepass">Change Password</button>
           </form><br>
+            
+        <a href="securityquestion.php" class="btn btn-sm btn-primary">Modify Security Question</a>
         </div>
       </div>
     </div>
-  </div>
-</div>
+    </div>
+      
+      <div id="bottom">
+      <div class="card">
+        <div class="card-body">
+            <form action="editprofile.php" method="POST">
+                <strong>Bio: </strong>
+                <textarea id="cadetbio" name="cadetbio"><?php echo $cadet->getBio(); ?></textarea><br>
+                <button class="btn btn-sm btn-primary" type="submit">Save</button>
+            </form><br>
+ 
+            <form action="editprofile.php" method="POST">
+                <strong>Air Force Goals: </strong>
+                <textarea id="afgoals" name="afgoals"><?php echo $cadet->getAirForceGoals(); ?></textarea><br>
+                <button class="btn btn-sm btn-primary" type="submit">Save</button>
+            </form><br>
+            
+            <form action="editprofile.php" method="POST">
+                <strong>Personal Goals: </strong>
+                <textarea id="pgoals" name="pgoals"><?php echo $cadet->getPersonalGoals(); ?></textarea><br>
+                <button class="btn btn-sm btn-primary" type="submit">Save</button>
+            </form><br>
+            
+            <form action="editprofile.php" method="POST">
+                <strong>Awards and Achievements: </strong>
+                <textarea id="awards" name="awards"><?php echo $cadet->getAwards(); ?></textarea><br>
+                <button class="btn btn-sm btn-primary" type="submit">Save</button>
+            </form><br>
+        </div>
+      </div>
+    </div>

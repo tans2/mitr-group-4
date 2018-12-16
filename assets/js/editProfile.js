@@ -1,79 +1,9 @@
-var editBio = function() {
-  $('.cadetBio').summernote({focus: true, toolbar: [
-    // [groupName, [list of button]]
-    ['style', ['bold', 'italic', 'underline', 'clear']],
-    ['font', ['strikethrough', 'superscript', 'subscript']],
-    ['color', ['color']],
-    ['para', ['ul', 'ol']]
-  ]});
-};
-
-var saveBio = function() {
-  var markup = $('.cadetBio').summernote('code');
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "updateProfile.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("bio=" + markup);
-  $('.cadetBio').summernote('destroy');
-};
-    
-var editAFG = function() {
-  $('.afGoals').summernote({focus: true, toolbar: [
-    // [groupName, [list of button]]
-    ['style', ['bold', 'italic', 'underline', 'clear']],
-    ['font', ['strikethrough', 'superscript', 'subscript']],
-    ['color', ['color']],
-    ['para', ['ul', 'ol']]
-  ]});
-};
-
-var saveAFG = function() {
-  var markup = $('.afGoals').summernote('code');
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "updateProfile.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("afg=" + markup);
-  $('.afGoals').summernote('destroy');
-};
-    
-var editPG = function() {
-  $('.pGoals').summernote({focus: true, toolbar: [
-    // [groupName, [list of button]]
-    ['style', ['bold', 'italic', 'underline', 'clear']],
-    ['font', ['strikethrough', 'superscript', 'subscript']],
-    ['color', ['color']],
-    ['para', ['ul', 'ol']]
-  ]});
-};
-
-var savePG = function() {
-  var markup = $('.pGoals').summernote('code');
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "updateProfile.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("pg=" + markup);
-  $('.pGoals').summernote('destroy');
-};
-    
-var editAA = function() {
-  $('.awards').summernote({focus: true, toolbar: [
-    // [groupName, [list of button]]
-    ['style', ['bold', 'italic', 'underline', 'clear']],
-    ['font', ['strikethrough', 'superscript', 'subscript']],
-    ['color', ['color']],
-    ['para', ['ul', 'ol']]
-  ]});
-};
-
-var saveAA = function() {
-    $('.awards').summernote('code');
-  var markup = $('.awards').summernote('code');
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "updateProfile.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("aa=" + markup);
-  $('.awards').summernote('destroy');
-};
+tinymce.init({
+    selector: '#cadetbio, #afgoals, #pgoals, #awards',
+    toolbar: 'fontselect, fontsizeselect',
+    font_formats: 'Arial=arial,helvetica,sans-serif;Courier New=courier new,courier,monospace;AkrutiKndPadmini=Akpdmi-n;Times New Roman=times new roman,times',
+    fontsize_formats: '8pt 10pt 12pt 14pt 18pt 24pt 36pt'
+  });
 
 function validateForm()
 {

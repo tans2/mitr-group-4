@@ -1,18 +1,18 @@
 <?php
 include('assets/inc/dbinfo.php');
-if(isset($_POST['rin']))
+if(isset($_POST['answer']))
 {
     $rin = $_POST['rin'];
-    $email[] = $_POST['email'];
     
     $stmt = $mysqli->prepare("SELECT * FROM cadet WHERE rin = ?");
     $stmt->bind_param( "i", $rin);
     $stmt->execute();
     $result = $stmt->get_result();
-
+    
     if ($row = $result->fetch_assoc())
     {
-        if($row['primaryEmail'] == array_values($email)[0])
+        $email[] = $row['primaryEmail'];
+        if(strcmp($_POST['answer'], $row['answer']) == 0)
         {
             // Records user name and password submissions
             $pass = randomPassword();
@@ -85,22 +85,14 @@ function randomPassword() {
 ?>
 
 <body class="text-center"> 
-<div class="card" style="margin: auto;padding: 10px;">
+<div class="card" style="margin:auto;padding: 10px;width:80%;">
   <div class="card-body">
-  	<form id="login" method="POST" action="forgotpass.php">
+  	<form id="login" method="POST" action="passwordreset.php">
       <h5 class="card-title">Password Reset</h5>
         <p>(sends new temporary password to your email)</p><br>
-              <label for="fname"><b>First Name</b></label><br>
-      <input class="form-control" type="text" placeholder="Enter First Name" name="fname" id="fname" required><br>
-        
-              <label for="lname"><b>Last Name</b></label><br>
-      <input class="form-control" type="text" placeholder="Enter Last Name" name="lname" id="lname" required><br>
         
       <label for="rin"><b>RIN</b></label><br>
       <input class="form-control" type="text" placeholder="Enter RIN" name="rin" id="rin" required><br>
-        
-        <label for="email"><b>Email</b></label><br>
-      <input class="form-control" type="text" placeholder="Enter Email" name="email" id="email" required><br>
 
       <button class="btn btn-sm btn-primary" type="submit" name="submit">Reset Password</button>
     </form>
