@@ -1,78 +1,18 @@
 <?php
-require_once "vendor/autoload.php";
 include('./assets/inc/header.php');
-if ( !isset($_SESSION['login']) || !$_SESSION['login'] )
-{
-    header('Location: index.php');
-}
-
-if (isset($_POST['postMade'])) {
-	$title = Html2Text\Html2Text::convert($_POST['postTitle']);
-	$subject = Html2Text\Html2Text::convert($_POST['postSubject']);
-	$body = $_POST['postBody'];
-	$author = htmlspecialchars(trim($_SESSION['rin']));
-
-	$insquery = 'INSERT INTO announcement (`title`, `subject`, `body`, `createdBy`, `date`, `uid`) VALUES (?,?,?,?,CURRENT_TIMESTAMP, NULL)';
-	$stmt = $mysqli->prepare($insquery);
-	$stmt->bind_param("sssi", $title, $subject, $body, $author);
-	$stmt->execute();
-	$stmt->close();
-
-	include("emailPHP.php");
-	if(isset($_POST["groups"]) && !in_array("null", $_POST["groups"])){
-		$query = 'SELECT primaryEmail AS email FROM (cadet LEFT JOIN groupMember ON cadet.rin = groupMember.rin) LEFT JOIN cadetGroup ON groupMember.groupID = cadetGroup.id WHERE cadetGroup.label = ?';
-		$stmt = $mysqli->prepare($query);
-		$size = count($_POST["groups"]);
-		for($x = 0; $x < $size; $x++) { 
-			$stmt->bind_param("s", $_POST['groups'][$x]);
-			$stmt->execute();
-			$result = $stmt->get_result();
-			while ($row = $result->fetch_assoc()){
-				$targets[] = $row['email'];
-			}
-		}
-		$emailSubject = $title . ": " . $subject;
-		$poster = $mysqli->query('SELECT firstName, lastName FROM cadet WHERE rin="' . $author . '"');
-		$postername = $poster->fetch_assoc();
-		$emailBody = $body . "<br>&nbsp;<br>" . "Created by:<br>" . $postername['firstName'] . " " . $postername['lastName'] . "<br>" . $author;
-		
-		send($targets, $emailSubject, $emailBody);
-	}
-	echo "<script>window.location.href = 'announcements.php';</script>";
-}
 ?>
 
 <head>
   <title>Make Announcement</title>
-  <script>
-        $(document).ready(function(){
-          $('#body').summernote({focus: true, toolbar: [
-            ['font', ['bold', 'italic', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol']],
-            ['table', ['table']],
-            ['insert', ['link', 'hr']],
-            ['view', ['fullscreen', 'codeview']],
-            ['help', ['help']]
-            ] });
-        });
-            
-        function saveBody() {
-          document.getElementById('body').value = $('#body').summernote('code');
-        };
-  </script>
-  <style>
-    .note-popover .popover-content {
-      display: none;
-    }
-  </style>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=ij0h6vcxvcacvu1l56udgaairzb672xtq1kktiizh2cpf4fe"></script>
+    <script src="assets/js/makepost.js"></script>
 </head>
 <body> 
 	<div class="jumbotron container-fluid">
 		<h1 class="display-4"> Make an Announcement </h1>
 		<div class="card">
 			<div class="card-body">
-			<form class="makepost" action="makepost.php" method="post">
+			<form class="makepost" action="sendpost.php" method="post">
 				<label class="card-text" for="address">Groups to notify (Ctl/Command Click to multiselect)</label><br>
 				<select id="grouplist" class="form-control" name="groups[]" multiple>
 				<option value="null">No Groups [Default]</option>
